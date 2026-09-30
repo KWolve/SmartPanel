@@ -7,6 +7,8 @@ A **4-inch 480×480 Linux touch panel** built into a standard 86-box:
 host itself; plus idle clock/photo frame, night-time screen-off, one-tap 180° flip,
 and **multiple panels tiled into one video wall**.
 
+> 🛒 **Buy the hardware (Taobao)**: <https://item.taobao.com/item.htm?id=650865599184&skuId=5500508256776>
+
 > License: **MIT** (see `LICENSE`). Third-party deps and redistribution notes:
 > `THIRD_PARTY_LICENSES.md`. Release process & open decisions: `PUBLISH.md`.
 

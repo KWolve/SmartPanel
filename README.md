@@ -6,6 +6,8 @@
 可当 **Home Assistant 终端**、也能自己当本地主机；外加空闲变时钟/相框、夜景整块熄屏、
 一键 180° 倒装、**多块拼成一堵视频墙**。
 
+> 🛒 **整机购买（淘宝）**：<https://item.taobao.com/item.htm?id=650865599184&skuId=5500508256776>
+
 > 许可以为 **MIT**（见 `LICENSE`）。第三方依赖与再分发口径见 `THIRD_PARTY_LICENSES.md`，
 > 发布流程与待拍板事项见 `PUBLISH.md`。
 
