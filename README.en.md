@@ -1,20 +1,25 @@
-# SmartPanel — 86-box Smart Home Panel (FlyThings / SigmaStar SSD20x)
+# SmartPanel · 4-inch 86-box Smart Panel
 
 [中文](README.md) ｜ **English**
 
-[![Buy on Taobao](https://img.shields.io/badge/Buy%20on%20Taobao-hardware-FF5000?style=flat-square)](https://item.taobao.com/item.htm?id=650865599184&skuId=5500508256776) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
+[![Buy on Taobao](https://img.shields.io/badge/Buy%20on%20Taobao-hardware-FF5000?style=flat-square)](https://item.taobao.com/item.htm?id=650865599184&skuId=5500508256776) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE) [![Built with FlyThings MCP](https://img.shields.io/badge/Built%20with-FlyThings%20MCP-0A7AFF?style=flat-square)](https://github.com/KWolve/FlyThingsMCP)
 
-> Repos: **GitHub** <https://github.com/KWolve/SmartPanel> ｜ **Gitee mirror** <https://gitee.com/Kwolve/SmartPanel>
+> **GitHub (primary)** <https://github.com/KWolve/SmartPanel> ｜ **Gitee mirror** <https://gitee.com/Kwolve/SmartPanel>
 
-A **4-inch 480×480 Linux touch panel** built into a standard 86-box:
-**3 × 10 A relays**, scene linkage, works as a **Home Assistant terminal** or as a local
-host itself; plus idle clock/photo frame, night-time screen-off, one-tap 180° flip,
-and **multiple panels tiled into one video wall**.
+---
+
+## In one line: turn the wall switch into a smart panel that talks back
+
+A **4-inch 480×480 Linux touch panel** that drops into a standard **86-box**:
+**3 × 10 A relays**, **one-tap whole-room scenes**, **native Home Assistant integration**
+(Domoticz works too), **2–4 panels tiled into one video wall**, and **scan-to-upload photos**
+from your phone.
+
+**Boots in 3 seconds. Commissioned by phone in 30 seconds — no unboxing, no laptop on site.**
 
 > 🛒 **Buy the hardware (Taobao)**: <https://item.taobao.com/item.htm?id=650865599184&skuId=5500508256776>
-
-> License: **MIT** (see `LICENSE`). Third-party deps and redistribution notes:
-> `THIRD_PARTY_LICENSES.md`. Release process & open decisions: `PUBLISH.md`.
+>
+> Model **SW48480040D1** ｜ SoC **Z20 / SigmaStar SSD201·SSD202D** ｜ License **MIT**
 
 ---
 
@@ -27,49 +32,157 @@ and **multiple panels tiled into one video wall**.
     <td align="center"><img src="docs/shots/05_ha_config_qr.png" width="150"><br><sub><b>HA config</b><br>scan &amp; paste token</sub></td>
   </tr>
   <tr>
-    <td colspan="5" align="center"><img src="docs/shots/10_wall_3split.png" width="860"><br><sub><b>3-screen video wall</b> · one clip split per panel, phase-aligned + time-synced (1×3, 52 px discarded between panels, clock at the top-right of the rightmost screen)</sub></td>
+    <td colspan="5" align="center"><img src="docs/shots/10_wall_3split.png" width="860"><br><sub><b>3-screen video wall</b> · one clip split per panel, phase-aligned + time-synced (1×3, 52 px discarded between panels)</sub></td>
   </tr>
 </table>
 
 ---
 
-## 0. Dependency: FlyThings MCP (**release version**)
+## 1. Why buy it
 
-Secondary development (build / debug / packaging / knowledge base / device tools) is based on
-**FlyThings MCP**. Its **release version is maintained and published separately** — this repo only
-references it, never vendors it.
-
-| Purpose | Location |
-|---|---|
-| **Release version (where users get it)** | `https://github.com/KWolve/FlyThingsMCP` |
-| China mirror (Gitee) | `https://gitee.com/Kwolve/flythingsmcp_release` |
-| Local path (same workspace, for verification) | `tools/FlyThings_mcp_release/` |
-
-Install / integration steps follow that release repo's README (plug the MCP into your AI client).
+| # | Selling point | What it means for you |
+|---|---|---|
+| 1 | **One panel replaces three** | Takes the place of 3 wall switches **plus** a scene panel. Fewer cut-outs, fewer parts, less wiring, less labour — all inside a single 86-box |
+| 2 | **Native Home Assistant / Domoticz** | Power it on, connect to your broker, and **3 switch entities appear automatically** in HA (named exactly as on the panel). **Zero code, zero custom integration** |
+| 3 | **Scan, paste, done — 30 seconds** | No unboxing to reconfigure: the panel shows a QR code → scan it to open the **on-panel web page** → paste broker address and token → live immediately |
+| 4 | **Tile several into one wall** | 2–4 panels side by side become one large picture. Storefront backdrop walls, showroom loops, ad slots — with **no server required** (the master broadcasts the time base) |
+| 5 | **More than a switch** | Idles into a clock / photo frame; scan a mini-program QR to push photos; full screen-off window at night; separate working/screensaver brightness |
+| 6 | **Easy to install, easy to mass-produce** | Standard 86-box flush mount; **one-tap 180° flip** (screen + touch + video rotate together, so it works under a ceiling); factory-default file means **it can go live straight out of the box** |
+| 7 | **Built to be extended** | Full source, MIT-licensed, plus the official **FlyThings MCP** (your AI assistant edits UI / builds / packages / captures real device screens) — no waiting on a vendor for a UI tweak |
 
 ---
 
-## 1. Features
+## 2. Three core scenarios
 
-| Module | Description |
+### 2.1 On the home wall: 3 relays + one-tap scenes
+
+Three device cards (**Living room / Bedroom / Light strip** — rename freely) above a row of scenes
+(**Home / Movie / Sleep / Relax**).
+
+| Element | Description |
 |---|---|
-| 3 relays | Renameable (living room / strip / tea table); touch, scene linkage and HA commands share **one source of truth** (`RelayManager`) |
-| 3 run modes | ① **HA mode**: external broker (HA MQTT Discovery auto-creates 3 switch entities) ② **Local master**: on-panel MQTT broker, slaves/mini-program connect directly ③ **Local slave**: connects to the master's broker |
-| Scenes | Built-in scene table (home/away/sleep/relax); HA can push a scene list and trigger them |
-| Clock / Album | Idle 15 s → clock / photo frame; **scan-to-upload** (QR generated on-device by the QR control) |
-| Screen-off window | e.g. 20:00–08:00 full black, touch to wake |
-| Flip 180° | Screen + touch layer rotate together (no need to unmount on site) |
-| Video wall | Split one video per panel, **phase-aligned + time-synced**; multi-clip playlist; **no external server** (master broadcasts epoch) |
-| Local hub | Standalone MQTT broker on the panel (QoS1 / Will / retained, RSS ~1 MB) |
+| Device card | **Tap the whole card = toggle that relay**; the state label updates instantly and is reported to HA |
+| Scene row | **Tap a scene = run the whole group** (Home = living room + light strip on), up to 8 scenes |
+| One source of truth | HA toggles → relay acts; panel touch → HA state syncs. The state lives on-panel, so the two sides can never disagree |
+| Phone / voice control too | HA app and voice assistants drive it over standard MQTT — the panel follows |
 
-## 2. Hardware / platform
+### 2.2 Commercial mini-wall: several panels, one picture
 
-- Platform: **Z20 / SigmaStar SSD201·SSD202D** (dual Cortex-A7 @1.2 GHz, 128 MB DDR3, 16 MB NOR + 128 MB SD NAND)
-- Display: 480×480 (720×720 in the same family); product model SW48480040D1
-- Power: AC220V / DC9-24V; RS485 + 100M Ethernet; 3 × 10 A relays
-- OS: FlyThings V2.1 + EasyUI (`/res` read-only squashfs, `/data` 512 KB, `/mnt/sdnand` 74 MB rw)
+N identical panels in a row play the same clip while idling. Each shows only its own slice, and the
+picture stays **frame-synced (measured phase difference ≤ 10 ms)**.
 
-## 3. Layout
+- **Web splitter**: drag a box per screen in the browser (each screen can be nudged independently to compensate for physical seams) → export `seg_1..N.mp4 + playlist.json` → **one-click distribute** to every panel
+- **No server**: peer-to-peer UDP on the same subnet; the master broadcasts the time base
+- Supports **a playlist of multiple clips** — good for storefronts, showrooms and ad slots
+
+Start it: `python tools/video_wall/web/server.py --port 8796` → open `http://<PC>:8796/`
+
+<img src="docs/release_shots/07_video_wall_tool_ui.png" width="720" alt="Splitter tool">
+
+### 2.3 Album / screensaver: give the wall some atmosphere
+
+- The panel shows a QR code → scan it with your phone to upload photos → they land on the panel and rotate in the screensaver (mini-program supported too)
+- Or just drop files on a **TF card / USB stick** — plug and play
+- Screensaver: **big clock + date + optional temperature/humidity / weather / status bar**, each item can be added, removed and repositioned
+- Configurable pacing: N seconds per photo (default 15 s), clip interval (0 = next when finished)
+
+---
+
+## 3. Specifications
+
+| Item | Spec |
+|---|---|
+| Model | **SW48480040D1** (4-inch 86-box series, Z20 platform) |
+| Display | 4-inch square LCD **480 × 480**, fully laminated single-touch capacitive |
+| SoC / OS | Z20 (SigmaStar SSD201 / SSD202D, dual Cortex-A7 @1.2 GHz, 128 MB DDR3 onboard), FlyThings V2.1 + EasyUI |
+| Storage | 16 MB NOR + **128 MB SD NAND** (media / albums live here) |
+| Power | **AC 220 V** or **DC 9–24 V** (either one, chosen on site wiring) |
+| Relays | Up to **3 × 10 A** (this project uses living room / light strip / tea table) |
+| Wireless | Built-in **WiFi**; optional Zigbee / Bluetooth module |
+| Wired | **RS485** + **100M Ethernet** |
+| Audio | Built-in 1 W amplifier speaker |
+| Sensors (optional) | Ambient light, human presence |
+| Mounting | Standard **86-box**, flush wall mount; **normal or upside-down (180°) both supported** |
+| Boot | ~**3 seconds** |
+
+---
+
+## 4. Three run modes (pick one per site)
+
+| Mode | Who it's for | How it works |
+|---|---|---|
+| **HA mode** | Homes already running Home Assistant / Domoticz | Connects to an external broker (EMQX / Mosquitto); MQTT Discovery creates 3 switch entities automatically; scenes are managed by HA |
+| **Local master** | No HA yet — you want your own network | The panel runs a lightweight MQTT broker itself; slaves and the mini-program connect directly |
+| **Local slave** | Multi-panel linkage | Connects to the master panel's broker on the same subnet |
+
+> The on-panel broker is a lightweight in-house implementation: QoS0/1, retained, Will and wildcards
+> are supported; **no** TLS / QoS2 / persistent sessions.
+
+---
+
+## 5. Three steps on site
+
+> Prerequisite: the panel and HA are on the same LAN, and HA already has the MQTT integration connected to a broker.
+
+**Step 1 · Power and wiring**: AC version takes 220 V live/neutral (relay outputs go to the light
+circuits); DC version takes 9–24 V. **Always work with the breaker off.**
+
+**Step 2 · Join WiFi**: Home → gear icon (top right) → Settings → **WiFi** → pick SSID → enter password → back.
+(For wired sites, just use the 100M Ethernet port.)
+
+**Step 3 · Switch to HA mode and scan to configure**: Settings → Run mode → **HA mode** → a QR code
+appears below → scan it with your phone to open the on-panel web page:
+
+<img src="docs/release_shots/06_web_config_page.png" width="260" alt="On-panel config page">
+
+- **Server address**: `mqtt://192.0.2.188:1883` (a bare IP gets `:1883` appended automatically)
+- **Username / password (token)**: paste long tokens directly (line breaks and spaces are stripped)
+- Hit **Save** → the panel reconnects immediately and the status turns **Connected**
+- Back in HA → Settings → Devices & Services → MQTT: the device **SmartHomePanel** appears with **3 switches** (Living room / Bedroom / Light strip)
+
+**To change the server or token later**: just repeat step 3 (scan → edit → save). **No unboxing, no laptop.**
+
+> **Mass production / factory**: ship a `panel-defaults.json` (broker, etc.) on `/mnt/sdnand` or in
+> `/res/etc`; the device writes it into prefs on first boot — so **it can reach HA without any on-site configuration**.
+> See `docs/FACTORY-DEFAULTS.md`.
+
+---
+
+## 6. Buy & contact
+
+| Channel | Where |
+|---|---|
+| 🛒 **Buy the hardware (Taobao)** | <https://item.taobao.com/item.htm?id=650865599184&skuId=5500508256776> |
+| 🏢 Company | **Shenzhen ZKSWE Technology Co., Ltd.** |
+| 🌐 Website / docs | <https://www.zkswe.com> ｜ <https://developer.flythings.cn/> |
+| 📞 Phone | +86 755-23019045 |
+| 📍 Address | Room 1407, Tower A, Fenghuang Zhigu, Gongle Community, Xixiang Street, Bao'an District, Shenzhen, Guangdong, China |
+
+> For volume orders or customisation (size, relay count, connectivity, bezel colour) please contact the
+> company directly. This repository covers software and documentation only.
+
+---
+
+## 7. Secondary development: you'll want FlyThings MCP
+
+Development on this project (UI changes / build / debug / packaging / real-device screen capture /
+knowledge-base search) is powered by **FlyThings MCP** — plug it into your AI client
+(Trae / Cursor / Claude Desktop / Kimi…) and **one sentence drives the whole toolchain**.
+Its **release build is maintained and published separately**; this repo only references it, never vendors it.
+
+| Purpose | Path |
+|---|---|
+| **Release version (where users get it, primary)** | <https://github.com/KWolve/FlyThingsMCP> |
+| China mirror (Gitee) | <https://gitee.com/Kwolve/flythingsmcp_release> |
+| Local path (same workspace, for verification, optional) | `tools/FlyThings_mcp_release/` |
+
+Install and integration steps follow that release repo's README (current release `0.27.134-open`, 43 tools).
+
+**Fastest start**: tell your AI → "clone and install `https://github.com/KWolve/FlyThingsMCP`".
+
+---
+
+## 8. Project layout
 
 ```
 src/
@@ -89,17 +202,9 @@ tools/                     video-wall splitter (web UI), factory defaults, host-
 docs/                      release notes / manuals / wall guide / HA config / Domoticz / factory defaults
 ```
 
-## 3.1 HA / MQTT server configuration (scan a QR code — nothing hard-coded)
+---
 
-Broker address, username and token have **no built-in defaults** (no LAN addresses in code).
-On the panel: **Settings → Run mode → HA mode** — a QR code appears; scan it with your phone to open
-the **on-panel web page** (`http://<panel-ip>:8080/<code>/`), paste the long token and save.
-The panel reconnects immediately. Credentials stay in local prefs only. See `docs/HA-CONFIG-WEB.md`.
-
-**Mass production**: drop `panel-defaults.json` (broker, etc.) into `/mnt/sdnand` or ship it in
-`/res/etc` — the device applies it to prefs on first boot. See `docs/FACTORY-DEFAULTS.md`.
-
-## 4. Build & deploy
+## 9. Build & deploy
 
 ```bash
 fun install                                   # fetch dependencies (re-run after editing Manifest)
@@ -118,7 +223,9 @@ adb shell "setprop ctl.restart zkswe"
 ⚠️ Push a busybox first for on-device debugging: `adb push tools/busybox/bin/z20/busybox /tmp/busybox`
 (the device shell lacks free/grep/nohup).
 
-## 5. MQTT topics
+---
+
+## 10. MQTT topics
 
 ```
 smartpanel/<deviceId>/availability                  online / offline (LWT)
@@ -130,26 +237,48 @@ smartpanel/ha/scenes                                scene list pushed by HA (ret
 homeassistant/switch/<uid>_<relay>/config           HA Discovery (HA mode)
 ```
 
-## 6. Video wall (web-based splitter)
+---
 
-```bash
-python tools/video_wall/web/server.py --port 8796     # open http://<PC>:8796/
-```
-Drag a box per screen (each screen's window can be moved independently) → export
-`c1/seg_1..N.mp4 + playlist.json` → **one-click distribute** to all panels.
-Measured setup: **1×3 horizontal, 52 px discard between screens, screensaver clock at the
-top-right of the rightmost screen** (see the composite in `docs/发布说明.md`).
+## 11. Documentation
 
-## 7. Verification
+| Topic | Document |
+|---|---|
+| Full manual (with all real-device screenshots) | `docs/整机说明书.md` |
+| Video wall deep dive | `docs/说明书-多屏拼接.md`, `docs/wall-linkage-design.md` |
+| HA configuration (on-panel web page by QR) | `docs/HA-CONFIG-WEB.md` |
+| Domoticz compatibility (measured) | `docs/DOMOTICZ-COMPAT.md` |
+| Factory defaults / provisioning | `docs/FACTORY-DEFAULTS.md` |
+| Release notes (screenshot gallery) | `docs/发布说明.md` |
+| Third-party deps & licenses | `THIRD_PARTY_LICENSES.md`, `PUBLISH.md` |
 
-- Panel UI pixel diff: `tools/ui_tools/ui_diff.py` (±2 tolerance)
-- On-panel web config: `tools/webcfg_test/` (x86 stub smoke test, no device needed)
+---
+
+## 12. Verification & quality
+
+- Panel UI pixel regression: `tools/ui_tools/ui_diff.py` (±2 tolerance)
+- On-panel web config: `tools/webcfg_test/` (x86 stub smoke test, **no device needed**)
 - Multi-device batch: MCP `flythings_test_run` (case JSON + logcat assertions)
 
-## 8. Open-source status
+---
 
-- [x] **License: MIT** (see `LICENSE`); the on-panel broker service is MIT as well
-- [x] No credentials/LAN info in code: broker address, MQTT password and mini-program AppID defaults cleared
-- [x] Sample configuration points nowhere internal: defaults are empty; configure by QR or factory defaults
-- [x] Third-party dependency list & licenses: `THIRD_PARTY_LICENSES.md` (with items to confirm)
-- [x] Release checklist & sanitization record: `PUBLISH.md`; release notes: `docs/发布说明.md`
+## 13. Known limitations (stated up front)
+
+- The panel itself has **no temperature/humidity sensor** (screensaver data comes from a gateway push; to get "sensors into HA", publish them from the sensor side via standard discovery)
+- The on-panel broker (local modes) does **not** support TLS / end-to-end QoS2 / persistent sessions
+- Tiling requires **clock alignment** across panels (NTP or master epoch broadcast); keep the firmware version identical within a group
+- On the Domoticz side there is **no equivalent for scenes** (use HA automation; on Domoticz you'd wire it up with dzVents/Lua)
+- On a wired site, the QR page automatically advertises the `eth0` address; with no IP it shows "waiting for the panel to get online"
+- The third-party `base-utility` player release path calls `drop_caches` (~every 10 s when looping video segments, raising load) — known issue; the workaround is not to destroy the player on every segment switch
+
+---
+
+## 14. Open source & license
+
+- This project and the application layer: **MIT** (see `LICENSE`); the on-panel MQTT service is MIT as well
+- **No LAN addresses or credentials in code**: site parameters come from the factory-default file or the on-panel web page
+- Third-party dependency list and redistribution notes: `THIRD_PARTY_LICENSES.md`
+- Release process and open decisions: `PUBLISH.md`
+
+---
+
+_Shenzhen ZKSWE Technology Co., Ltd. · [www.zkswe.com](https://www.zkswe.com) · [developer.flythings.cn](https://developer.flythings.cn/)_
