@@ -16,7 +16,7 @@ and **multiple panels tiled into one video wall**.
   <tr>
     <td align="center"><img src="docs/shots/01_home.png" width="150"><br><sub><b>Home</b><br>3 relays + scenes</sub></td>
     <td align="center"><img src="docs/shots/02_run_mode.png" width="150"><br><sub><b>Run modes</b><br>HA / local master / slave</sub></td>
-    <td align="center"><img src="docs/shots/03_album_qr.png" width="150"><br><sub><b>Album</b><br>scan to upload</sub></td>
+    <td align="center"><img src="docs/shots/03_settings.png" width="150"><br><sub><b>Settings</b><br>all features at a glance</sub></td>
     <td align="center"><img src="docs/shots/04_screensaver_video.png" width="150"><br><sub><b>Screensaver</b><br>video / photo rotation</sub></td>
     <td align="center"><img src="docs/shots/05_ha_config_qr.png" width="150"><br><sub><b>HA config</b><br>scan &amp; paste token</sub></td>
   </tr>
