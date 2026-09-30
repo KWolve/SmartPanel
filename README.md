@@ -11,6 +11,21 @@
 
 ---
 
+<table>
+  <tr>
+    <td align="center"><img src="docs/shots/01_home.png" width="150"><br><sub><b>主界面</b><br>3 路继电器 + 情景</sub></td>
+    <td align="center"><img src="docs/shots/02_run_mode.png" width="150"><br><sub><b>运行模式</b><br>HA / 本地主机 / 从机</sub></td>
+    <td align="center"><img src="docs/shots/03_album_qr.png" width="150"><br><sub><b>相册</b><br>扫码传图</sub></td>
+    <td align="center"><img src="docs/shots/04_screensaver_video.png" width="150"><br><sub><b>屏保</b><br>视频/图片轮播</sub></td>
+    <td align="center"><img src="docs/shots/05_ha_config_qr.png" width="150"><br><sub><b>HA 配置</b><br>扫码填服务器与令牌</sub></td>
+  </tr>
+  <tr>
+    <td colspan="5" align="center"><img src="docs/shots/10_wall_3split.png" width="860"><br><sub><b>三屏拼接</b> · 同一视频按屏切段，相位对齐 + 校时（1×3 横排，机间丢弃 52 px，屏保时钟在最右屏右上角）</sub></td>
+  </tr>
+</table>
+
+---
+
 ## 0. 依赖：FlyThings MCP（**release 版**）
 
 本工程的二次开发（编译/调试/出包/知识库/设备工具）依赖 **FlyThings MCP**，

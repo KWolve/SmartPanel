@@ -12,6 +12,21 @@ and **multiple panels tiled into one video wall**.
 
 ---
 
+<table>
+  <tr>
+    <td align="center"><img src="docs/shots/01_home.png" width="150"><br><sub><b>Home</b><br>3 relays + scenes</sub></td>
+    <td align="center"><img src="docs/shots/02_run_mode.png" width="150"><br><sub><b>Run modes</b><br>HA / local master / slave</sub></td>
+    <td align="center"><img src="docs/shots/03_album_qr.png" width="150"><br><sub><b>Album</b><br>scan to upload</sub></td>
+    <td align="center"><img src="docs/shots/04_screensaver_video.png" width="150"><br><sub><b>Screensaver</b><br>video / photo rotation</sub></td>
+    <td align="center"><img src="docs/shots/05_ha_config_qr.png" width="150"><br><sub><b>HA config</b><br>scan &amp; paste token</sub></td>
+  </tr>
+  <tr>
+    <td colspan="5" align="center"><img src="docs/shots/10_wall_3split.png" width="860"><br><sub><b>3-screen video wall</b> · one clip split per panel, phase-aligned + time-synced (1×3, 52 px discarded between panels, clock at the top-right of the rightmost screen)</sub></td>
+  </tr>
+</table>
+
+---
+
 ## 0. Dependency: FlyThings MCP (**release version**)
 
 Secondary development (build / debug / packaging / knowledge base / device tools) is based on
