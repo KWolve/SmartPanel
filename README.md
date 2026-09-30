@@ -2,6 +2,8 @@
 
 **中文** ｜ [English](README.en.md)
 
+[![淘宝 · 整机购买](https://img.shields.io/badge/%E6%B7%98%E5%AE%9D-%E6%95%B4%E6%9C%BA%E8%B4%AD%E4%B9%B0-FF5000?style=flat-square)](https://item.taobao.com/item.htm?id=650865599184&skuId=5500508256776) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
+
 一块装在 86 盒里的 **4 寸 480×480 Linux 触摸面板**：3 路 10 A 继电器、情景联动、
 可当 **Home Assistant 终端**、也能自己当本地主机；外加空闲变时钟/相框、夜景整块熄屏、
 一键 180° 倒装、**多块拼成一堵视频墙**。

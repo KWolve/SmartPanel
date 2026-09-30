@@ -2,6 +2,8 @@
 
 [中文](README.md) ｜ **English**
 
+[![Buy on Taobao](https://img.shields.io/badge/Buy%20on%20Taobao-hardware-FF5000?style=flat-square)](https://item.taobao.com/item.htm?id=650865599184&skuId=5500508256776) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
+
 A **4-inch 480×480 Linux touch panel** built into a standard 86-box:
 **3 × 10 A relays**, scene linkage, works as a **Home Assistant terminal** or as a local
 host itself; plus idle clock/photo frame, night-time screen-off, one-tap 180° flip,
