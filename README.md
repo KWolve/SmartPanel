@@ -14,7 +14,7 @@
 <table>
   <tr>
     <td align="center"><img src="docs/shots/01_home.png" width="150"><br><sub><b>主界面</b><br>3 路继电器 + 情景</sub></td>
-    <td align="center"><img src="docs/shots/02_run_mode.png" width="150"><br><sub><b>运行模式</b><br>HA / 本地主机 / 从机</sub></td>
+    <td align="center"><img src="docs/shots/02_album_qr.png" width="150"><br><sub><b>相册</b><br>扫码传图</sub></td>
     <td align="center"><img src="docs/shots/03_settings.png" width="150"><br><sub><b>设置</b><br>功能一览·全部功能入口</sub></td>
     <td align="center"><img src="docs/shots/04_screensaver_video.png" width="150"><br><sub><b>屏保</b><br>视频/图片轮播</sub></td>
     <td align="center"><img src="docs/shots/05_ha_config_qr.png" width="150"><br><sub><b>HA 配置</b><br>扫码填服务器与令牌</sub></td>
