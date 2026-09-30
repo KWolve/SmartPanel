@@ -1,0 +1,2506 @@
+{
+  "backgroundColor": 1513243,
+  "beepEnable": true,
+  "id": 0,
+  "resolution": {
+    "height": 480,
+    "width": 480
+  },
+  "topmost": false,
+  "position": {
+    "height": 480,
+    "left": 0,
+    "top": 0,
+    "width": 480
+  },
+  "textview__1": {
+    "id": 50452,
+    "caption": "TextAfTitle",
+    "position": {
+      "left": 20,
+      "top": 8,
+      "width": 260,
+      "height": 30
+    },
+    "alignment": 1,
+    "colorTab": {
+      "color0": 15527152,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 22,
+    "touchable": false,
+    "bold": true,
+    "italic": false,
+    "text": "相册文件管理",
+    "visible": true,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    }
+  },
+  "textview__2": {
+    "id": 50453,
+    "caption": "TextAfTitleEn",
+    "position": {
+      "left": 20,
+      "top": 40,
+      "width": 300,
+      "height": 22
+    },
+    "alignment": 1,
+    "colorTab": {
+      "color0": 6250344,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 18,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "ALBUM FILES",
+    "visible": true,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    }
+  },
+  "button__1": {
+    "id": 20126,
+    "caption": "ButtonAfBack",
+    "position": {
+      "left": 372,
+      "top": 16,
+      "width": 90,
+      "height": 32
+    },
+    "alignment": 6,
+    "colorTab": {
+      "color0": 8118435,
+      "color1": 8118435,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "text": "返回 >",
+    "touchable": true,
+    "visible": true,
+    "picTab": {},
+    "longClickTimeOut": -1,
+    "longClickIntervalTime": -1,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 18
+  },
+  "textview__3": {
+    "id": 50454,
+    "caption": "ImageAfInfoBg",
+    "position": {
+      "left": 14,
+      "top": 68,
+      "width": 452,
+      "height": 38
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 15527152,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": true,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/srow452x38.png"
+  },
+  "textview__4": {
+    "id": 50455,
+    "caption": "TextAfStat",
+    "position": {
+      "left": 30,
+      "top": 76,
+      "width": 300,
+      "height": 22
+    },
+    "alignment": 1,
+    "colorTab": {
+      "color0": 15527152,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 18,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "共 0 个文件 - 已选 0 个",
+    "visible": true,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    }
+  },
+  "textview__5": {
+    "id": 50456,
+    "caption": "TextAfPage",
+    "position": {
+      "left": 306,
+      "top": 76,
+      "width": 144,
+      "height": 22
+    },
+    "alignment": 6,
+    "colorTab": {
+      "color0": 10133670,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "1/1",
+    "visible": true,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    }
+  },
+  "textview__6": {
+    "id": 50457,
+    "caption": "ImageAfSelFrame1",
+    "position": {
+      "left": 10,
+      "top": 110,
+      "width": 148,
+      "height": 96
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 8118435,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": false,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/af_selframe148x96.png"
+  },
+  "textview__7": {
+    "id": 50458,
+    "caption": "ImageAfThumb1",
+    "position": {
+      "left": 14,
+      "top": 114,
+      "width": 140,
+      "height": 88
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 15527152,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": true,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/af_thumb140x88.png"
+  },
+  "textview__8": {
+    "id": 50459,
+    "caption": "ImageAfKind1",
+    "position": {
+      "left": 108,
+      "top": 120,
+      "width": 40,
+      "height": 22
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 8118435,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": false,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/badge_image.png"
+  },
+  "textview__9": {
+    "id": 50460,
+    "caption": "ImageAfFilm1",
+    "position": {
+      "left": 74,
+      "top": 148,
+      "width": 20,
+      "height": 20
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 8118435,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": false,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/ic_film_g20.png"
+  },
+  "textview__10": {
+    "id": 50461,
+    "caption": "ImageAfCheck1",
+    "position": {
+      "left": 20,
+      "top": 120,
+      "width": 24,
+      "height": 24
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 8118435,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": false,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/af_check_off24.png"
+  },
+  "button__2": {
+    "id": 20127,
+    "caption": "ButtonAfCell1",
+    "position": {
+      "left": 14,
+      "top": 114,
+      "width": 140,
+      "height": 88
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 15527152,
+      "color1": 15527152,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "text": "",
+    "touchable": true,
+    "visible": true,
+    "picTab": {},
+    "longClickTimeOut": -1,
+    "longClickIntervalTime": -1,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 18
+  },
+  "textview__11": {
+    "id": 50462,
+    "caption": "ImageAfSelFrame2",
+    "position": {
+      "left": 166,
+      "top": 110,
+      "width": 148,
+      "height": 96
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 8118435,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": false,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/af_selframe148x96.png"
+  },
+  "textview__12": {
+    "id": 50463,
+    "caption": "ImageAfThumb2",
+    "position": {
+      "left": 170,
+      "top": 114,
+      "width": 140,
+      "height": 88
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 15527152,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": true,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/af_thumb140x88.png"
+  },
+  "textview__13": {
+    "id": 50464,
+    "caption": "ImageAfKind2",
+    "position": {
+      "left": 264,
+      "top": 120,
+      "width": 40,
+      "height": 22
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 8118435,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": false,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/badge_image.png"
+  },
+  "textview__14": {
+    "id": 50465,
+    "caption": "ImageAfFilm2",
+    "position": {
+      "left": 230,
+      "top": 148,
+      "width": 20,
+      "height": 20
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 8118435,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": false,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/ic_film_g20.png"
+  },
+  "textview__15": {
+    "id": 50466,
+    "caption": "ImageAfCheck2",
+    "position": {
+      "left": 176,
+      "top": 120,
+      "width": 24,
+      "height": 24
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 8118435,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": false,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/af_check_off24.png"
+  },
+  "button__3": {
+    "id": 20128,
+    "caption": "ButtonAfCell2",
+    "position": {
+      "left": 170,
+      "top": 114,
+      "width": 140,
+      "height": 88
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 15527152,
+      "color1": 15527152,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "text": "",
+    "touchable": true,
+    "visible": true,
+    "picTab": {},
+    "longClickTimeOut": -1,
+    "longClickIntervalTime": -1,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 18
+  },
+  "textview__16": {
+    "id": 50467,
+    "caption": "ImageAfSelFrame3",
+    "position": {
+      "left": 322,
+      "top": 110,
+      "width": 148,
+      "height": 96
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 8118435,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": false,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/af_selframe148x96.png"
+  },
+  "textview__17": {
+    "id": 50468,
+    "caption": "ImageAfThumb3",
+    "position": {
+      "left": 326,
+      "top": 114,
+      "width": 140,
+      "height": 88
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 15527152,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": true,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/af_thumb140x88.png"
+  },
+  "textview__18": {
+    "id": 50469,
+    "caption": "ImageAfKind3",
+    "position": {
+      "left": 420,
+      "top": 120,
+      "width": 40,
+      "height": 22
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 8118435,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": false,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/badge_image.png"
+  },
+  "textview__19": {
+    "id": 50470,
+    "caption": "ImageAfFilm3",
+    "position": {
+      "left": 386,
+      "top": 148,
+      "width": 20,
+      "height": 20
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 8118435,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": false,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/ic_film_g20.png"
+  },
+  "textview__20": {
+    "id": 50471,
+    "caption": "ImageAfCheck3",
+    "position": {
+      "left": 332,
+      "top": 120,
+      "width": 24,
+      "height": 24
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 8118435,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": false,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/af_check_off24.png"
+  },
+  "button__4": {
+    "id": 20129,
+    "caption": "ButtonAfCell3",
+    "position": {
+      "left": 326,
+      "top": 114,
+      "width": 140,
+      "height": 88
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 15527152,
+      "color1": 15527152,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "text": "",
+    "touchable": true,
+    "visible": true,
+    "picTab": {},
+    "longClickTimeOut": -1,
+    "longClickIntervalTime": -1,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 18
+  },
+  "textview__21": {
+    "id": 50472,
+    "caption": "ImageAfSelFrame4",
+    "position": {
+      "left": 10,
+      "top": 206,
+      "width": 148,
+      "height": 96
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 8118435,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": false,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/af_selframe148x96.png"
+  },
+  "textview__22": {
+    "id": 50473,
+    "caption": "ImageAfThumb4",
+    "position": {
+      "left": 14,
+      "top": 210,
+      "width": 140,
+      "height": 88
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 15527152,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": true,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/af_thumb140x88.png"
+  },
+  "textview__23": {
+    "id": 50474,
+    "caption": "ImageAfKind4",
+    "position": {
+      "left": 108,
+      "top": 216,
+      "width": 40,
+      "height": 22
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 8118435,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": false,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/badge_image.png"
+  },
+  "textview__24": {
+    "id": 50475,
+    "caption": "ImageAfFilm4",
+    "position": {
+      "left": 74,
+      "top": 244,
+      "width": 20,
+      "height": 20
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 8118435,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": false,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/ic_film_g20.png"
+  },
+  "textview__25": {
+    "id": 50476,
+    "caption": "ImageAfCheck4",
+    "position": {
+      "left": 20,
+      "top": 216,
+      "width": 24,
+      "height": 24
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 8118435,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": false,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/af_check_off24.png"
+  },
+  "button__5": {
+    "id": 20130,
+    "caption": "ButtonAfCell4",
+    "position": {
+      "left": 14,
+      "top": 210,
+      "width": 140,
+      "height": 88
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 15527152,
+      "color1": 15527152,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "text": "",
+    "touchable": true,
+    "visible": true,
+    "picTab": {},
+    "longClickTimeOut": -1,
+    "longClickIntervalTime": -1,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 18
+  },
+  "textview__26": {
+    "id": 50477,
+    "caption": "ImageAfSelFrame5",
+    "position": {
+      "left": 166,
+      "top": 206,
+      "width": 148,
+      "height": 96
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 8118435,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": false,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/af_selframe148x96.png"
+  },
+  "textview__27": {
+    "id": 50478,
+    "caption": "ImageAfThumb5",
+    "position": {
+      "left": 170,
+      "top": 210,
+      "width": 140,
+      "height": 88
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 15527152,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": true,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/af_thumb140x88.png"
+  },
+  "textview__28": {
+    "id": 50479,
+    "caption": "ImageAfKind5",
+    "position": {
+      "left": 264,
+      "top": 216,
+      "width": 40,
+      "height": 22
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 8118435,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": false,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/badge_image.png"
+  },
+  "textview__29": {
+    "id": 50480,
+    "caption": "ImageAfFilm5",
+    "position": {
+      "left": 230,
+      "top": 244,
+      "width": 20,
+      "height": 20
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 8118435,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": false,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/ic_film_g20.png"
+  },
+  "textview__30": {
+    "id": 50481,
+    "caption": "ImageAfCheck5",
+    "position": {
+      "left": 176,
+      "top": 216,
+      "width": 24,
+      "height": 24
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 8118435,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": false,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/af_check_off24.png"
+  },
+  "button__6": {
+    "id": 20131,
+    "caption": "ButtonAfCell5",
+    "position": {
+      "left": 170,
+      "top": 210,
+      "width": 140,
+      "height": 88
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 15527152,
+      "color1": 15527152,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "text": "",
+    "touchable": true,
+    "visible": true,
+    "picTab": {},
+    "longClickTimeOut": -1,
+    "longClickIntervalTime": -1,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 18
+  },
+  "textview__31": {
+    "id": 50482,
+    "caption": "ImageAfSelFrame6",
+    "position": {
+      "left": 322,
+      "top": 206,
+      "width": 148,
+      "height": 96
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 8118435,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": false,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/af_selframe148x96.png"
+  },
+  "textview__32": {
+    "id": 50483,
+    "caption": "ImageAfThumb6",
+    "position": {
+      "left": 326,
+      "top": 210,
+      "width": 140,
+      "height": 88
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 15527152,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": true,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/af_thumb140x88.png"
+  },
+  "textview__33": {
+    "id": 50484,
+    "caption": "ImageAfKind6",
+    "position": {
+      "left": 420,
+      "top": 216,
+      "width": 40,
+      "height": 22
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 8118435,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": false,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/badge_image.png"
+  },
+  "textview__34": {
+    "id": 50485,
+    "caption": "ImageAfFilm6",
+    "position": {
+      "left": 386,
+      "top": 244,
+      "width": 20,
+      "height": 20
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 8118435,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": false,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/ic_film_g20.png"
+  },
+  "textview__35": {
+    "id": 50486,
+    "caption": "ImageAfCheck6",
+    "position": {
+      "left": 332,
+      "top": 216,
+      "width": 24,
+      "height": 24
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 8118435,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": false,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/af_check_off24.png"
+  },
+  "button__7": {
+    "id": 20132,
+    "caption": "ButtonAfCell6",
+    "position": {
+      "left": 326,
+      "top": 210,
+      "width": 140,
+      "height": 88
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 15527152,
+      "color1": 15527152,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "text": "",
+    "touchable": true,
+    "visible": true,
+    "picTab": {},
+    "longClickTimeOut": -1,
+    "longClickIntervalTime": -1,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 18
+  },
+  "textview__36": {
+    "id": 50487,
+    "caption": "ImageAfSelFrame7",
+    "position": {
+      "left": 10,
+      "top": 302,
+      "width": 148,
+      "height": 96
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 8118435,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": false,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/af_selframe148x96.png"
+  },
+  "textview__37": {
+    "id": 50488,
+    "caption": "ImageAfThumb7",
+    "position": {
+      "left": 14,
+      "top": 306,
+      "width": 140,
+      "height": 88
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 15527152,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": true,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/af_thumb140x88.png"
+  },
+  "textview__38": {
+    "id": 50489,
+    "caption": "ImageAfKind7",
+    "position": {
+      "left": 108,
+      "top": 312,
+      "width": 40,
+      "height": 22
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 8118435,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": false,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/badge_image.png"
+  },
+  "textview__39": {
+    "id": 50490,
+    "caption": "ImageAfFilm7",
+    "position": {
+      "left": 74,
+      "top": 340,
+      "width": 20,
+      "height": 20
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 8118435,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": false,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/ic_film_g20.png"
+  },
+  "textview__40": {
+    "id": 50491,
+    "caption": "ImageAfCheck7",
+    "position": {
+      "left": 20,
+      "top": 312,
+      "width": 24,
+      "height": 24
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 8118435,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": false,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/af_check_off24.png"
+  },
+  "button__8": {
+    "id": 20133,
+    "caption": "ButtonAfCell7",
+    "position": {
+      "left": 14,
+      "top": 306,
+      "width": 140,
+      "height": 88
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 15527152,
+      "color1": 15527152,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "text": "",
+    "touchable": true,
+    "visible": true,
+    "picTab": {},
+    "longClickTimeOut": -1,
+    "longClickIntervalTime": -1,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 18
+  },
+  "textview__41": {
+    "id": 50492,
+    "caption": "ImageAfSelFrame8",
+    "position": {
+      "left": 166,
+      "top": 302,
+      "width": 148,
+      "height": 96
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 8118435,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": false,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/af_selframe148x96.png"
+  },
+  "textview__42": {
+    "id": 50493,
+    "caption": "ImageAfThumb8",
+    "position": {
+      "left": 170,
+      "top": 306,
+      "width": 140,
+      "height": 88
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 15527152,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": true,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/af_thumb140x88.png"
+  },
+  "textview__43": {
+    "id": 50494,
+    "caption": "ImageAfKind8",
+    "position": {
+      "left": 264,
+      "top": 312,
+      "width": 40,
+      "height": 22
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 8118435,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": false,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/badge_image.png"
+  },
+  "textview__44": {
+    "id": 50495,
+    "caption": "ImageAfFilm8",
+    "position": {
+      "left": 230,
+      "top": 340,
+      "width": 20,
+      "height": 20
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 8118435,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": false,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/ic_film_g20.png"
+  },
+  "textview__45": {
+    "id": 50496,
+    "caption": "ImageAfCheck8",
+    "position": {
+      "left": 176,
+      "top": 312,
+      "width": 24,
+      "height": 24
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 8118435,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": false,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/af_check_off24.png"
+  },
+  "button__9": {
+    "id": 20134,
+    "caption": "ButtonAfCell8",
+    "position": {
+      "left": 170,
+      "top": 306,
+      "width": 140,
+      "height": 88
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 15527152,
+      "color1": 15527152,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "text": "",
+    "touchable": true,
+    "visible": true,
+    "picTab": {},
+    "longClickTimeOut": -1,
+    "longClickIntervalTime": -1,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 18
+  },
+  "textview__46": {
+    "id": 50497,
+    "caption": "ImageAfSelFrame9",
+    "position": {
+      "left": 322,
+      "top": 302,
+      "width": 148,
+      "height": 96
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 8118435,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": false,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/af_selframe148x96.png"
+  },
+  "textview__47": {
+    "id": 50498,
+    "caption": "ImageAfThumb9",
+    "position": {
+      "left": 326,
+      "top": 306,
+      "width": 140,
+      "height": 88
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 15527152,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": true,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/af_thumb140x88.png"
+  },
+  "textview__48": {
+    "id": 50499,
+    "caption": "ImageAfKind9",
+    "position": {
+      "left": 420,
+      "top": 312,
+      "width": 40,
+      "height": 22
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 8118435,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": false,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/badge_image.png"
+  },
+  "textview__49": {
+    "id": 50500,
+    "caption": "ImageAfFilm9",
+    "position": {
+      "left": 386,
+      "top": 340,
+      "width": 20,
+      "height": 20
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 8118435,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": false,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/ic_film_g20.png"
+  },
+  "textview__50": {
+    "id": 50501,
+    "caption": "ImageAfCheck9",
+    "position": {
+      "left": 332,
+      "top": 312,
+      "width": 24,
+      "height": 24
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 8118435,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": false,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/af_check_off24.png"
+  },
+  "button__10": {
+    "id": 20135,
+    "caption": "ButtonAfCell9",
+    "position": {
+      "left": 326,
+      "top": 306,
+      "width": 140,
+      "height": 88
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 15527152,
+      "color1": 15527152,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "text": "",
+    "touchable": true,
+    "visible": true,
+    "picTab": {},
+    "longClickTimeOut": -1,
+    "longClickIntervalTime": -1,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 18
+  },
+  "textview__51": {
+    "id": 50502,
+    "caption": "TextAfEmpty",
+    "position": {
+      "left": 60,
+      "top": 240,
+      "width": 360,
+      "height": 24
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 6250344,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 18,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "暂无文件 - 用手机小程序上传",
+    "visible": false,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    }
+  },
+  "button__11": {
+    "id": 20136,
+    "caption": "ButtonAfAll",
+    "position": {
+      "left": 14,
+      "top": 412,
+      "width": 140,
+      "height": 44
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 15527152,
+      "color1": 15527152,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "text": "全选",
+    "touchable": true,
+    "visible": true,
+    "picTab": {},
+    "longClickTimeOut": -1,
+    "longClickIntervalTime": -1,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/af_btn140x44.png",
+    "fontSize": 18
+  },
+  "button__12": {
+    "id": 20137,
+    "caption": "ButtonAfDel",
+    "position": {
+      "left": 170,
+      "top": 412,
+      "width": 140,
+      "height": 44
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 15527152,
+      "color1": 15527152,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "text": "删除所选",
+    "touchable": true,
+    "visible": true,
+    "picTab": {},
+    "longClickTimeOut": -1,
+    "longClickIntervalTime": -1,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/af_btn_dg140x44.png",
+    "fontSize": 18
+  },
+  "button__13": {
+    "id": 20138,
+    "caption": "ButtonAfDone",
+    "position": {
+      "left": 326,
+      "top": 412,
+      "width": 140,
+      "height": 44
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 15527152,
+      "color1": 15527152,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "text": "完成",
+    "touchable": true,
+    "visible": true,
+    "picTab": {},
+    "longClickTimeOut": -1,
+    "longClickIntervalTime": -1,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/af_btn140x44.png",
+    "fontSize": 18
+  },
+  "textview__52": {
+    "id": 50503,
+    "caption": "ImageAfDim",
+    "position": {
+      "left": 0,
+      "top": 0,
+      "width": 480,
+      "height": 480
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 15527152,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": false,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/af_dim480.png"
+  },
+  "button__14": {
+    "id": 20139,
+    "caption": "ButtonAfDimHit",
+    "position": {
+      "left": 0,
+      "top": 0,
+      "width": 480,
+      "height": 480
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 15527152,
+      "color1": 15527152,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "text": "",
+    "touchable": true,
+    "visible": false,
+    "picTab": {},
+    "longClickTimeOut": -1,
+    "longClickIntervalTime": -1,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16
+  },
+  "textview__53": {
+    "id": 50504,
+    "caption": "ImageAfDelCard",
+    "position": {
+      "left": 50,
+      "top": 150,
+      "width": 380,
+      "height": 184
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 15527152,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": false,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/af_card380x184.png"
+  },
+  "textview__54": {
+    "id": 50505,
+    "caption": "TextAfDelTitle",
+    "position": {
+      "left": 78,
+      "top": 172,
+      "width": 324,
+      "height": 26
+    },
+    "alignment": 1,
+    "colorTab": {
+      "color0": 15527152,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 20,
+    "touchable": false,
+    "bold": true,
+    "italic": false,
+    "text": "删除所选文件？",
+    "visible": false,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    }
+  },
+  "textview__55": {
+    "id": 50506,
+    "caption": "TextAfDelSub",
+    "position": {
+      "left": 78,
+      "top": 204,
+      "width": 324,
+      "height": 22
+    },
+    "alignment": 1,
+    "colorTab": {
+      "color0": 10133670,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "共 0 个，删除后不可恢复",
+    "visible": false,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    }
+  },
+  "button__15": {
+    "id": 20140,
+    "caption": "ButtonAfDelCancel",
+    "position": {
+      "left": 78,
+      "top": 262,
+      "width": 150,
+      "height": 44
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 15527152,
+      "color1": 15527152,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "text": "取消",
+    "touchable": true,
+    "visible": false,
+    "picTab": {},
+    "longClickTimeOut": -1,
+    "longClickIntervalTime": -1,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/af_btn150x44.png",
+    "fontSize": 18
+  },
+  "button__16": {
+    "id": 20141,
+    "caption": "ButtonAfDelOk",
+    "position": {
+      "left": 252,
+      "top": 262,
+      "width": 150,
+      "height": 44
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 15527152,
+      "color1": 15527152,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "text": "删除",
+    "touchable": true,
+    "visible": false,
+    "picTab": {},
+    "longClickTimeOut": -1,
+    "longClickIntervalTime": -1,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/af_btn_dg150x44.png",
+    "fontSize": 18
+  }
+}

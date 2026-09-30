@@ -1,0 +1,39 @@
+{
+  "generated": 1790241035,
+  "generator": "components/icons/scripts/gen_icons.py",
+  "count": 2,
+  "items": [
+    {
+      "png": "ic_weather_clear_off.png",
+      "path": "C:\\Users\\zkswe\\.openclaw\\workspace\\projects\\SmartPanel_HA\\resources\\images\\ic_weather_clear_off.png",
+      "size": "20",
+      "w": 20,
+      "h": 20,
+      "color": [
+        123,
+        224,
+        163
+      ],
+      "icon": "weather.clear",
+      "style": "tabler",
+      "state": "off",
+      "source": "vendor:tabler"
+    },
+    {
+      "png": "ic_weather_clear_on.png",
+      "path": "C:\\Users\\zkswe\\.openclaw\\workspace\\projects\\SmartPanel_HA\\resources\\images\\ic_weather_clear_on.png",
+      "size": "20",
+      "w": 20,
+      "h": 20,
+      "color": [
+        123,
+        224,
+        163
+      ],
+      "icon": "weather.clear",
+      "style": "tabler",
+      "state": "on",
+      "source": "vendor:tabler"
+    }
+  ]
+}

@@ -1,0 +1,1209 @@
+{
+  "backgroundColor": 1513243,
+  "beepEnable": true,
+  "id": 0,
+  "topmost": false,
+  "textview__1": {
+    "id": 50066,
+    "caption": "TextModeTitle",
+    "position": {
+      "left": 20,
+      "top": 12,
+      "width": 240,
+      "height": 30
+    },
+    "alignment": 0,
+    "colorTab": {
+      "color0": 15527152,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 22,
+    "touchable": false,
+    "bold": true,
+    "italic": false,
+    "text": "运行模式",
+    "visible": true,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    }
+  },
+  "textview__2": {
+    "id": 50067,
+    "caption": "TextModeTitleEn",
+    "position": {
+      "left": 20,
+      "top": 44,
+      "width": 240,
+      "height": 22
+    },
+    "alignment": 0,
+    "colorTab": {
+      "color0": 6250344,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 18,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "RUN MODE",
+    "visible": true,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    }
+  },
+  "textview__3": {
+    "id": 50068,
+    "caption": "ImageModeCardBg1",
+    "position": {
+      "left": 16,
+      "top": 78,
+      "width": 141,
+      "height": 216
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 15527152,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": true,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/card.9.png"
+  },
+  "textview__4": {
+    "id": 50069,
+    "caption": "ImageModeCardChk1",
+    "position": {
+      "left": 127,
+      "top": 86,
+      "width": 20,
+      "height": 20
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 8118435,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": true,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/ic_check_g20.png"
+  },
+  "textview__5": {
+    "id": 50070,
+    "caption": "TextModeCardName1",
+    "position": {
+      "left": 16,
+      "top": 174,
+      "width": 141,
+      "height": 28
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 15527152,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 20,
+    "touchable": false,
+    "bold": true,
+    "italic": false,
+    "text": "HA 模式",
+    "visible": true,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    }
+  },
+  "textview__6": {
+    "id": 50071,
+    "caption": "TextModeCardDesc1a",
+    "position": {
+      "left": 24,
+      "top": 208,
+      "width": 125,
+      "height": 20
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 10132130,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "订阅 HA",
+    "visible": true,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    }
+  },
+  "textview__7": {
+    "id": 50072,
+    "caption": "TextModeCardDesc1b",
+    "position": {
+      "left": 24,
+      "top": 228,
+      "width": 125,
+      "height": 20
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 10132130,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "标准接入",
+    "visible": true,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    }
+  },
+  "textview__8": {
+    "id": 50073,
+    "caption": "TextModeCardDesc1c",
+    "position": {
+      "left": 24,
+      "top": 248,
+      "width": 125,
+      "height": 20
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 10132130,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "discovery",
+    "visible": true,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    }
+  },
+  "textview__9": {
+    "id": 50074,
+    "caption": "ImageModeCardBg2",
+    "position": {
+      "left": 169,
+      "top": 78,
+      "width": 141,
+      "height": 216
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 15527152,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": true,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/card.9.png"
+  },
+  "textview__10": {
+    "id": 50075,
+    "caption": "ImageModeCardChk2",
+    "position": {
+      "left": 280,
+      "top": 86,
+      "width": 20,
+      "height": 20
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 8118435,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": false,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/ic_check_g20.png"
+  },
+  "textview__11": {
+    "id": 50076,
+    "caption": "TextModeCardName2",
+    "position": {
+      "left": 169,
+      "top": 174,
+      "width": 141,
+      "height": 28
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 15527152,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 20,
+    "touchable": false,
+    "bold": true,
+    "italic": false,
+    "text": "本地主机",
+    "visible": true,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    }
+  },
+  "textview__12": {
+    "id": 50077,
+    "caption": "TextModeCardDesc2a",
+    "position": {
+      "left": 177,
+      "top": 208,
+      "width": 125,
+      "height": 20
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 10132130,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "内嵌 Broker",
+    "visible": true,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    }
+  },
+  "textview__13": {
+    "id": 50078,
+    "caption": "TextModeCardDesc2b",
+    "position": {
+      "left": 177,
+      "top": 228,
+      "width": 125,
+      "height": 20
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 10132130,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "管理子设备",
+    "visible": true,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    }
+  },
+  "textview__14": {
+    "id": 50079,
+    "caption": "TextModeCardDesc2c",
+    "position": {
+      "left": 177,
+      "top": 248,
+      "width": 125,
+      "height": 20
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 10132130,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "与情景联动",
+    "visible": true,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    }
+  },
+  "textview__15": {
+    "id": 50080,
+    "caption": "ImageModeCardBg3",
+    "position": {
+      "left": 322,
+      "top": 78,
+      "width": 141,
+      "height": 216
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 15527152,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": true,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/card.9.png"
+  },
+  "textview__16": {
+    "id": 50081,
+    "caption": "ImageModeCardChk3",
+    "position": {
+      "left": 433,
+      "top": 86,
+      "width": 20,
+      "height": 20
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 8118435,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": false,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/ic_check_g20.png"
+  },
+  "textview__17": {
+    "id": 50082,
+    "caption": "TextModeCardName3",
+    "position": {
+      "left": 322,
+      "top": 174,
+      "width": 141,
+      "height": 28
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 15527152,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 20,
+    "touchable": false,
+    "bold": true,
+    "italic": false,
+    "text": "本地从机",
+    "visible": true,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    }
+  },
+  "textview__18": {
+    "id": 50083,
+    "caption": "TextModeCardDesc3a",
+    "position": {
+      "left": 330,
+      "top": 208,
+      "width": 125,
+      "height": 20
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 10132130,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "接入同网段",
+    "visible": true,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    }
+  },
+  "textview__19": {
+    "id": 50084,
+    "caption": "TextModeCardDesc3b",
+    "position": {
+      "left": 330,
+      "top": 228,
+      "width": 125,
+      "height": 20
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 10132130,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "主机接收",
+    "visible": true,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    }
+  },
+  "textview__20": {
+    "id": 50085,
+    "caption": "TextModeCardDesc3c",
+    "position": {
+      "left": 330,
+      "top": 248,
+      "width": 125,
+      "height": 20
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 10132130,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "情景联动",
+    "visible": true,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    }
+  },
+  "textview__21": {
+    "id": 50086,
+    "caption": "TextModeIpLabel",
+    "position": {
+      "left": 14,
+      "top": 302,
+      "width": 200,
+      "height": 24
+    },
+    "alignment": 0,
+    "colorTab": {
+      "color0": 10132130,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 18,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "主机 IP",
+    "visible": true,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    }
+  },
+  "textview__22": {
+    "id": 50087,
+    "caption": "TextModeIpHint",
+    "position": {
+      "left": 250,
+      "top": 302,
+      "width": 216,
+      "height": 24
+    },
+    "alignment": 6,
+    "colorTab": {
+      "color0": 6250344,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "仅本地从机填",
+    "visible": true,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    }
+  },
+  "textview__23": {
+    "id": 50088,
+    "caption": "ImageModeIpBg",
+    "position": {
+      "left": 14,
+      "top": 326,
+      "width": 452,
+      "height": 38
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 15527152,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": true,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/srow452x38.png"
+  },
+  "textview__24": {
+    "id": 50089,
+    "caption": "TextModeErr",
+    "position": {
+      "left": 14,
+      "top": 372,
+      "width": 452,
+      "height": 22
+    },
+    "alignment": 0,
+    "colorTab": {
+      "color0": 14708848,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": true,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    }
+  },
+  "textview__25": {
+    "id": 50090,
+    "caption": "ImageModeSaveBg",
+    "position": {
+      "left": 20,
+      "top": 416,
+      "width": 440,
+      "height": 48
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 15527152,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": true,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/btn_primary440x48.png"
+  },
+  "textview__26": {
+    "id": 50091,
+    "caption": "TextModeQrTitle",
+    "position": {
+      "left": 128,
+      "top": 300,
+      "width": 338,
+      "height": 24
+    },
+    "alignment": 0,
+    "colorTab": {
+      "color0": 15527152,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 18,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "扫码配置 HA 服务器",
+    "visible": false,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    }
+  },
+  "textview__27": {
+    "id": 50092,
+    "caption": "TextModeQrUrl",
+    "position": {
+      "left": 128,
+      "top": 328,
+      "width": 338,
+      "height": 22
+    },
+    "alignment": 0,
+    "colorTab": {
+      "color0": 10132130,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 13,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": false,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    }
+  },
+  "textview__28": {
+    "id": 50093,
+    "caption": "TextModeQrHint",
+    "position": {
+      "left": 128,
+      "top": 354,
+      "width": 338,
+      "height": 44
+    },
+    "alignment": 0,
+    "colorTab": {
+      "color0": 10132130,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 13,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "手机扫码后粘贴服务器与令牌",
+    "visible": false,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    }
+  },
+  "button__1": {
+    "id": 20022,
+    "caption": "ButtonModeBack",
+    "position": {
+      "left": 372,
+      "top": 16,
+      "width": 90,
+      "height": 32
+    },
+    "alignment": 6,
+    "colorTab": {
+      "color0": 8118435,
+      "color1": 8118435,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "text": "返回 >",
+    "touchable": true,
+    "visible": true,
+    "picTab": {},
+    "longClickTimeOut": -1,
+    "longClickIntervalTime": -1,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 18
+  },
+  "button__2": {
+    "id": 20023,
+    "caption": "ButtonModeCard1",
+    "position": {
+      "left": 16,
+      "top": 78,
+      "width": 141,
+      "height": 216
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 15527152,
+      "color1": 15527152,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "text": "",
+    "touchable": true,
+    "visible": true,
+    "picTab": {},
+    "longClickTimeOut": -1,
+    "longClickIntervalTime": -1,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    }
+  },
+  "button__3": {
+    "id": 20024,
+    "caption": "ButtonModeCard2",
+    "position": {
+      "left": 169,
+      "top": 78,
+      "width": 141,
+      "height": 216
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 15527152,
+      "color1": 15527152,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "text": "",
+    "touchable": true,
+    "visible": true,
+    "picTab": {},
+    "longClickTimeOut": -1,
+    "longClickIntervalTime": -1,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    }
+  },
+  "button__4": {
+    "id": 20025,
+    "caption": "ButtonModeCard3",
+    "position": {
+      "left": 322,
+      "top": 78,
+      "width": 141,
+      "height": 216
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 15527152,
+      "color1": 15527152,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "text": "",
+    "touchable": true,
+    "visible": true,
+    "picTab": {},
+    "longClickTimeOut": -1,
+    "longClickIntervalTime": -1,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    }
+  },
+  "button__5": {
+    "id": 20026,
+    "caption": "ButtonModeSave",
+    "position": {
+      "left": 20,
+      "top": 416,
+      "width": 440,
+      "height": 48
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 1053722,
+      "color1": 1053722,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "text": "保存",
+    "touchable": true,
+    "visible": true,
+    "picTab": {},
+    "longClickTimeOut": -1,
+    "longClickIntervalTime": -1,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 20
+  },
+  "edittext__1": {
+    "id": 51002,
+    "caption": "EditModeIp",
+    "position": {
+      "left": 30,
+      "top": 330,
+      "width": 420,
+      "height": 30
+    },
+    "alignment": 4,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "bold": false,
+    "colorTab": {
+      "color0": 15527152,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 18,
+    "hintTextColor": 6250344,
+    "hintText": "输入主机 IP",
+    "text": "",
+    "textType": 0,
+    "touchable": true,
+    "visible": true
+  },
+  "qrcode__1": {
+    "id": 92002,
+    "codeStr": "",
+    "padding": 10,
+    "position": {
+      "left": 14,
+      "top": 300,
+      "width": 104,
+      "height": 104
+    },
+    "backgroundColor": -1,
+    "touchable": false,
+    "visible": false,
+    "caption": "QrcodeModeHa"
+  },
+  "resolution": {
+    "height": 480,
+    "width": 480
+  },
+  "position": {
+    "height": 480,
+    "left": 0,
+    "top": 0,
+    "width": 480
+  }
+}

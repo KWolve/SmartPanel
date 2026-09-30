@@ -1,0 +1,654 @@
+{
+  "backgroundColor": 1513243,
+  "beepEnable": true,
+  "id": 0,
+  "resolution": {
+    "height": 480,
+    "width": 480
+  },
+  "topmost": false,
+  "position": {
+    "height": 480,
+    "left": 0,
+    "top": 0,
+    "width": 480
+  },
+  "textview__1": {
+    "id": 50001,
+    "caption": "TextOffTitle",
+    "position": {
+      "left": 20,
+      "top": 12,
+      "width": 260,
+      "height": 30
+    },
+    "alignment": 0,
+    "colorTab": {
+      "color0": 15527152,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 22,
+    "touchable": false,
+    "bold": true,
+    "italic": false,
+    "text": "关屏设置",
+    "visible": true,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    }
+  },
+  "textview__2": {
+    "id": 50002,
+    "caption": "TextOffTitleEn",
+    "position": {
+      "left": 20,
+      "top": 44,
+      "width": 300,
+      "height": 22
+    },
+    "alignment": 0,
+    "colorTab": {
+      "color0": 6250344,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 18,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "SCREEN OFF",
+    "visible": true,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    }
+  },
+  "button__1": {
+    "id": 20001,
+    "caption": "ButtonOffBack",
+    "position": {
+      "left": 372,
+      "top": 16,
+      "width": 90,
+      "height": 32
+    },
+    "alignment": 6,
+    "colorTab": {
+      "color0": 8118435,
+      "color1": 8118435,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "text": "返回 >",
+    "touchable": true,
+    "visible": true,
+    "picTab": {},
+    "longClickTimeOut": -1,
+    "longClickIntervalTime": -1,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 18
+  },
+  "textview__3": {
+    "id": 50003,
+    "caption": "ImageOffRowBg1",
+    "position": {
+      "left": 14,
+      "top": 76,
+      "width": 452,
+      "height": 46
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 15527152,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": true,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/srow452x46.png"
+  },
+  "textview__4": {
+    "id": 50004,
+    "caption": "TextOffEnLabel",
+    "position": {
+      "left": 34,
+      "top": 88,
+      "width": 300,
+      "height": 22
+    },
+    "alignment": 0,
+    "colorTab": {
+      "color0": 15527152,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 18,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "启用关屏时段",
+    "visible": true,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    }
+  },
+  "textview__5": {
+    "id": 50005,
+    "caption": "ImageOffChip1",
+    "position": {
+      "left": 378,
+      "top": 77,
+      "width": 68,
+      "height": 44
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 15527152,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": true,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/chip68x44_hl.png"
+  },
+  "button__2": {
+    "id": 20002,
+    "caption": "ButtonOffRow1",
+    "position": {
+      "left": 14,
+      "top": 80,
+      "width": 452,
+      "height": 38
+    },
+    "alignment": 4,
+    "colorTab": {
+      "color0": 15527152,
+      "color1": 15527152,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "text": "",
+    "touchable": true,
+    "visible": true,
+    "picTab": {},
+    "longClickTimeOut": -1,
+    "longClickIntervalTime": -1,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    }
+  },
+  "textview__6": {
+    "id": 50006,
+    "caption": "TextOffEnValue",
+    "position": {
+      "left": 378,
+      "top": 77,
+      "width": 68,
+      "height": 44
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 1053722,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 18,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "开启",
+    "visible": true,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    }
+  },
+  "textview__7": {
+    "id": 50007,
+    "caption": "TextOffStartLabel",
+    "position": {
+      "left": 20,
+      "top": 148,
+      "width": 300,
+      "height": 26
+    },
+    "alignment": 0,
+    "colorTab": {
+      "color0": 15527152,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 18,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "关屏开始时间",
+    "visible": true,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    }
+  },
+  "textview__8": {
+    "id": 50008,
+    "caption": "TextOffStartValue",
+    "position": {
+      "left": 330,
+      "top": 144,
+      "width": 130,
+      "height": 30
+    },
+    "alignment": 6,
+    "colorTab": {
+      "color0": 8118435,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 20,
+    "touchable": false,
+    "bold": true,
+    "italic": false,
+    "text": "22:00",
+    "visible": true,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    }
+  },
+  "seekbar__1": {
+    "id": 40001,
+    "caption": "SeekOffStart",
+    "position": {
+      "left": 20,
+      "top": 180,
+      "width": 440,
+      "height": 34
+    },
+    "backgroundColor": -1,
+    "backgroundPic": "images/seekbar_bg.png",
+    "progressPic": "images/seekbar_prog.png",
+    "defProgress": 0,
+    "max": 23,
+    "orientation": 0,
+    "touchable": true,
+    "visible": true,
+    "thumb": {
+      "normalPic": "images/seekbar_thumb.png",
+      "size": {
+        "width": 26,
+        "height": 26
+      }
+    }
+  },
+  "textview__9": {
+    "id": 50009,
+    "caption": "TextOffEndLabel",
+    "position": {
+      "left": 20,
+      "top": 240,
+      "width": 300,
+      "height": 26
+    },
+    "alignment": 0,
+    "colorTab": {
+      "color0": 15527152,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 18,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "关屏结束时间",
+    "visible": true,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    }
+  },
+  "textview__10": {
+    "id": 50010,
+    "caption": "TextOffEndValue",
+    "position": {
+      "left": 330,
+      "top": 236,
+      "width": 130,
+      "height": 30
+    },
+    "alignment": 6,
+    "colorTab": {
+      "color0": 8118435,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 20,
+    "touchable": false,
+    "bold": true,
+    "italic": false,
+    "text": "07:00",
+    "visible": true,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    }
+  },
+  "seekbar__2": {
+    "id": 40002,
+    "caption": "SeekOffEnd",
+    "position": {
+      "left": 20,
+      "top": 272,
+      "width": 440,
+      "height": 34
+    },
+    "backgroundColor": -1,
+    "backgroundPic": "images/seekbar_bg.png",
+    "progressPic": "images/seekbar_prog.png",
+    "defProgress": 7,
+    "max": 23,
+    "orientation": 0,
+    "touchable": true,
+    "visible": true,
+    "thumb": {
+      "normalPic": "images/seekbar_thumb.png",
+      "size": {
+        "width": 26,
+        "height": 26
+      }
+    }
+  },
+  "textview__11": {
+    "id": 50011,
+    "caption": "TextOffSummary",
+    "position": {
+      "left": 20,
+      "top": 322,
+      "width": 440,
+      "height": 26
+    },
+    "alignment": 0,
+    "colorTab": {
+      "color0": 10132130,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 18,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "每天 0:00 - 7:00 息屏 · 其他时间进入屏保",
+    "visible": true,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    }
+  },
+  "textview__12": {
+    "id": 50012,
+    "caption": "TextOffHint",
+    "position": {
+      "left": 20,
+      "top": 352,
+      "width": 440,
+      "height": 22
+    },
+    "alignment": 0,
+    "colorTab": {
+      "color0": 6250344,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "拖动滑块调整整点时间，支持跨零点",
+    "visible": true,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    }
+  },
+  "textview__13": {
+    "id": 50013,
+    "caption": "TextOffErr",
+    "position": {
+      "left": 20,
+      "top": 378,
+      "width": 440,
+      "height": 22
+    },
+    "alignment": 0,
+    "colorTab": {
+      "color0": 14708848,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": true,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    }
+  },
+  "textview__14": {
+    "id": 50014,
+    "caption": "ImageOffSaveBg",
+    "position": {
+      "left": 20,
+      "top": 408,
+      "width": 440,
+      "height": 48
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 15527152,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": true,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/btn_primary440x48.png"
+  },
+  "button__3": {
+    "id": 20003,
+    "caption": "ButtonOffSave",
+    "position": {
+      "left": 20,
+      "top": 408,
+      "width": 440,
+      "height": 48
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 1053722,
+      "color1": 1053722,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "text": "保存",
+    "touchable": true,
+    "visible": true,
+    "picTab": {},
+    "longClickTimeOut": -1,
+    "longClickIntervalTime": -1,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 20
+  }
+}

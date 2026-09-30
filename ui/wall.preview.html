@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<title>UI 预览 - wall.json</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#2a2a2a; font-family:'Microsoft YaHei',sans-serif; padding:20px; }
+  .device { width:480px; height:480px; background:#17171B; position:relative;
+            margin:0 auto; border:2px solid #555; border-radius:6px; overflow:hidden;
+            box-shadow:0 8px 30px rgba(0,0,0,.6); }
+  .ctrl { position:absolute; overflow:hidden; }
+  .textview { display:flex; align-items:flex-start; }
+  .button { display:flex; align-items:center; justify-content:center; cursor:pointer;
+            border-radius:4px; background:#3a3f4b; }
+  .button:hover { filter:brightness(1.3); }
+  .window { border:1px dashed rgba(255,255,255,.25); }
+  /* alignment 十进制位 → 对齐类：bit0-1 水平(0左1中2右) / bit2-3 垂直(0顶1中2底)；
+     写全 H+V 两类，避免 .button 的默认居中把 36/33/41 之类画错 */
+  .al-hl { justify-content:flex-start; text-align:left; }
+  .al-hc { justify-content:center; text-align:center; }
+  .al-hr { justify-content:flex-end; text-align:right; }
+  .al-vt { align-items:flex-start; }
+  .al-vc { align-items:center; }
+  .al-vb { align-items:flex-end; }
+  .seekbar { background:#333; border-radius:3px; }
+  .seekbar-fill { height:100%; background:#4a90d9; border-radius:3px; }
+  .listview { border:1px dashed rgba(255,255,255,.2); overflow:auto; }
+  .lv-grid { display:grid; }
+  .lv-cell { border:1px solid rgba(255,255,255,.08); display:flex; }
+  .lv-sub { position:relative; }
+  .checkbox { display:flex; align-items:center; }
+  .radiogroup { position:absolute; }
+  .radio-item { position:absolute; color:#ddd; }
+  .toolbar { max-width:480px; margin:0 auto 12px; color:#ccc; font-size:13px;
+             display:flex; justify-content:space-between; }
+  .toolbar span { color:#8f8; }
+
+  .pgnav { max-width:480px; margin:0 auto 8px; display:flex; flex-wrap:wrap; gap:6px;
+           align-items:center; font-size:13px; color:#aaa; }
+  .pgnav .pg-label { color:#8ab4f8; margin-right:2px; }
+  .pgnav .pg-tip { color:#777; font-size:12px; }
+  .pgnav a.pg-btn { color:#cfd6e4; text-decoration:none; background:#3a3f4b;
+                    border:1px solid #555e70; border-radius:14px; padding:3px 12px; }
+  .pgnav a.pg-btn:hover { filter:brightness(1.3); }
+  .pgnav a.pg-btn.on { background:#4a90d9; border-color:#7ab6f0; color:#fff; }
+  .pgnav a.pg-btn.off { opacity:.5; }
+  .pgnav .pg-ghost-toggle { display:flex; align-items:center; gap:4px; cursor:pointer; }
+  .ctrl.pg-ghost { opacity:.35 !important; outline:1px dashed #ff9f43 !important; }
+
+</style>
+</head>
+<body>
+  <div class="toolbar">
+    <div>🖥 UI 预览（客户确认稿）· <span>wall.json</span></div>
+    <div>分辨率 480 x 480 · 与设备端 ftu 同源</div>
+  </div>
+  <div class="pgnav pgnav-sib"><span class="pg-label">项目页面</span><a class="pg-btn sib" href="main.preview.html" title="main.json">main</a><a class="pg-btn sib on" href="wall.preview.html" title="wall.json">wall</a></div>
+  <div class="device">
+<div class="ctrl textview al-hl al-vt " data-caption="TextWallTitle" data-key="textview__1" data-type="textview" data-cap="TextWallTitle" data-visible="true" data-edit="" style="left:20px;top:12px;width:260px;height:30px;color:#ECECF0;font-size:22px;">多屏拼接</div>
+<div class="ctrl textview al-hl al-vt " data-caption="TextWallTitleEn" data-key="textview__2" data-type="textview" data-cap="TextWallTitleEn" data-visible="true" data-edit="" style="left:20px;top:44px;width:320px;height:22px;color:#5F5F68;font-size:15px;">MULTI-PANEL WALL</div>
+<div class="ctrl button al-hr al-vc touchable" data-caption="ButtonWallBack" data-key="button__1" data-type="button" data-cap="ButtonWallBack" data-visible="true" data-edit="" style="left:372px;top:16px;width:90px;height:32px;color:#7BE0A3;font-size:18px;background-color:transparent;">返回 &gt;</div>
+<div class="ctrl scrollwindow" data-caption="ScrollWallRows" data-key="scrollwindow__1" data-type="scrollwindow" data-cap="ScrollWallRows" data-visible="true" data-edit="" style="left:14px;top:72px;width:452px;height:290px;"><div class="ctrl textview al-hc al-vc " data-caption="ImageWallRowBg1" data-key="textview__3" data-type="textview" data-cap="ImageWallRowBg1" data-visible="true" data-edit="" style="left:0px;top:0px;width:452px;height:50px;color:#ECECF0;font-size:16px;background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAcQAAAAyCAYAAADC46uvAAACPUlEQVR4nO3csVXbUBSA4XfVqTMbQOVSbAAZgQlCNmCUjIAnYITABrh0FW+AO3e+OQ+ZYIihChYHfV9l+6i43X+upOco7+i6brJeby4z46yUPI2I4/euB4DPJDOXpcR9RN61bXM9n89Xb10bb4cwf5ZSvn/opABwWLO2jat9YfwniNNpd565uSklJgcbDwAOJlcRzcViMb/d/bXZ/TKddpeZ+UsMAfi6YlJbV5v34teXm2GNIQCMQ0R8e9oUY+flmd82QwDGJVdt25zUZ4qPt0z7F2g8MwRgbOLpJdIS2zdKH4YeCQCG0rZx1NRzhoNNAACfQG1hE1EP3QPAeNUWNpnldOhBAGBItYX1pRp/xwbA2B2/OJgPAGMliAAgiADQsyECgCACQM+GCACCCAA9GyIACCIA9GyIACCIANCzIQKAIAJAz4YIAIIIAD0bIgAIIgD0bIgAIIgA0LMhAoAgAkDPhggAgggAPRsiAAgiAPRsiAAgiADwvCEut58BYKyWTUS5H3oKABhSbWGTmXeDTgEAA6stjK7rJut1Pgw9DAAMpW3jqJnP56tSymywKQBgWLPawsdjF20bV6VkDSMAjEiu+gZuzyHWMkY0F0OPBQCHVNu3vVP6fDB/sZjfRsSPg04CAAOpzavt+/v99QXTaXeeubkpJSYHnw4APlw+3hXdjeHev26rF7Rtc+JFGwC+oFlt3OsY7t0Qd/VHMjaXmXFWSp5GxPGHjgkA5f/JzGUpcR+Rd23bXD89L9znD/u2p3oCdgavAAAAAElFTkSuQmCC');background-size:100% 100%;background-repeat:no-repeat;"></div><div class="ctrl textview al-hl al-vt " data-caption="TextWallRowLabel1" data-key="textview__4" data-type="textview" data-cap="TextWallRowLabel1" data-visible="true" data-edit="" style="left:34px;top:14px;width:240px;height:22px;color:#ECECF0;font-size:18px;">拼接联动</div><div class="ctrl textview al-hr al-vc " data-caption="TextWallRowValue1" data-key="textview__5" data-type="textview" data-cap="TextWallRowValue1" data-visible="true" data-edit="" style="left:256px;top:14px;width:190px;height:22px;color:#7BE0A3;font-size:17px;">开启</div><div class="ctrl button al-hc al-vc touchable" data-caption="ButtonWallRow1" data-key="button__2" data-type="button" data-cap="ButtonWallRow1" data-visible="true" data-edit="" style="left:0px;top:0px;width:452px;height:50px;color:#ECECF0;font-size:18px;background-color:transparent;"></div><div class="ctrl textview al-hc al-vc " data-caption="ImageWallRowBg2" data-key="textview__6" data-type="textview" data-cap="ImageWallRowBg2" data-visible="true" data-edit="" style="left:0px;top:56px;width:452px;height:50px;color:#ECECF0;font-size:16px;background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAcQAAAAyCAYAAADC46uvAAACPUlEQVR4nO3csVXbUBSA4XfVqTMbQOVSbAAZgQlCNmCUjIAnYITABrh0FW+AO3e+OQ+ZYIihChYHfV9l+6i43X+upOco7+i6brJeby4z46yUPI2I4/euB4DPJDOXpcR9RN61bXM9n89Xb10bb4cwf5ZSvn/opABwWLO2jat9YfwniNNpd565uSklJgcbDwAOJlcRzcViMb/d/bXZ/TKddpeZ+UsMAfi6YlJbV5v34teXm2GNIQCMQ0R8e9oUY+flmd82QwDGJVdt25zUZ4qPt0z7F2g8MwRgbOLpJdIS2zdKH4YeCQCG0rZx1NRzhoNNAACfQG1hE1EP3QPAeNUWNpnldOhBAGBItYX1pRp/xwbA2B2/OJgPAGMliAAgiADQsyECgCACQM+GCACCCAA9GyIACCIA9GyIACCIANCzIQKAIAJAz4YIAIIIAD0bIgAIIgD0bIgAIIgA0LMhAoAgAkDPhggAgggAPRsiAAgiAPRsiAAgiADwvCEut58BYKyWTUS5H3oKABhSbWGTmXeDTgEAA6stjK7rJut1Pgw9DAAMpW3jqJnP56tSymywKQBgWLPawsdjF20bV6VkDSMAjEiu+gZuzyHWMkY0F0OPBQCHVNu3vVP6fDB/sZjfRsSPg04CAAOpzavt+/v99QXTaXeeubkpJSYHnw4APlw+3hXdjeHev26rF7Rtc+JFGwC+oFlt3OsY7t0Qd/VHMjaXmXFWSp5GxPGHjgkA5f/JzGUpcR+Rd23bXD89L9znD/u2p3oCdgavAAAAAElFTkSuQmCC');background-size:100% 100%;background-repeat:no-repeat;"></div><div class="ctrl textview al-hl al-vt " data-caption="TextWallRowLabel2" data-key="textview__7" data-type="textview" data-cap="TextWallRowLabel2" data-visible="true" data-edit="" style="left:34px;top:70px;width:240px;height:22px;color:#ECECF0;font-size:18px;">组名</div><div class="ctrl textview al-hr al-vc " data-caption="TextWallRowValue2" data-key="textview__8" data-type="textview" data-cap="TextWallRowValue2" data-visible="true" data-edit="" style="left:256px;top:70px;width:190px;height:22px;color:#7BE0A3;font-size:17px;">zksw-wall</div><div class="ctrl button al-hc al-vc touchable" data-caption="ButtonWallRow2" data-key="button__3" data-type="button" data-cap="ButtonWallRow2" data-visible="true" data-edit="" style="left:0px;top:56px;width:452px;height:50px;color:#ECECF0;font-size:18px;background-color:transparent;"></div><div class="ctrl textview al-hc al-vc " data-caption="ImageWallRowBg3" data-key="textview__9" data-type="textview" data-cap="ImageWallRowBg3" data-visible="true" data-edit="" style="left:0px;top:112px;width:452px;height:50px;color:#ECECF0;font-size:16px;background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAcQAAAAyCAYAAADC46uvAAACPUlEQVR4nO3csVXbUBSA4XfVqTMbQOVSbAAZgQlCNmCUjIAnYITABrh0FW+AO3e+OQ+ZYIihChYHfV9l+6i43X+upOco7+i6brJeby4z46yUPI2I4/euB4DPJDOXpcR9RN61bXM9n89Xb10bb4cwf5ZSvn/opABwWLO2jat9YfwniNNpd565uSklJgcbDwAOJlcRzcViMb/d/bXZ/TKddpeZ+UsMAfi6YlJbV5v34teXm2GNIQCMQ0R8e9oUY+flmd82QwDGJVdt25zUZ4qPt0z7F2g8MwRgbOLpJdIS2zdKH4YeCQCG0rZx1NRzhoNNAACfQG1hE1EP3QPAeNUWNpnldOhBAGBItYX1pRp/xwbA2B2/OJgPAGMliAAgiADQsyECgCACQM+GCACCCAA9GyIACCIA9GyIACCIANCzIQKAIAJAz4YIAIIIAD0bIgAIIgD0bIgAIIgA0LMhAoAgAkDPhggAgggAPRsiAAgiAPRsiAAgiADwvCEut58BYKyWTUS5H3oKABhSbWGTmXeDTgEAA6stjK7rJut1Pgw9DAAMpW3jqJnP56tSymywKQBgWLPawsdjF20bV6VkDSMAjEiu+gZuzyHWMkY0F0OPBQCHVNu3vVP6fDB/sZjfRsSPg04CAAOpzavt+/v99QXTaXeeubkpJSYHnw4APlw+3hXdjeHev26rF7Rtc+JFGwC+oFlt3OsY7t0Qd/VHMjaXmXFWSp5GxPGHjgkA5f/JzGUpcR+Rd23bXD89L9znD/u2p3oCdgavAAAAAElFTkSuQmCC');background-size:100% 100%;background-repeat:no-repeat;"></div><div class="ctrl textview al-hl al-vt " data-caption="TextWallRowLabel3" data-key="textview__10" data-type="textview" data-cap="TextWallRowLabel3" data-visible="true" data-edit="" style="left:34px;top:126px;width:240px;height:22px;color:#ECECF0;font-size:18px;">本机序号</div><div class="ctrl textview al-hr al-vc " data-caption="TextWallRowValue3" data-key="textview__11" data-type="textview" data-cap="TextWallRowValue3" data-visible="true" data-edit="" style="left:256px;top:126px;width:190px;height:22px;color:#7BE0A3;font-size:17px;">1 / 2</div><div class="ctrl button al-hc al-vc touchable" data-caption="ButtonWallRow3" data-key="button__4" data-type="button" data-cap="ButtonWallRow3" data-visible="true" data-edit="" style="left:0px;top:112px;width:452px;height:50px;color:#ECECF0;font-size:18px;background-color:transparent;"></div><div class="ctrl textview al-hc al-vc " data-caption="ImageWallRowBg4" data-key="textview__12" data-type="textview" data-cap="ImageWallRowBg4" data-visible="true" data-edit="" style="left:0px;top:168px;width:452px;height:50px;color:#ECECF0;font-size:16px;background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAcQAAAAyCAYAAADC46uvAAACPUlEQVR4nO3csVXbUBSA4XfVqTMbQOVSbAAZgQlCNmCUjIAnYITABrh0FW+AO3e+OQ+ZYIihChYHfV9l+6i43X+upOco7+i6brJeby4z46yUPI2I4/euB4DPJDOXpcR9RN61bXM9n89Xb10bb4cwf5ZSvn/opABwWLO2jat9YfwniNNpd565uSklJgcbDwAOJlcRzcViMb/d/bXZ/TKddpeZ+UsMAfi6YlJbV5v34teXm2GNIQCMQ0R8e9oUY+flmd82QwDGJVdt25zUZ4qPt0z7F2g8MwRgbOLpJdIS2zdKH4YeCQCG0rZx1NRzhoNNAACfQG1hE1EP3QPAeNUWNpnldOhBAGBItYX1pRp/xwbA2B2/OJgPAGMliAAgiADQsyECgCACQM+GCACCCAA9GyIACCIA9GyIACCIANCzIQKAIAJAz4YIAIIIAD0bIgAIIgD0bIgAIIgA0LMhAoAgAkDPhggAgggAPRsiAAgiAPRsiAAgiADwvCEut58BYKyWTUS5H3oKABhSbWGTmXeDTgEAA6stjK7rJut1Pgw9DAAMpW3jqJnP56tSymywKQBgWLPawsdjF20bV6VkDSMAjEiu+gZuzyHWMkY0F0OPBQCHVNu3vVP6fDB/sZjfRsSPg04CAAOpzavt+/v99QXTaXeeubkpJSYHnw4APlw+3hXdjeHev26rF7Rtc+JFGwC+oFlt3OsY7t0Qd/VHMjaXmXFWSp5GxPGHjgkA5f/JzGUpcR+Rd23bXD89L9znD/u2p3oCdgavAAAAAElFTkSuQmCC');background-size:100% 100%;background-repeat:no-repeat;"></div><div class="ctrl textview al-hl al-vt " data-caption="TextWallRowLabel4" data-key="textview__13" data-type="textview" data-cap="TextWallRowLabel4" data-visible="true" data-edit="" style="left:34px;top:182px;width:240px;height:22px;color:#ECECF0;font-size:18px;">排布</div><div class="ctrl textview al-hr al-vc " data-caption="TextWallRowValue4" data-key="textview__14" data-type="textview" data-cap="TextWallRowValue4" data-visible="true" data-edit="" style="left:256px;top:182px;width:190px;height:22px;color:#7BE0A3;font-size:17px;">1x2</div><div class="ctrl button al-hc al-vc touchable" data-caption="ButtonWallRow4" data-key="button__5" data-type="button" data-cap="ButtonWallRow4" data-visible="true" data-edit="" style="left:0px;top:168px;width:452px;height:50px;color:#ECECF0;font-size:18px;background-color:transparent;"></div><div class="ctrl textview al-hc al-vc " data-caption="ImageWallRowBg5" data-key="textview__15" data-type="textview" data-cap="ImageWallRowBg5" data-visible="true" data-edit="" style="left:0px;top:224px;width:452px;height:50px;color:#ECECF0;font-size:16px;background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAcQAAAAyCAYAAADC46uvAAACPUlEQVR4nO3csVXbUBSA4XfVqTMbQOVSbAAZgQlCNmCUjIAnYITABrh0FW+AO3e+OQ+ZYIihChYHfV9l+6i43X+upOco7+i6brJeby4z46yUPI2I4/euB4DPJDOXpcR9RN61bXM9n89Xb10bb4cwf5ZSvn/opABwWLO2jat9YfwniNNpd565uSklJgcbDwAOJlcRzcViMb/d/bXZ/TKddpeZ+UsMAfi6YlJbV5v34teXm2GNIQCMQ0R8e9oUY+flmd82QwDGJVdt25zUZ4qPt0z7F2g8MwRgbOLpJdIS2zdKH4YeCQCG0rZx1NRzhoNNAACfQG1hE1EP3QPAeNUWNpnldOhBAGBItYX1pRp/xwbA2B2/OJgPAGMliAAgiADQsyECgCACQM+GCACCCAA9GyIACCIA9GyIACCIANCzIQKAIAJAz4YIAIIIAD0bIgAIIgD0bIgAIIgA0LMhAoAgAkDPhggAgggAPRsiAAgiAPRsiAAgiADwvCEut58BYKyWTUS5H3oKABhSbWGTmXeDTgEAA6stjK7rJut1Pgw9DAAMpW3jqJnP56tSymywKQBgWLPawsdjF20bV6VkDSMAjEiu+gZuzyHWMkY0F0OPBQCHVNu3vVP6fDB/sZjfRsSPg04CAAOpzavt+/v99QXTaXeeubkpJSYHnw4APlw+3hXdjeHev26rF7Rtc+JFGwC+oFlt3OsY7t0Qd/VHMjaXmXFWSp5GxPGHjgkA5f/JzGUpcR+Rd23bXD89L9znD/u2p3oCdgavAAAAAElFTkSuQmCC');background-size:100% 100%;background-repeat:no-repeat;"></div><div class="ctrl textview al-hl al-vt " data-caption="TextWallRowLabel5" data-key="textview__16" data-type="textview" data-cap="TextWallRowLabel5" data-visible="true" data-edit="" style="left:34px;top:238px;width:240px;height:22px;color:#ECECF0;font-size:18px;">角色</div><div class="ctrl textview al-hr al-vc " data-caption="TextWallRowValue5" data-key="textview__17" data-type="textview" data-cap="TextWallRowValue5" data-visible="true" data-edit="" style="left:256px;top:238px;width:190px;height:22px;color:#7BE0A3;font-size:17px;">主机</div><div class="ctrl button al-hc al-vc touchable" data-caption="ButtonWallRow5" data-key="button__6" data-type="button" data-cap="ButtonWallRow5" data-visible="true" data-edit="" style="left:0px;top:224px;width:452px;height:50px;color:#ECECF0;font-size:18px;background-color:transparent;"></div><div class="ctrl textview al-hc al-vc " data-caption="ImageWallRowBg6" data-key="textview__18" data-type="textview" data-cap="ImageWallRowBg6" data-visible="true" data-edit="" style="left:0px;top:280px;width:452px;height:50px;color:#ECECF0;font-size:16px;background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAcQAAAAyCAYAAADC46uvAAACPUlEQVR4nO3csVXbUBSA4XfVqTMbQOVSbAAZgQlCNmCUjIAnYITABrh0FW+AO3e+OQ+ZYIihChYHfV9l+6i43X+upOco7+i6brJeby4z46yUPI2I4/euB4DPJDOXpcR9RN61bXM9n89Xb10bb4cwf5ZSvn/opABwWLO2jat9YfwniNNpd565uSklJgcbDwAOJlcRzcViMb/d/bXZ/TKddpeZ+UsMAfi6YlJbV5v34teXm2GNIQCMQ0R8e9oUY+flmd82QwDGJVdt25zUZ4qPt0z7F2g8MwRgbOLpJdIS2zdKH4YeCQCG0rZx1NRzhoNNAACfQG1hE1EP3QPAeNUWNpnldOhBAGBItYX1pRp/xwbA2B2/OJgPAGMliAAgiADQsyECgCACQM+GCACCCAA9GyIACCIA9GyIACCIANCzIQKAIAJAz4YIAIIIAD0bIgAIIgD0bIgAIIgA0LMhAoAgAkDPhggAgggAPRsiAAgiAPRsiAAgiADwvCEut58BYKyWTUS5H3oKABhSbWGTmXeDTgEAA6stjK7rJut1Pgw9DAAMpW3jqJnP56tSymywKQBgWLPawsdjF20bV6VkDSMAjEiu+gZuzyHWMkY0F0OPBQCHVNu3vVP6fDB/sZjfRsSPg04CAAOpzavt+/v99QXTaXeeubkpJSYHnw4APlw+3hXdjeHev26rF7Rtc+JFGwC+oFlt3OsY7t0Qd/VHMjaXmXFWSp5GxPGHjgkA5f/JzGUpcR+Rd23bXD89L9znD/u2p3oCdgavAAAAAElFTkSuQmCC');background-size:100% 100%;background-repeat:no-repeat;"></div><div class="ctrl textview al-hl al-vt " data-caption="TextWallRowLabel6" data-key="textview__19" data-type="textview" data-cap="TextWallRowLabel6" data-visible="true" data-edit="" style="left:34px;top:294px;width:240px;height:22px;color:#ECECF0;font-size:18px;">播放内容</div><div class="ctrl textview al-hr al-vc " data-caption="TextWallRowValue6" data-key="textview__20" data-type="textview" data-cap="TextWallRowValue6" data-visible="true" data-edit="" style="left:256px;top:294px;width:190px;height:22px;color:#7BE0A3;font-size:17px;">2 段 · 总 10.0s</div><div class="ctrl button al-hc al-vc touchable" data-caption="ButtonWallRow6" data-key="button__7" data-type="button" data-cap="ButtonWallRow6" data-visible="true" data-edit="" style="left:0px;top:280px;width:452px;height:50px;color:#ECECF0;font-size:18px;background-color:transparent;"></div></div>
+<div class="ctrl textview al-hc al-vc " data-caption="ImageWallStatusBg" data-key="textview__21" data-type="textview" data-cap="ImageWallStatusBg" data-visible="true" data-edit="" style="left:14px;top:368px;width:452px;height:46px;color:#ECECF0;font-size:16px;background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAcQAAAAuCAYAAAC292lPAAACL0lEQVR4nO3csVXbUBSA4XfVqTMbQOVSbAAZgQlCNmCUjIAnYITABrh0FW+AO3e+OQ+ZYIihChYHfV9l+6i43X+upOco7+i6brJeby4z46yUPI2I4/euB4DPJDOXpcR9RN61bXM9n89Xb10bb4cwf5ZSvn/opABwWLO2jat9YfwniNNpd565uSklJgcbDwAOJlcRzcViMb/d/bXZ/TKddpeZ+UsMAfi6YlJbV5v34teXm2GNIQCMQ0R8e9oUY+flmd82QwDGJVdt25zUZ4qPt0z7F2g8MwRgbOLpJdIS2zdKH4YeCQCG0rZx1NRzhoNNAACfQG1hE1EP3QPAeNUWNpnldOhBAGBItYX1pRp/xwbA2B2/OJgPAGMliAAgiADQsyECgCACQM+GCACCCAA9GyIACCIA9GyIACCIANCzIQKAIAJAz4YIAIIIAD0bIgAIIgD0bIgAIIgA0LMhAoAgAkDPhggAgggAzxvicvsZAMZq2USU+6GnAIAh1RY2mXk36BQAMLDawui6brJe58PQwwDAUNo2jpr5fL4qpcwGmwIAhjWrLXw8dtG2cVVK1jACwIjkqm/g9hxiLWNEczH0WABwSLV92zulzwfzF4v5bUT8OOgkADCQ2rzavr/fX18wnXbnmZubUmJy8OkA4MPl413R3Rju/eu2ekHbNidetAHgC5rVxr2O4d4NcVd/JGNzmRlnpeRpRBx/6JgAUP6fzFyWEvcRede2zfXT88J9/gBk/adyzNd7RQAAAABJRU5ErkJggg==');background-size:100% 100%;background-repeat:no-repeat;"></div>
+<div class="ctrl textview al-hl al-vt " data-caption="TextWallStatus" data-key="textview__22" data-type="textview" data-cap="TextWallStatus" data-visible="true" data-edit="" style="left:34px;top:380px;width:412px;height:22px;color:#9AA0A6;font-size:16px;">状态：未开启</div>
+<div class="ctrl textview al-hc al-vc " data-caption="ImageWallSaveBg" data-key="textview__23" data-type="textview" data-cap="ImageWallSaveBg" data-visible="true" data-edit="" style="left:14px;top:420px;width:216px;height:48px;color:#ECECF0;font-size:16px;background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANgAAAAwCAYAAABzN7QCAAACB0lEQVR4nO3dwXHaQBSH8fff295IB/ZJR9GBnRJcQXAHLiUlmApcQkwHcOQUOjA3brzMs8ERDvYkEz0zwPe7SaOR9vKNpJVmVvaBtm0Hq9V65K4rMx9KuvjoeOAcuPvCTFPJJ7WW+9lstnzvWL0fln83s2+pIwVOw7hW3e0L7Y/Amqa9dl8/mGnwacMDjp4vpXIzn88eu3tLd6Np2pG7/yAu4F9pEO1EQzt7d+9cEReA/yHp6/ZOps5kxk/uXEAffFlruYx3sudHxJcJDd65gH5oO0lo2swYPvV0ZgAbtepLie9c2x0A+hNtFSk+IgPoW7RV3G3Y+5kBWLQVkxz8/gTkuNj50AygXwQGJCIwIBGBAYkIDEhEYEAiAgMSERiQiMCARAQGJCIwIBGBAYkIDEhEYEAiAgMSERiQiMCARAQGJCIwIBGBAYkIDEhEYEAiAgMSERiQiMCA5MAWmRcAztiiSDY99CiAUxRtFXefHHogwCmKtliAD8hcgC/WkTWzcdZFgDM1fl2juVbdxcLNhx4RcDqLoEdTm2n6KE0qN4ceFnAKoqXNk+Hv72Dz+exR0u1BRwYcuWgoWnrdfntA07TX7usHMw0+fXTA0fLnp8BuXHv/5IgDai2XTHwAf20czbyNa+8drKtt28FqtR6568rMh5JYzxlnz90XZppKPqm13G/ft/b5BQpZp3Z6zRSlAAAAAElFTkSuQmCC');background-size:100% 100%;background-repeat:no-repeat;"></div>
+<div class="ctrl button al-hc al-vc touchable" data-caption="ButtonWallSave" data-key="button__8" data-type="button" data-cap="ButtonWallSave" data-visible="true" data-edit="" style="left:14px;top:420px;width:216px;height:48px;color:#ECECF0;font-size:17px;background-color:transparent;">保存</div>
+<div class="ctrl textview al-hc al-vc " data-caption="ImageWallHintBg" data-key="textview__24" data-type="textview" data-cap="ImageWallHintBg" data-visible="true" data-edit="" style="left:250px;top:420px;width:216px;height:48px;color:#ECECF0;font-size:16px;background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANgAAAAwCAYAAABzN7QCAAACB0lEQVR4nO3dwXHaQBSH8fff295IB/ZJR9GBnRJcQXAHLiUlmApcQkwHcOQUOjA3brzMs8ERDvYkEz0zwPe7SaOR9vKNpJVmVvaBtm0Hq9V65K4rMx9KuvjoeOAcuPvCTFPJJ7WW+9lstnzvWL0fln83s2+pIwVOw7hW3e0L7Y/Amqa9dl8/mGnwacMDjp4vpXIzn88eu3tLd6Np2pG7/yAu4F9pEO1EQzt7d+9cEReA/yHp6/ZOps5kxk/uXEAffFlruYx3sudHxJcJDd65gH5oO0lo2swYPvV0ZgAbtepLie9c2x0A+hNtFSk+IgPoW7RV3G3Y+5kBWLQVkxz8/gTkuNj50AygXwQGJCIwIBGBAYkIDEhEYEAiAgMSERiQiMCARAQGJCIwIBGBAYkIDEhEYEAiAgMSERiQiMCARAQGJCIwIBGBAYkIDEhEYEAiAgMSERiQiMCA5MAWmRcAztiiSDY99CiAUxRtFXefHHogwCmKtliAD8hcgC/WkTWzcdZFgDM1fl2juVbdxcLNhx4RcDqLoEdTm2n6KE0qN4ceFnAKoqXNk+Hv72Dz+exR0u1BRwYcuWgoWnrdfntA07TX7usHMw0+fXTA0fLnp8BuXHv/5IgDai2XTHwAf20czbyNa+8drKtt28FqtR6568rMh5JYzxlnz90XZppKPqm13G/ft/b5BQpZp3Z6zRSlAAAAAElFTkSuQmCC');background-size:100% 100%;background-repeat:no-repeat;"></div>
+<div class="ctrl button al-hc al-vc touchable" data-caption="ButtonWallBack2" data-key="button__9" data-type="button" data-cap="ButtonWallBack2" data-visible="true" data-edit="" style="left:250px;top:420px;width:216px;height:48px;color:#ECECF0;font-size:17px;background-color:transparent;">返回</div>
+  </div>
+
+<script>
+(function(){
+  var dev=document.querySelector('.device');
+  if(!dev) return;
+  var all=Array.prototype.slice.call(dev.querySelectorAll('.ctrl[data-key]'));
+  var W=dev.offsetWidth, H=dev.offsetHeight;
+  var wins=all.filter(function(el){
+    if(el.dataset.topwin!=='1') return false;
+    var w=parseFloat(el.dataset.w||0), h=parseFloat(el.dataset.h||0);
+    return w>=W-4 && h>=H-4;                 // 整屏窗口 = 页面
+  });
+  var nav=document.getElementById('pg-nav');
+  var links=nav?Array.prototype.slice.call(nav.querySelectorAll('a[data-win]')):[];
+  var box=document.getElementById('pg-ghost');
+  var ghostOn=false, active='';
+  function findWin(k){ for(var i=0;i<wins.length;i++){ if(wins[i].dataset.key===k) return wins[i]; } return null; }
+  function pageOf(el){                        // 控件所属的整屏窗口
+    var n=el;
+    while(n && n!==dev){
+      if(n.dataset && n.dataset.topwin==='1' && wins.indexOf(n)>=0) return n.dataset.key;
+      n=n.parentElement;
+    }
+    return '';
+  }
+  function fromHash(){
+    var h=location.hash.replace(/^#/,'');
+    try{ h=decodeURIComponent(h); }catch(e){}
+    if(!h) return '';
+    if(findWin(h)) return h;
+    if(/^[0-9]+$/.test(h) && findWin('window__'+h)) return 'window__'+h;
+    return '';
+  }
+  function apply(){
+    all.forEach(function(el){
+      var hid=el.dataset.visible==='false';
+      var isTopWin=el.dataset.topwin==='1' && wins.indexOf(el)>=0;
+      var pg=pageOf(el), off;
+      if(isTopWin){ off=(el.dataset.key!==active) && !ghostOn; }
+      else if(pg && pg!==active){ off=!ghostOn; }
+      else { off=hid && !ghostOn; }
+      el.style.display=off?'none':'';
+      if(ghostOn && (hid || (isTopWin && el.dataset.key!==active))){
+        el.classList.add('pg-ghost');
+      } else { el.classList.remove('pg-ghost'); }
+    });
+    links.forEach(function(a){ a.classList.toggle('on', a.dataset.win===active); });
+  }
+  function setActive(k, fromHash){
+    if(!k && wins.length) return;
+    active=k;
+    apply();
+    if(!fromHash && location.hash.replace(/^#/,'')!==k){ location.hash=k; }
+  }
+  active=fromHash() || "";   // 默认页（py 侧注入 JS 字面量）
+  apply();
+  links.forEach(function(a){
+    a.addEventListener('click', function(e){ e.preventDefault(); setActive(a.dataset.win,false); });
+  });
+  window.addEventListener('hashchange', function(){ var k=fromHash(); if(k) setActive(k,true); });
+  if(box){ box.addEventListener('change', function(){ ghostOn=box.checked; apply(); }); }
+  document.addEventListener('keydown', function(e){
+    if(!wins.length || (e.key!=='ArrowLeft' && e.key!=='ArrowRight')) return;
+    var keys=wins.map(function(w){ return w.dataset.key; });
+    var i=keys.indexOf(active), n=keys.length;
+    var j=(e.key==='ArrowRight')?(i+1+n)%n:(i-1+n)%n;
+    setActive(keys[j],false);
+  });
+})();
+</script>
+
+</body>
+</html>

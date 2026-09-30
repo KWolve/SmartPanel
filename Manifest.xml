@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE flythings>
+
+<manifest platform="Z20">
+    <dependencies enableOnPlatforms="Z20">
+        <package id="easyui" version="^2.2.0"/>
+        <package id="log" version="0.0.0"/>
+        <package id="zkhardware" version="0.0.0"/>
+  <package id="zknet" version="0.0.0"/>
+            <package id="base-utility" version="^10.8.5"/>
+        <package id="ntp" version="2.1.1"/>    <!-- v6：2.1.1 = timeval 回调（**ms 级**）+ settimeofday；0.1.0 是 tm 回调（秒级，丢亚秒） -->
+		<package id="mqtt-cxx" version="^3.2.0"></package>
+		<package id="paho-mqtt3as" version="^1.3.13"></package>
+		<package id="base-json" version="^3.1.0"></package>
+		<package id="openssl" version="1.1.1-w"></package>
+		<package id="curl-cxx" version="^10.0.3"></package>
+		<!-- 多屏拼接 SimplePlayer 路线（2026-09-26）：ffmpeg 解封装/h264_mp4toannexb + MI 硬解送显。
+		     ffmpeg 必须用 **4.1.9-configure3**，不能用 4.1.9：后者是精简构建（nm 实证：libavformat.a 里
+		     没有 ff_mov_demuxer、libavcodec.a 里没有 ff_h264_mp4toannexb_bsf）-> avformat_open_input
+		     直接返回 -1094995529 Invalid data（真机实测）。configure3 两个都有。
+		     mi-module 固定 5.0.2：^5.0.0 在 fun 解析器里会撞上 5.0.3-test1 预发布版报「依赖版本冲突」。
+		     多屏拼接播放内核：直接依赖官方 simple-player 包（使用包内 SimplePlayer 内核）。 -->
+		<package id="ffmpeg" version="4.1.9-configure3"></package>
+		<package id="mi-module" version="5.0.2"></package>
+        <!-- v7.12（2026-09-29 钟工）：SimplePlayer 官方包（需自行向厂商申请授权）。播放内核直接用包里的 SimplePlayer；墙钟对齐/组网仍走 WallLink。 -->
+        <package id="simple-player" version="^4.0.1"></package>
+
+</dependencies>
+</manifest>

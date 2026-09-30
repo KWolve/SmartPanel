@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>多屏拼接 · 线框确认稿（480x480 面板）</title>
+<style>
+  :root{
+    --bg:#17171B; --card:#26262E; --line:#31313A; --acc:#7BE0A3;
+    --tx:#ECECF0; --sub:#9AA0A6; --dim:#5F5F68; --on:#10141A;
+  }
+  *{box-sizing:border-box; font-family:"Microsoft YaHei",system-ui,sans-serif;}
+  body{margin:0; background:#0F0F12; color:var(--tx);
+       display:flex; gap:28px; padding:24px; align-items:flex-start;}
+  .wrap{display:flex; flex-direction:column; gap:8px;}
+  .scr{width:480px; height:480px; background:var(--bg); position:relative;
+       border-radius:6px; overflow:hidden;}
+  .cap{font-size:13px; color:var(--sub);}
+  .title{position:absolute; left:20px; top:12px; font-size:22px; font-weight:700;}
+  .title-en{position:absolute; left:20px; top:44px; font-size:15px; color:var(--dim);}
+  .back{position:absolute; right:18px; top:16px; color:var(--acc); font-size:18px;}
+  .row{position:absolute; left:14px; width:452px; height:46px; background:var(--card);
+       border:1px solid var(--line); border-radius:10px;
+       display:flex; align-items:center; padding:0 16px; gap:12px; font-size:17px;}
+  .row .lab{flex:1;}
+  .row .val{color:var(--sub); font-size:16px;}
+  .chip{min-width:68px; height:44px; border-radius:10px; background:var(--line);
+        display:flex; align-items:center; justify-content:center; font-size:15px;
+        color:var(--tx); padding:0 10px;}
+  .chip.on{background:var(--acc); color:var(--on); font-weight:700;}
+  .seg{display:flex; gap:8px;}
+  .grp{position:absolute; left:20px; font-size:13px; color:var(--dim);}
+  .status{position:absolute; left:14px; width:452px; height:74px; background:var(--card);
+          border:1px solid var(--line); border-radius:10px; padding:12px 16px;}
+  .status .big{font-size:18px; font-weight:700;}
+  .status .small{font-size:14px; color:var(--sub); margin-top:6px;}
+  .dot{display:inline-block; width:10px; height:10px; border-radius:50%;
+       background:var(--acc); margin-right:8px; vertical-align:middle;}
+  .hint{position:absolute; left:20px; font-size:13px; color:var(--dim);}
+  .btn{position:absolute; height:48px; border-radius:10px; background:var(--card);
+       border:1px solid var(--line); display:flex; align-items:center;
+       justify-content:center; font-size:17px;}
+  .hl{border:2px solid var(--acc);}
+</style>
+</head>
+<body>
+
+<!-- 屏 1：设置页（新增入口行） -->
+<div class="wrap">
+  <div class="scr">
+    <div class="title">设置</div>
+    <div class="title-en">SETTINGS</div>
+    <div class="back">返回 &gt;</div>
+
+    <div class="row" style="top:84px"><span class="lab">WiFi</span><span class="val">已连接</span></div>
+    <div class="row" style="top:136px"><span class="lab">运行模式</span><span class="val">HA</span></div>
+    <div class="row" style="top:188px"><span class="lab">设备名称</span><span class="val">PANEL-SAMPLE01</span></div>
+    <div class="row" style="top:240px"><span class="lab">屏幕亮度</span><span class="val">83</span></div>
+    <div class="row hl" style="top:292px"><span class="lab">多屏拼接</span><span class="val">已关闭 ›</span></div>
+    <div class="row" style="top:344px"><span class="lab">屏保显示</span><span class="val"> ›</span></div>
+    <div class="hint" style="top:404px">↑ 新增入口行（放在"屏保显示"上方，与现有行同规格 452×46）</div>
+  </div>
+  <div class="cap">屏 1 · 设置页（新增「多屏拼接」入口，绿框=新增）</div>
+</div>
+
+<!-- 屏 2：多屏拼接设置页 -->
+<div class="wrap">
+  <div class="scr">
+    <div class="title">多屏拼接</div>
+    <div class="title-en">MULTI-PANEL WALL</div>
+    <div class="back">返回 &gt;</div>
+
+    <div class="row" style="top:78px">
+      <span class="lab">拼接联动</span>
+      <span class="chip on">开启</span><span class="chip">关闭</span>
+    </div>
+
+    <div class="grp" style="top:132px">组与位置</div>
+    <div class="row" style="top:152px">
+      <span class="lab">组名</span><span class="val">zksw-wall</span>
+    </div>
+    <div class="row" style="top:204px">
+      <span class="lab">本机序号</span>
+      <span class="chip">◀</span><span class="chip on">1</span><span class="chip">▶</span>
+      <span class="val">共 2 台</span>
+    </div>
+    <div class="row" style="top:256px">
+      <span class="lab">排布</span>
+      <span class="chip on">1×2</span><span class="chip">1×3</span><span class="chip">1×4</span>
+    </div>
+
+    <div class="grp" style="top:308px">同步</div>
+    <div class="row" style="top:328px">
+      <span class="lab">角色</span>
+      <span class="chip on">主机</span><span class="chip">从机</span>
+      <span class="val">源: NTP+局域网</span>
+    </div>
+    <div class="row" style="top:380px">
+      <span class="lab">片段时长</span><span class="val">12.0 s（读 wall.json）</span>
+    </div>
+
+    <div class="status" style="top:436px; height:0; display:none"></div>
+  </div>
+  <div class="cap">屏 2 · 多屏拼接设置页（1/2）</div>
+</div>
+
+<!-- 屏 3：多屏拼接设置页（状态区） -->
+<div class="wrap">
+  <div class="scr">
+    <div class="title">多屏拼接</div>
+    <div class="title-en">MULTI-PANEL WALL</div>
+    <div class="back">返回 &gt;</div>
+
+    <div class="row" style="top:84px">
+      <span class="lab">拼接联动</span>
+      <span class="chip on">开启</span><span class="chip">关闭</span>
+    </div>
+    <div class="row" style="top:136px"><span class="lab">组名</span><span class="val">zksw-wall</span></div>
+    <div class="row" style="top:188px">
+      <span class="lab">本机序号</span>
+      <span class="chip">◀</span><span class="chip on">1</span><span class="chip">▶</span>
+      <span class="val">共 2 台</span>
+    </div>
+    <div class="row" style="top:240px">
+      <span class="lab">排布 / 角色</span>
+      <span class="chip on">1×2</span><span class="chip on">主机</span>
+    </div>
+
+    <div class="status" style="top:300px">
+      <div class="big"><span class="dot"></span>已对齐 &nbsp;±4 ms</div>
+      <div class="small">段 1/2 · 12.0s · 相位 3.42s · epoch 20:41:00.000</div>
+    </div>
+
+    <div class="status" style="top:384px">
+      <div class="big" style="color:#E0A37B"><span class="dot" style="background:#E0A37B"></span>失联（示例）</div>
+      <div class="small">收不到 epoch &gt; 10s → 已回默认屏保视频轮播</div>
+    </div>
+
+    <div class="btn" style="left:14px; top:412px; width:214px">保存</div>
+    <div class="btn" style="left:252px; top:412px; width:214px">返回</div>
+  </div>
+  <div class="cap">屏 3 · 多屏拼接设置页（2/2，含对齐状态 / 失联降级提示）</div>
+</div>
+
+</body>
+</html>

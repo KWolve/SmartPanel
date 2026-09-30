@@ -1,0 +1,953 @@
+{
+  "backgroundColor": 1513243,
+  "beepEnable": true,
+  "id": 0,
+  "resolution": {
+    "height": 480,
+    "width": 480
+  },
+  "topmost": false,
+  "position": {
+    "height": 480,
+    "left": 0,
+    "top": 0,
+    "width": 480
+  },
+  "videoview__1": {
+    "id": 95001,
+    "caption": "VideoSs",
+    "position": {
+      "left": 0,
+      "top": 0,
+      "width": 480,
+      "height": 480
+    },
+    "backgroundColor": 0,
+    "defaultVolume": 0,
+    "loopPlayback": false,
+    "rotation": 0,
+    "touchable": false,
+    "visible": true
+  },
+  "textview__1": {
+    "id": 50001,
+    "caption": "ImageSsBg",
+    "position": {
+      "left": 0,
+      "top": 0,
+      "width": 480,
+      "height": 480
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 15527152,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": true,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/ss_bg.png"
+  },
+  "textview__2": {
+    "id": 50002,
+    "caption": "TextSsClk",
+    "position": {
+      "left": 0,
+      "top": 86,
+      "width": 480,
+      "height": 140
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 16777215,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 104,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "19:38",
+    "visible": true,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    }
+  },
+  "textview__3": {
+    "id": 50003,
+    "caption": "TextSsDate",
+    "position": {
+      "left": 0,
+      "top": 236,
+      "width": 480,
+      "height": 28
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 10132130,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 22,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "2026年09月24日 星期四",
+    "visible": true,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    }
+  },
+  "textview__4": {
+    "id": 50004,
+    "caption": "ImageSsWxIcon",
+    "position": {
+      "left": 188,
+      "top": 282,
+      "width": 22,
+      "height": 22
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 8118435,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": true,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/ic_sun_g22.png"
+  },
+  "textview__5": {
+    "id": 50005,
+    "caption": "TextSsWx",
+    "position": {
+      "left": 216,
+      "top": 280,
+      "width": 140,
+      "height": 26
+    },
+    "alignment": 4,
+    "colorTab": {
+      "color0": 8118435,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 20,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "晴 26",
+    "visible": true,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    }
+  },
+  "textview__6": {
+    "id": 50006,
+    "caption": "TextSsTh",
+    "position": {
+      "left": 0,
+      "top": 326,
+      "width": 480,
+      "height": 28
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 15527152,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 22,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "26.5°C / 58 %",
+    "visible": true,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    }
+  },
+  "textview__7": {
+    "id": 50007,
+    "caption": "ImageSsChip1",
+    "position": {
+      "left": 16,
+      "top": 396,
+      "width": 141,
+      "height": 40
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 15527152,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": true,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/sschip141x40.png"
+  },
+  "textview__8": {
+    "id": 50008,
+    "caption": "ImageSsDevIcon1",
+    "position": {
+      "left": 28,
+      "top": 406,
+      "width": 20,
+      "height": 20
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 16777215,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": true,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/ic_lamp_w20.png"
+  },
+  "textview__9": {
+    "id": 50009,
+    "caption": "TextSsDevName1",
+    "position": {
+      "left": 50,
+      "top": 404,
+      "width": 56,
+      "height": 24
+    },
+    "alignment": 4,
+    "colorTab": {
+      "color0": 10132130,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 18,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "客厅",
+    "visible": true,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    }
+  },
+  "textview__10": {
+    "id": 50010,
+    "caption": "TextSsDevState1",
+    "position": {
+      "left": 107,
+      "top": 404,
+      "width": 40,
+      "height": 24
+    },
+    "alignment": 4,
+    "colorTab": {
+      "color0": 8118435,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 18,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "开",
+    "visible": true,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    }
+  },
+  "textview__11": {
+    "id": 50011,
+    "caption": "ImageSsChip2",
+    "position": {
+      "left": 169,
+      "top": 396,
+      "width": 141,
+      "height": 40
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 15527152,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": true,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/sschip141x40.png"
+  },
+  "textview__12": {
+    "id": 50012,
+    "caption": "ImageSsDevIcon2",
+    "position": {
+      "left": 181,
+      "top": 406,
+      "width": 20,
+      "height": 20
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 16777215,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": true,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/ic_bedlamp_w20.png"
+  },
+  "textview__13": {
+    "id": 50013,
+    "caption": "TextSsDevName2",
+    "position": {
+      "left": 203,
+      "top": 404,
+      "width": 56,
+      "height": 24
+    },
+    "alignment": 4,
+    "colorTab": {
+      "color0": 10132130,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 18,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "卧室",
+    "visible": true,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    }
+  },
+  "textview__14": {
+    "id": 50014,
+    "caption": "TextSsDevState2",
+    "position": {
+      "left": 260,
+      "top": 404,
+      "width": 40,
+      "height": 24
+    },
+    "alignment": 4,
+    "colorTab": {
+      "color0": 8118435,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 18,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "开",
+    "visible": true,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    }
+  },
+  "textview__15": {
+    "id": 50015,
+    "caption": "ImageSsChip3",
+    "position": {
+      "left": 322,
+      "top": 396,
+      "width": 141,
+      "height": 40
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 15527152,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": true,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/sschip141x40.png"
+  },
+  "textview__16": {
+    "id": 50016,
+    "caption": "ImageSsDevIcon3",
+    "position": {
+      "left": 334,
+      "top": 406,
+      "width": 20,
+      "height": 20
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 16777215,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": true,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "backgroundPic": "images/ic_strip_w20.png"
+  },
+  "textview__17": {
+    "id": 50017,
+    "caption": "TextSsDevName3",
+    "position": {
+      "left": 356,
+      "top": 404,
+      "width": 56,
+      "height": 24
+    },
+    "alignment": 4,
+    "colorTab": {
+      "color0": 10132130,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 18,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "灯带",
+    "visible": true,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    }
+  },
+  "textview__18": {
+    "id": 50018,
+    "caption": "TextSsDevState3",
+    "position": {
+      "left": 413,
+      "top": 404,
+      "width": 40,
+      "height": 24
+    },
+    "alignment": 4,
+    "colorTab": {
+      "color0": 6250344,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 18,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "关",
+    "visible": true,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    }
+  },
+  "textview__19": {
+    "id": 50019,
+    "caption": "TextSsHint",
+    "position": {
+      "left": 0,
+      "top": 448,
+      "width": 480,
+      "height": 24
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 6250344,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 18,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "触摸任意处进入面板",
+    "visible": true,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    }
+  },
+  "textview__20": {
+    "id": 50053,
+    "caption": "ImageEdTime",
+    "position": {
+      "left": 0,
+      "top": 86,
+      "width": 480,
+      "height": 140
+    },
+    "alignment": 1,
+    "colorTab": {
+      "color0": 15527152,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": false,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "backgroundPic": "images/ss_ed_time.png",
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    }
+  },
+  "textview__21": {
+    "id": 50054,
+    "caption": "ImageEdDate",
+    "position": {
+      "left": 0,
+      "top": 236,
+      "width": 480,
+      "height": 28
+    },
+    "alignment": 1,
+    "colorTab": {
+      "color0": 15527152,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": false,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "backgroundPic": "images/ss_ed_date.png",
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    }
+  },
+  "textview__22": {
+    "id": 50055,
+    "caption": "ImageEdWeather",
+    "position": {
+      "left": 188,
+      "top": 282,
+      "width": 168,
+      "height": 24
+    },
+    "alignment": 1,
+    "colorTab": {
+      "color0": 15527152,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": false,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "backgroundPic": "images/ss_ed_weather.png",
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    }
+  },
+  "textview__23": {
+    "id": 50056,
+    "caption": "ImageEdTh",
+    "position": {
+      "left": 0,
+      "top": 326,
+      "width": 480,
+      "height": 28
+    },
+    "alignment": 1,
+    "colorTab": {
+      "color0": 15527152,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": false,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "backgroundPic": "images/ss_ed_th.png",
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    }
+  },
+  "textview__24": {
+    "id": 50057,
+    "caption": "ImageEdBar",
+    "position": {
+      "left": 16,
+      "top": 396,
+      "width": 452,
+      "height": 40
+    },
+    "alignment": 1,
+    "colorTab": {
+      "color0": 15527152,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": false,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "backgroundPic": "images/ss_ed_bar.png",
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    }
+  },
+  "textview__25": {
+    "id": 50058,
+    "caption": "ImageSsEditDoneBg",
+    "position": {
+      "left": 164,
+      "top": 428,
+      "width": 152,
+      "height": 44
+    },
+    "alignment": 1,
+    "colorTab": {
+      "color0": 15527152,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 16,
+    "touchable": false,
+    "bold": false,
+    "italic": false,
+    "text": "",
+    "visible": false,
+    "rollEnable": false,
+    "rollDirection": 1,
+    "rollIntervalTime": 150,
+    "rollStep": 5,
+    "backgroundPic": "images/btn_primary152x44.png",
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    }
+  },
+  "button__1": {
+    "id": 20020,
+    "caption": "ButtonSsEditDone",
+    "position": {
+      "left": 164,
+      "top": 428,
+      "width": 152,
+      "height": 44
+    },
+    "alignment": 5,
+    "colorTab": {
+      "color0": 1053722,
+      "color1": 1053722,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    },
+    "fontSize": 20,
+    "text": "完成",
+    "touchable": true,
+    "visible": false,
+    "picTab": {},
+    "longClickTimeOut": -1,
+    "longClickIntervalTime": -1,
+    "bgColorTab": {
+      "color0": -1,
+      "color1": -1,
+      "color2": -1,
+      "color3": -1,
+      "color4": -1
+    }
+  }
+}

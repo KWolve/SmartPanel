@@ -1,0 +1,35 @@
+# 构建产物与内部资料（不进公开仓）
+.fun/
+.fsc/
+out/
+reports/
+temp/
+temp_*/
+proto_render/
+proto_shots/
+参考资料/
+
+# 工具自带二进制
+fun.exe
+fui.exe
+*.ftu.bak
+
+# 锁文件里含依赖授权信息（accessKey），不公开
+.fun-lock.json
+.fsc-lock.json
+
+# 内部测试记录
+testreport1.md
+temp_*.png
+temp_*.json
+
+# 常规
+*.log
+*.o
+*.a
+*.so
+*.img
+.DS_Store
+__pycache__/
+.vscode/
+.settings/
