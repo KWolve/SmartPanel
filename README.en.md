@@ -8,12 +8,14 @@
 
 ---
 
-## In one line: turn the wall switch into a smart panel that talks back
+## In one line: your wall switch becomes a cloud photo frame — and an electronic fish tank
 
 A **4-inch 480×480 Linux touch panel** that drops into a standard **86-box**:
-**3 × 10 A relays**, **one-tap whole-room scenes**, **native Home Assistant integration**
-(Domoticz works too), **2–4 panels tiled into one video wall**, and **scan-to-upload photos**
-from your phone.
+while it's working it's a **3 × 10 A relay + scene control panel**
+(**native Home Assistant integration**, Domoticz works too);
+when it's idle it's a **cloud photo frame** and an **electronic fish tank** —
+scan a QR code to push photos from your phone, or loop a video clip and let the wall become
+moving artwork. **2–4 panels** can also be tiled into one **video wall** for storefronts and showrooms.
 
 **Boots in 3 seconds. Commissioned by phone in 30 seconds — no unboxing, no laptop on site.**
 
@@ -46,7 +48,7 @@ from your phone.
 | 2 | **Native Home Assistant / Domoticz** | Power it on, connect to your broker, and **3 switch entities appear automatically** in HA (named exactly as on the panel). **Zero code, zero custom integration** |
 | 3 | **Scan, paste, done — 30 seconds** | No unboxing to reconfigure: the panel shows a QR code → scan it to open the **on-panel web page** → paste broker address and token → live immediately |
 | 4 | **Tile several into one wall** | 2–4 panels side by side become one large picture. Storefront backdrop walls, showroom loops, ad slots — with **no server required** (the master broadcasts the time base) |
-| 5 | **More than a switch** | Idles into a clock / photo frame; scan a mini-program QR to push photos; full screen-off window at night; separate working/screensaver brightness |
+| 5 | **More than a switch** | When it's idle it's a **cloud photo frame** (scan to upload from your phone, auto-rotating) and an **electronic fish tank** (loop a clip — moving artwork on the wall); full screen-off window at night; separate working/screensaver brightness |
 | 6 | **Easy to install, easy to mass-produce** | Standard 86-box flush mount; **one-tap 180° flip** (screen + touch + video rotate together, so it works under a ceiling); factory-default file means **it can go live straight out of the box** |
 | 7 | **Built to be extended** | Full source, MIT-licensed, plus the official **FlyThings MCP** (your AI assistant edits UI / builds / packages / captures real device screens) — no waiting on a vendor for a UI tweak |
 
@@ -79,11 +81,14 @@ Start it: `python tools/video_wall/web/server.py --port 8796` → open `http://<
 
 <img src="docs/release_shots/07_video_wall_tool_ui.png" width="720" alt="Splitter tool">
 
-### 2.3 Album / screensaver: give the wall some atmosphere
+### 2.3 Cloud photo frame / electronic fish tank: give the wall some atmosphere
 
-- The panel shows a QR code → scan it with your phone to upload photos → they land on the panel and rotate in the screensaver (mini-program supported too)
-- Or just drop files on a **TF card / USB stick** — plug and play
-- Screensaver: **big clock + date + optional temperature/humidity / weather / status bar**, each item can be added, removed and repositioned
+It is at its best when it isn't working:
+
+- **Cloud photo frame**: the panel shows a QR code → scan it with your phone to upload photos (mini-program supported too) → they land on the panel and rotate automatically
+- **Electronic fish tank / moving artwork**: pick a video as the screensaver and loop it — an aquarium, falling snow, city nightscape or a brand film. The wall becomes moving artwork
+- Or just drop files on a **TF card / USB stick** — plug and play, no reconfiguration to change content
+- The screensaver can layer content too: **big clock + date + optional temperature/humidity / weather / status bar**, each item can be added, removed and repositioned
 - Configurable pacing: N seconds per photo (default 15 s), clip interval (0 = next when finished)
 
 ---
