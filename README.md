@@ -33,7 +33,8 @@
 
 | 用途 | 位置 |
 |---|---|
-| **release 版（用户获取/安装处）** | `https://gitee.com/Kwolve/flythingsmcp_release` |
+| **release 版（用户获取/安装处）** | `https://github.com/KWolve/FlyThingsMCP` |
+| 国内镜像（Gitee） | `https://gitee.com/Kwolve/flythingsmcp_release` |
 | 本机路径（同工作区校验用） | `tools/FlyThings_mcp_release/` |
 
 安装与接入方式以该 release 仓的 README 为准（把 MCP 接入你的 AI 客户端即可）。

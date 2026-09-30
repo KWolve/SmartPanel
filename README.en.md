@@ -35,7 +35,8 @@ references it, never vendors it.
 
 | Purpose | Location |
 |---|---|
-| **Release version (where users get it)** | `https://gitee.com/Kwolve/flythingsmcp_release` |
+| **Release version (where users get it)** | `https://github.com/KWolve/FlyThingsMCP` |
+| China mirror (Gitee) | `https://gitee.com/Kwolve/flythingsmcp_release` |
 | Local path (same workspace, for verification) | `tools/FlyThings_mcp_release/` |
 
 Install / integration steps follow that release repo's README (plug the MCP into your AI client).
