@@ -1,0 +1,1433 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>多屏拼接 · 视频切块工具</title>
+<link rel="icon" href="data:image/gif;base64,R0lGODlhAQABAIAAAHvgowAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==">
+<style>
+  :root{--bg:#141419;--card:#1d1d24;--card2:#17171f;--line:#2e2e38;--tx:#ECECF0;--sub:#9AA0A6;
+        --acc:#7BE0A3;--acc2:#7BB6E0;--warn:#E0A37B;--bad:#FF6B6B;}
+  *{box-sizing:border-box;font-family:"Microsoft YaHei",system-ui,sans-serif}
+  body{margin:0;background:var(--bg);color:var(--tx);display:flex;gap:14px;padding:14px;align-items:flex-start}
+  .col{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px}
+  .col.left{flex:1 1 auto;min-width:0}
+  .col.right{flex:0 0 400px;max-width:400px}
+  body.bare .col.right{display:none}
+  body.bare #canvasBox{overflow:visible}
+  h1{margin:0;font-size:17px;color:var(--acc);display:inline-block}
+  h3{margin:16px 0 8px;font-size:14px;color:var(--acc);font-weight:700}
+  h3:first-child{margin-top:0}
+  .hd{display:flex;align-items:center;gap:10px;flex-wrap:wrap;border-bottom:1px solid var(--line);
+      padding-bottom:10px;margin-bottom:12px}
+  .hd .sub{font-size:12px;color:var(--sub)}
+  .grow{flex:1 1 auto}
+  label{font-size:13px;color:var(--sub)}
+  input,select,button{font-size:14px;padding:6px 8px;border-radius:8px;border:1px solid var(--line);
+        background:#12121a;color:var(--tx)}
+  input[type=range]{padding:0;background:transparent;border:none;accent-color:var(--acc)}
+  input[type=checkbox]{accent-color:var(--acc);width:15px;height:15px;vertical-align:-2px}
+  button{cursor:pointer;background:var(--acc);color:#10141A;border:none;font-weight:700}
+  button.ghost{background:#22222c;color:var(--tx);font-weight:400}
+  button.mini{padding:3px 8px;font-size:12px;border-radius:6px}
+  button:disabled{opacity:.45;cursor:not-allowed}
+  .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  .row.tight{gap:6px}
+  .filebtn{display:inline-block;background:var(--acc);color:#10141A;font-weight:700;font-size:14px;
+        padding:7px 12px;border-radius:8px;cursor:pointer}
+  .hint{font-size:12px;color:var(--sub)}
+  .mono{font-family:Consolas,monospace;font-size:12px;color:var(--sub)}
+  #canvasBox{position:relative;background:#000;margin-top:8px;overflow:hidden;
+        border:1px solid var(--line);border-radius:6px;line-height:0;display:flex;justify-content:center}
+  #cv{display:block;cursor:grab;touch-action:none;outline:none}
+  #cv.grabbing{cursor:grabbing}
+  #cv:focus-visible{box-shadow:0 0 0 2px var(--acc) inset}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th,td{text-align:left;padding:5px 4px;border-bottom:1px solid var(--line)}
+  th{font-weight:400;color:var(--sub);font-size:12px}
+  .ok{color:var(--acc)}.bad{color:var(--bad)}.warn{color:var(--warn)}
+  #log{font-family:Consolas,monospace;font-size:12px;color:var(--sub);white-space:pre-wrap;
+       max-height:96px;overflow:auto;margin-top:8px}
+  .seg{display:inline-block;margin:8px 8px 0 0;text-align:center;font-size:12px;color:var(--sub);
+       background:var(--card2);border:1px solid var(--line);border-radius:8px;padding:6px}
+  .seg img{border:1px solid var(--line);border-radius:4px;display:block;background:#000;margin:0 auto}
+  .seg .t{color:var(--tx);margin:4px 0 2px}
+  #geoBox{font-family:Consolas,monospace;font-size:12px;color:var(--sub);margin-top:6px;
+        background:#12121a;border:1px solid var(--line);border-radius:6px;padding:6px 8px;line-height:1.6}
+  #covMsg{margin-top:6px;font-size:13px}
+  .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+  .chip{display:inline-flex;align-items:center;gap:6px;font-size:12px;background:var(--card2);
+        border:1px solid var(--line);border-radius:999px;padding:3px 6px 3px 10px;cursor:pointer;color:var(--tx)}
+  .chip:hover{border-color:var(--acc)}
+  .chip.on{border-color:var(--acc);background:#1d2a22}
+  .chip i{font-style:normal;color:var(--sub)}
+  .chip .x{color:var(--sub);font-weight:700;padding:0 4px}
+  .chip .x:hover{color:var(--bad)}
+  .danger{background:#3a2024;color:#FF6B6B;border:1px solid #6b2a2a;font-weight:700}
+  .danger:hover{border-color:var(--bad)}
+  .fx{display:inline-flex;align-items:center;gap:5px;background:var(--card2);border:1px solid var(--line);
+      border-radius:999px;padding:2px 9px;font-size:12px;cursor:pointer;color:var(--sub);
+      font-family:Consolas,monospace}
+  .fx.on{border-color:var(--acc);background:#1d2a22;color:var(--tx)}
+  .fx b{color:var(--acc)}
+  .bar{height:6px;background:#12121a;border:1px solid var(--line);border-radius:99px;overflow:hidden;margin-top:6px}
+  .bar>i{display:block;height:100%;background:var(--acc);width:0}
+  details.help{font-size:12px;color:var(--sub)}
+  details.help summary{cursor:pointer;color:var(--acc2)}
+  details.help div{margin-top:6px;line-height:1.7;background:#12121a;border:1px solid var(--line);
+        border-radius:8px;padding:8px 10px;max-width:720px}
+  details.help kbd{background:#22222c;border:1px solid var(--line);border-radius:4px;padding:0 4px;
+        font-family:Consolas,monospace}
+  .drop{position:fixed;inset:0;background:rgba(20,20,25,.88);border:3px dashed var(--acc);z-index:99;
+        display:none;align-items:center;justify-content:center;font-size:20px;color:var(--acc)}
+  body.dragging .drop{display:flex}
+  .spin{display:inline-block;width:12px;height:12px;border:2px solid var(--line);border-top-color:var(--acc);
+        border-radius:50%;animation:sp .8s linear infinite;vertical-align:-2px}
+  @keyframes sp{to{transform:rotate(360deg)}}
+  /* ── 组的视频队列（每个 = 一个 clip）────────────────────────── */
+  .qbox{margin-top:6px}
+  .q{display:flex;align-items:center;gap:8px;background:var(--card2);border:1px solid var(--line);
+     border-radius:8px;padding:5px 7px;margin-top:6px;cursor:pointer;font-size:12px;color:var(--sub)}
+  .q:hover{border-color:#3a3a48}
+  .q.on{border-color:var(--acc);background:#1d2a22}
+  .q .qn{color:var(--acc);font-weight:700;font-family:Consolas,monospace;width:18px;text-align:right}
+  .q img{width:48px;height:48px;background:#000;border:1px solid var(--line);border-radius:4px;display:block;object-fit:cover}
+  .q .qname{width:88px;padding:3px 5px;font-size:13px;font-family:Consolas,monospace}
+  .q .qsrc{flex:1 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--tx)}
+  .q .qmeta{font-family:Consolas,monospace;white-space:nowrap}
+  .q.bad{border-color:var(--bad)}
+  .q .badge{font-size:11px;border:1px solid var(--acc2);color:var(--acc2);border-radius:999px;padding:0 6px}
+  .clipcard{border:1px solid var(--line);border-radius:8px;padding:8px;margin-top:8px;background:var(--card2)}
+  .cliph{font-size:13px;color:var(--tx);margin-bottom:2px}
+  .cliph b{color:var(--acc)}
+  .cliph .m{color:var(--sub);font-size:12px;font-family:Consolas,monospace}
+  .segrow{display:flex;flex-wrap:wrap}
+  .clipsum{font-size:13px;margin-top:8px}
+  @media (max-width:1000px){
+    body{flex-direction:column;padding:10px}
+    .col.left,.col.right{flex:1 1 auto;width:100%;max-width:none}
+  }
+</style>
+</head>
+<body>
+<div class="drop">松手即导入视频</div>
+
+<div class="col left">
+  <div class="hd">
+    <h1>多屏拼接 · 视频切块</h1>
+    <span class="sub">导入视频 → 摆绿框 → 导出分段 → 分发到屏</span>
+    <span class="grow"></span>
+    <label><input type="checkbox" id="showOverlay" checked> 显示绿框</label>
+    <label title="框外 + 缝内（会丢弃的部分）蒙版的压暗强度">压暗
+      <input type="range" id="dim" min="0" max="90" step="5" value="50"
+             style="width:76px;vertical-align:middle">
+      <span id="dimTxt">50%</span></label>
+    <details class="help">
+      <summary>使用说明 / 快捷键</summary>
+      <div>
+        <b>① 导入视频</b>：选文件或直接把视频拖到页面上（已导入过的点一下名字即可再次使用，不用重传）。<br>
+        <b>② 摆框（每屏一个窗口）</b>：视频画面固定不动，<b>每屏的绿框可以各自独立拖动</b>
+        （拖到哪台屏就只动那一个框），<b>拖空白处 / 按住 <kbd>Alt</kbd> / 勾「拖整组」= 整组一起动</b>，
+        <b>滚轮/缩放条 = 改窗口大小</b>（各屏边长始终一致 → 缩放一致）。<br>
+        <b>屏缝</b>：物理拼缝补偿 —— 相邻两屏之间可以留出 N px 的「缝」，缝里的源画面
+        <b>不导出（丢弃）</b>，这样两台屏拼起来画面才是连续的；缝 = 0（默认）= 无缝，与旧版完全一致。<br>
+        每个窗口都被钳制在视频内 → 不会出现黑边。绿框里显示什么，导出的那段就是什么；
+        框外 + 缝内那层压暗（强度可用顶栏「压暗」滑条调，默认 50%）= 会<b>丢弃</b>的部分。<br>
+        <b>③ 导出分段</b>：出 seg_1..N.mp4（每段 480×480、参数完全一致、首帧 IDR）+ wall.json；
+        再到右侧「分发到屏幕」。<br>
+        <b>快捷键</b>（点一下画面后生效）：<kbd>方向键</kbd> 微调 2px（按住 <kbd>Shift</kbd> = 20px；
+        编码要求裁剪矩形偶数对齐，所以最小步长是 2px）、
+        <kbd>+</kbd>/<kbd>-</kbd> 缩放、<kbd>M</kbd> 铺满、<kbd>C</kbd> 居中、
+        <kbd>[</kbd>/<kbd>]</kbd> 前后一帧。<br>
+        方向键 = 只动<b>当前选中的那一屏</b>（点一下画面里的框即选中；按 <kbd>Alt</kbd>+方向键 = 整组）。
+      </div>
+    </details>
+  </div>
+
+  <h3>① 导入视频（可多个 → 形成一个组的轮播队列）</h3>
+  <div class="row">
+    <label class="filebtn">选择视频<input type="file" id="file" accept="video/*" hidden></label>
+    <button class="ghost" onclick="loadList()">刷新列表</button>
+    <span id="upMsg" class="hint">支持 mp4 / mov / mkv 等（直接拖到页面上也行）</span>
+  </div>
+  <div class="bar" id="upBarWrap" style="display:none"><i id="upBar"></i></div>
+  <div id="srclist" class="chips"></div>
+  <div class="hint" style="margin-top:4px">点视频名 = <b>加入队列</b>并选中它摆框（已在队列里的再点一次 = 切成当前编辑）</div>
+  <h3>② 组的视频队列（顺序 = 轮播顺序；每个 = 一个 clip，长短不限）</h3>
+  <div class="row">
+    <span class="hint">改名（= cN 子目录名，只允许字母/数字/_.-）/ 上下移 / 删除；点一行 = 选中它摆框</span>
+    <span class="grow"></span>
+    <button class="ghost mini" onclick="applyCropToAll()">当前框套用全部</button>
+    <button class="ghost mini" onclick="clearQueue()">清空队列</button>
+  </div>
+  <div id="queue" class="qbox"></div>
+  <div id="qMsg" class="hint" style="margin-top:4px">队列为空：先在①里导入并点一下视频名</div>
+
+  <div class="row" style="margin-top:10px">
+    <span class="hint">预览时间</span>
+    <input id="tl" type="range" min="0" max="1000" value="0" style="flex:1 1 220px;min-width:180px">
+    <span id="tlTxt" class="mono">-</span>
+    <input id="tsec" type="number" step="0.04" value="0" style="width:74px"> s
+    <button class="ghost mini" onclick="stepFrame(-1)">◀ 帧</button>
+    <button class="ghost mini" onclick="stepFrame(1)">帧 ▶</button>
+    <button class="ghost mini" onclick="loadFrame()">刷新画面</button>
+  </div>
+
+  <h3>③ 每屏窗口 = 裁剪窗口（每屏可独立拖动 / 滚轮缩放）</h3>
+  <div class="row">
+    <span>分割数量</span>
+    <select id="cols"><option value="2">1×2</option><option value="3">1×3</option><option value="4">1×4</option></select>
+    <button onclick="fitMax()">铺满（最大框）</button>
+    <button class="ghost" onclick="centerCrop()">居中</button>
+    <button class="ghost" onclick="zoomBy(1.1)">放大 +10%</button>
+    <button class="ghost" onclick="zoomBy(1/1.1)">缩小 −10%</button>
+    <button class="ghost" onclick="resetCrop()">重置</button>
+    <span class="hint">拖框=只动那一屏（拖空白=整组）</span>
+  </div>
+  <div class="row" style="margin-top:6px">
+    <span class="hint">屏缝</span>
+    <input id="gap" type="number" step="2" min="0" value="0" style="width:76px">
+    <span class="hint">px 相邻两屏之间不显示的区域（物理拼缝；0 = 无缝）</span>
+    <button class="ghost mini" onclick="applyGap($('gap').value)">应用缝</button>
+    <button class="ghost mini" onclick="applyGap(0)">缝=0（无缝）</button>
+    <button class="ghost mini" onclick="alignY()">对齐 y</button>
+    <label class="hint" title="勾上后拖动 = 整组一起动（也可临时按住 Alt）">
+      <input type="checkbox" id="dragAll"> 拖整组</label>
+  </div>
+  <div class="row" style="margin-top:6px">
+    <span class="hint">缩放</span><input id="zoom" type="range" min="0" max="1000" value="0" style="flex:1 1 220px;min-width:180px">
+    <span id="zoomTxt" class="hint">-</span>
+  </div>
+  <div class="row tight" style="margin-top:6px">
+    <span class="hint">外框精确输入（源像素）</span>
+    x<input id="cx" type="number" step="2" style="width:76px">
+    y<input id="cy" type="number" step="2" style="width:76px">
+    w<input id="cw" type="number" step="2" style="width:76px">
+    <button class="ghost mini" onclick="applyInputs()">应用</button>
+    <span class="hint">（按"无缝 N 等分"重排；w 必须 = N×h）</span>
+  </div>
+  <div id="frames" class="chips"></div>
+  <div class="hint" style="margin-top:4px">点一下某一屏 = <b>选中它</b>（方向键 2px / Shift 20px 只动这一屏；
+    按住 Alt 或勾「拖整组」= 整组一起动）；选中屏在画面里是实线加粗框</div>
+
+  <div id="canvasBox"><canvas id="cv" tabindex="0"></canvas></div>
+  <div id="covMsg"></div>
+  <div id="geoBox">-</div>
+
+  <div class="row" style="margin-top:12px">
+    <span>组名</span><input id="group" value="zksw-wall" style="width:170px">
+    <button id="btnExport" onclick="doSplit()">④ 导出整组（c1..cK + playlist.json）</button>
+    <button class="ghost mini" onclick="previewGroup()">预览组清单</button>
+    <span id="splitMsg" style="font-size:13px;color:var(--sub)"></span>
+  </div>
+  <div class="row"><span class="hint">组名 = 设备上 <code>/mnt/sdnand/wall/&lt;组名&gt;/</code>；默认取第一个源片名（非法字符自动清洗）</span></div>
+  <div id="segs"></div>
+  <div id="log"></div>
+</div>
+
+<div class="col right">
+  <h3>⑤ 设备（扫描 / 手填）</h3>
+  <div class="row">
+    <button onclick="doScan()">扫描设备</button>
+    <button class="ghost mini" onclick="setAllDev(true)">全选</button>
+    <button class="ghost mini" onclick="setAllDev(false)">全不选</button>
+    <span id="devCnt" class="hint">-</span>
+  </div>
+  <div class="row" style="margin-top:6px">
+    <input id="manual" placeholder="手填 IP，逗号分隔，如 192.0.2.108,192.0.2.71" style="flex:1;min-width:0">
+    <button class="ghost" onclick="addManual()">加入</button>
+  </div>
+  <table id="devtab">
+    <thead><tr><th style="width:34px">选用</th><th>IP</th><th>型号/面板</th><th style="width:62px">播第几段</th><th>状态</th></tr></thead>
+    <tbody></tbody>
+  </table>
+  <div class="hint" style="margin-top:4px">设备列表会记住（下次打开自动带出）</div>
+
+  <h3>⑥ 分发到屏幕（整组递归推送：含 playlist.json）</h3>
+  <div class="row">
+    <button onclick="doPush()">一键分发整组</button>
+    <button class="ghost" onclick="doStatus()">核对播放</button>
+    <span class="hint">用④里的组名 + 当前选中的已导出分组</span>
+  </div>
+  <div class="row" style="margin-top:6px">
+    <label class="hint" title="推送前先把设备上 /mnt/sdnand/wall 里的旧拼接素材删掉（换视频时不残留）">
+      <input type="checkbox" id="clearWall"> 推送前先清空旧拼接素材</label>
+  </div>
+  <div class="row" style="margin-top:8px">
+    <span class="hint">清空设备内的视频</span>
+    <select id="clearScope">
+      <option value="wall">拼接素材（/mnt/sdnand/wall）</option>
+      <option value="video">屏保视频（/mnt/sdnand/video）</option>
+      <option value="album">相册（/mnt/sdnand/album）</option>
+      <option value="all">全部（拼接 + 屏保 + 相册）</option>
+    </select>
+    <button class="ghost mini" onclick="doClear(true)">预览将删内容</button>
+    <button class="ghost mini danger" onclick="doClear(false)">清空（不可撤销）</button>
+  </div>
+  <div id="clearMsg" class="hint" style="margin-top:4px">先「预览将删内容」（只看不删），确认后再「清空」；
+    清空会停一下应用、删文件、复位拼接配置并重启应用</div>
+  <div id="pushes" style="font-size:13px;margin-top:8px"></div>
+
+  <h3>⑦ 已导出的分组</h3>
+  <div class="row">
+    <button class="ghost mini" onclick="loadGroups()">刷新</button>
+    <span class="hint">点分组 = 设为当前分发内容（v2 组会列出每个 clip）</span>
+  </div>
+  <div id="groups" class="chips"></div>
+</div>
+
+<script>
+/* ============================================================================
+   单一事实源：CROP = [x,y,w,h]（源像素，恒有 w = cols*h）
+     · 画绿框用它  · 发 /api/split 也用它  →  所见即所出
+   alignCrop / maxCrop / cropFromZoom 与后端 split_wall.py 逐行同式
+   （输入已是"正规形"时两个实现输出完全一致 → 后端不会改用户的矩形）
+============================================================================ */
+const PANEL = 480;
+let SRC = '', INFO = null, IMG = null, COLS = 2, K = 1;
+/* 每屏窗口（2026-09-28 v5）：FRAMES = N 个 [x,y,s,s]（源像素，每屏一个窗口）
+   · 拖动 = 只动那一屏（选中屏）；拖空白 / 按住 Alt / 勾「拖整组」= 整组一起动
+   · 相邻两屏之间可以留「缝」（缝内源画面不导出 = 丢弃）；缝=0 且连着摆 = 与旧口径逐像素一致
+   · CROP = 外框（旧接口兼容：crop() 返回它，setCrop() 仍按"无缝 N 等分"摆位） */
+let FRAMES = [], SEL = 0, DRAGALL = false, CROP = [0, 0, 2, 2];
+let GROUP = '', GROUPS = [], DEV = [], VIEWW = 0, BUSY = false;
+/* v2：组的视频队列（每个 = 一个 clip，从 c1 起；可改名/上下移/删除） */
+let QUEUE = [], CUR = -1, LAST = null, GROUPT = false, UID = 1;
+const Q = new URLSearchParams(location.search);
+let OVERLAY = Q.get('overlay') !== '0';          // ?overlay=0 → 不画框/不压暗（截图比对用）
+let DIM = Q.has('dim') ? Math.max(0, Math.min(90, +Q.get('dim') || 0)) : 50;
+                                                // 丢弃区蒙版压暗强度（%，0~90；?dim= 可指定）
+const $ = id => document.getElementById(id);
+const log = m => { $('log').textContent += m + '\n'; $('log').scrollTop = 1e9; };
+const SW = () => (INFO ? INFO.width : 2), SH = () => (INFO ? INFO.height : 2);
+const DUR = () => (INFO && INFO.duration ? INFO.duration : 0);
+const FPS = () => (INFO && INFO.fps ? INFO.fps : 25);
+window.__err = null;
+window.onerror = (m, s, l) => { window.__err = String(m); };
+const fmtSize = b => (b >= 1048576 ? (b / 1048576).toFixed(1) + ' MB' : (b / 1024).toFixed(0) + ' KB');
+
+/* 上次用的设置（分割数量 / 组名 / 设备 / 是否显示绿框） */
+const LS = {
+  get(k, d) { try { const v = localStorage.getItem('vw_' + k); return v === null ? d : JSON.parse(v); } catch (e) { return d; } },
+  set(k, v) { try { localStorage.setItem('vw_' + k, JSON.stringify(v)); } catch (e) { /* noop */ } },
+};
+
+const eveni = v => { v = Math.round(v); return v - (((v % 2) + 2) % 2); };   // 取整并对齐偶数
+const canvasSize = cols => [cols * PANEL, PANEL];
+const clampSide = (v, lim, s) => Math.min(Math.max(0, v), Math.max(0, eveni(lim - s)));
+const centerOf = r => [r[0] + r[2] / 2, r[1] + r[3] / 2];
+
+/* ── 每屏窗口（FRAMES）基础操作 ─────────────────────────────────── */
+function normFrames(fs, sw0, sh0, n0) {         // 同边长（= 同缩放）+ 偶数 + 钳制在源内
+  const sw = Math.max(2, sw0 || SW()), sh = Math.max(2, sh0 || SH()), n = Math.max(1, n0 || COLS);
+  const src = (fs && fs.length) ? fs : [];
+  const s = Math.max(2, Math.min(eveni((src[0] && src[0][3]) || Math.min(sw / n, sh)),
+                                 eveni(sw), eveni(sh)));
+  const out = [];
+  for (let i = 0; i < n; i++) {
+    const f = src[Math.min(i, src.length - 1)] ||
+      [eveni((sw - n * s) / 2), eveni((sh - s) / 2), s, s];
+    out.push([clampSide(eveni(f[0]), sw, s), clampSide(eveni(f[1]), sh, s), s, s]);
+  }
+  return out;
+}
+function rectToFrames(r, sw0, sh0, n0) {        // 旧口径矩形（无缝 N 等分）→ 每屏窗口
+  const n = Math.max(1, n0 || COLS), h = Math.max(2, eveni(r[3]));
+  return normFrames(Array.from({ length: n }, (_, i) => [r[0] + i * h, r[1], h, h]), sw0, sh0, n);
+}
+function framesToRect(fs) {                     // 每屏窗口 → 外框（无缝相连时 = 旧 crop）
+  return [Math.min(...fs.map(f => f[0])), Math.min(...fs.map(f => f[1])),
+          Math.max(...fs.map(f => f[0] + f[2])) - Math.min(...fs.map(f => f[0])),
+          Math.max(...fs.map(f => f[1] + f[3])) - Math.min(...fs.map(f => f[1]))];
+}
+const frameH = () => (FRAMES[0] ? FRAMES[0][3] : 2);
+const gapsPx = () => FRAMES.slice(1).map((f, i) => Math.max(0, f[0] - (FRAMES[i][0] + FRAMES[i][3])));
+const gapsY = () => FRAMES.slice(1).map((f, i) => FRAMES[i + 1][1] - FRAMES[i][1]);
+const isRegular = () => !!FRAMES.length && FRAMES.every(f => f[1] === FRAMES[0][1]) &&
+  gapsPx().every(g => g === 0);
+const framesForClip = c => (c && c.frames && c.frames.length)
+  ? normFrames(c.frames, c.info ? c.info.width : SW(), c.info ? c.info.height : SH(), COLS)
+  : (c && c.info ? rectToFrames(maxCropWH(c.info, COLS), c.info.width, c.info.height, COLS)
+                 : rectToFrames(maxCropWH(INFO, COLS)));
+function autoFit() {                            // 整组推回源内（保持相对摆位）
+  const r = framesToRect(FRAMES);
+  let dx = 0, dy = 0;
+  if (r[2] > SW()) dx = -r[0];
+  else if (r[0] < 0) dx = -r[0];
+  else if (r[0] + r[2] > SW()) dx = SW() - (r[0] + r[2]);
+  if (r[3] > SH()) dy = -r[1];
+  else if (r[1] < 0) dy = -r[1];
+  else if (r[1] + r[3] > SH()) dy = SH() - (r[1] + r[3]);
+  if (dx || dy) FRAMES = FRAMES.map(f => [eveni(f[0] + dx), eveni(f[1] + dy), f[2], f[3]]);
+  FRAMES = FRAMES.map(f => [clampSide(f[0], SW(), f[2]), clampSide(f[1], SH(), f[3]), f[2], f[3]]);
+}
+function commit() {                             // 统一提交：规范化 + 重算外框 + 同步 UI + 重画
+  FRAMES = normFrames(FRAMES);
+  autoFit();
+  SEL = Math.min(Math.max(0, SEL), Math.max(0, FRAMES.length - 1));
+  CROP = framesToRect(FRAMES);
+  syncCur(); syncUI(); renderFrames(); draw();
+}
+function setFrames(fs) { FRAMES = (fs && fs.length) ? fs.map(f => f.slice()) : []; commit(); }
+function alignCropWH(c, sw, sh) {                          // 对齐偶数 + 钳制在源内（显式给源尺寸）
+  sw = Math.max(2, sw | 0); sh = Math.max(2, sh | 0);
+  let x = Math.round(c[0]), y = Math.round(c[1]), w = Math.round(c[2]), h = Math.round(c[3]);
+  w = Math.min(Math.max(2, eveni(w)), Math.max(2, eveni(sw)));
+  h = Math.min(Math.max(2, eveni(h)), Math.max(2, eveni(sh)));
+  x = eveni(x); y = eveni(y);
+  if (x + w > sw) x = eveni(sw - w);
+  if (y + h > sh) y = eveni(sh - h);
+  if (x < 0) x = 0;
+  if (y < 0) y = 0;
+  if (x + w > sw) w = Math.max(2, eveni(sw - x));
+  if (y + h > sh) h = Math.max(2, eveni(sh - y));
+  return [x, y, w, h];
+}
+function alignCrop(c) { return alignCropWH(c, SW(), SH()); }   // 当前预览源
+function maxCropWH(info, cols) {                           // 最大框组（"铺满"）：h=min(源高, 源宽/N)
+  const sw = Math.max(2, (info ? info.width : 2) | 0);
+  const sh = Math.max(2, (info ? info.height : 2) | 0);
+  const n = Math.max(1, cols | 0);
+  let h = Math.min(eveni(sh), eveni(sw / n));
+  h = Math.max(2, h);
+  const w = n * h;
+  return alignCropWH([eveni((sw - w) / 2), eveni((sh - h) / 2), w, h], sw, sh);
+}
+function maxCrop(cols) { return maxCropWH(INFO, cols || COLS); }
+function cropFromZoom(zoom, pos) {                        // 由缩放反推（pos=框组中心）
+  const sw = SW(), sh = SH(), n = COLS, canvasW = canvasSize(n)[0];
+  if (!(zoom > 0)) return maxCrop();
+  const hMax = maxCrop()[3];
+  let h = Math.min(Math.max(2, eveni((canvasW / zoom) / n)), hMax);
+  const w = n * h;
+  let x, y;
+  if (pos) { x = eveni(pos[0] - w / 2); y = eveni(pos[1] - h / 2); }
+  else { x = eveni((sw - w) / 2); y = eveni((sh - h) / 2); }
+  return alignCrop([x, y, w, h]);
+}
+const zoomOf = () => PANEL / frameH();                     // 缩放 = 输出px/源px（每屏）
+const hMin = () => Math.max(2, eveni(Math.min(SH(), SW() / COLS) / 8));  // 最多放大 8 倍
+const hMax = () => maxCrop()[3];                            // 最小放大 = "铺满"档
+const tooSmall = () => !!INFO && (SW() < PANEL || SH() < PANEL);
+
+function setCrop(c) { setFrames(rectToFrames(alignCrop(c))); }   // 旧接口：按无缝 N 等分摆位
+function syncCur() {                                              // 当前窗口组 ↔ 队列项
+  if (CUR >= 0 && QUEUE[CUR]) QUEUE[CUR].frames = FRAMES.map(f => f.slice());
+}
+function fitMax() { setCrop(maxCrop()); }
+function resetCrop() { fitMax(); }
+function centerCrop() {                                           // 整组居中（保持各屏相对摆位）
+  const r = framesToRect(FRAMES);
+  shiftAll(eveni((SW() - r[2]) / 2) - r[0], eveni((SH() - r[3]) / 2) - r[1]);
+  commit();
+}
+function shiftAll(dx, dy) {                                       // 整组平移（整体钳制在源内）
+  if (!FRAMES.length) return;
+  const r = framesToRect(FRAMES);
+  const ddx = Math.min(Math.max(dx, -r[0]), Math.max(0, SW() - (r[0] + r[2])));
+  const ddy = Math.min(Math.max(dy, -r[1]), Math.max(0, SH() - (r[1] + r[3])));
+  FRAMES = FRAMES.map(f => [eveni(f[0] + ddx), eveni(f[1] + ddy), f[2], f[3]]);
+}
+function moveFrame(i, dx, dy) {                                   // 只动第 i 屏（独立移动）
+  const f = FRAMES[i];
+  if (!f) return;
+  FRAMES[i] = [clampSide(eveni(f[0] + dx), SW(), f[2]), clampSide(eveni(f[1] + dy), SH(), f[3]),
+               f[2], f[3]];
+}
+function nudge(dx, dy, all) {                                     // 微调（all=整组）
+  if (all || DRAGALL) shiftAll(dx, dy); else moveFrame(SEL, dx, dy);
+  commit();
+}
+function scaleFramesAbout(cx, cy, r) {                            // 以 (cx,cy) 为锚点统一缩放
+  const s = frameH(), s1 = Math.max(2, eveni(s * r)), k = s1 / s;
+  FRAMES = FRAMES.map(f => [eveni(cx + (f[0] - cx) * k), eveni(cy + (f[1] - cy) * k), s1, s1]);
+}
+function zoomBy(f) {                                              // 以框组中心为锚点改大小
+  const gc = centerOf(framesToRect(FRAMES));
+  const z0 = zoomOf(), z1 = Math.min(PANEL / hMin(), Math.max(PANEL / hMax(), z0 * f));
+  scaleFramesAbout(gc[0], gc[1], (PANEL / z1) / frameH());
+  commit();
+}
+function applyGap(v) {                                            // 屏缝：相邻两屏之间留 N px
+  if (!FRAMES.length) return;
+  const n = COLS, s = frameH(), g = Math.max(0, eveni(+v || 0));
+  let g1 = g;
+  if (n * s + (n - 1) * g1 > SW()) {
+    g1 = Math.max(0, eveni((SW() - n * s) / Math.max(1, n - 1)));
+  }
+  const x0 = FRAMES[0][0], y0 = FRAMES[0][1];
+  setFrames(FRAMES.map((f, i) => [x0 + i * (s + g1), y0, s, s]));
+  log('屏缝 = ' + g1 + ' px（相邻两屏之间丢弃 ' + g1 + ' px 源画面' +
+      (g1 !== g ? '；源宽不够，已从 ' + g + ' 收窄' : '') + '）');
+}
+function alignY() {                                               // 全部对齐到第一屏的 y
+  if (!FRAMES.length) return;
+  const y = FRAMES[0][1];
+  setFrames(FRAMES.map(f => [f[0], y, f[2], f[3]]));
+}
+function applyInputs() {                                       // 外框输入 → 无缝 N 等分重排
+  const w = +$('cw').value || CROP[2];
+  setCrop([+$('cx').value || 0, +$('cy').value || 0, w, Math.round(w / COLS)]);
+}
+function rebaseFrames(base, sw, sh) {                             // 换源尺寸时按比例套用窗口组
+  const r = framesToRect(base);
+  const k = Math.min(1, sw / Math.max(2, r[2]), sh / Math.max(2, r[3]));
+  const ox = Math.max(0, eveni((sw - r[2] * k) / 2)), oy = Math.max(0, eveni((sh - r[3] * k) / 2));
+  return normFrames(base.map(f => [ox + (f[0] - r[0]) * k, oy + (f[1] - r[1]) * k,
+                                   f[2] * k, f[2] * k]), sw, sh, base.length);
+}
+function renderFrames() {                                         // 每屏一览（点一下=选中该屏）
+  const box = $('frames');
+  if (!box) return;
+  box.innerHTML = '';
+  if (!FRAMES.length) { box.innerHTML = '<span class="hint">还没有窗口（先导入视频）</span>'; return; }
+  FRAMES.forEach((f, i) => {
+    const el = document.createElement('span');
+    el.className = 'fx' + (i === SEL ? ' on' : '');
+    el.title = '点一下选中 P' + (i + 1) + '（只动它）；方向键微调';
+    el.innerHTML = '<b>P' + (i + 1) + '</b> x=' + f[0] + ' y=' + f[1] + ' 边长' + f[3];
+    el.onclick = () => { SEL = i; commit(); };
+    box.appendChild(el);
+  });
+  const gp = gapsPx();
+  if (gp.some(g => g > 0)) {
+    const el = document.createElement('span');
+    el.className = 'fx';
+    el.innerHTML = '缝 ' + gp.join('/') + ' px';
+    box.appendChild(el);
+  }
+  if (!isRegular()) {
+    const el = document.createElement('span');
+    el.className = 'fx';
+    el.style.color = 'var(--warn)';
+    el.textContent = '各屏独立摆位（导出按每屏自己的窗口）';
+    box.appendChild(el);
+  }
+}
+
+/* ── 同步控件 + 文案 ─────────────────────────────────────────────── */
+function syncUI() {
+  if (!FRAMES.length) { $('cols').value = COLS; syncTL(); return; }
+  const z = zoomOf(), h0 = hMin(), h1 = hMax();
+  const v = Math.round(1000 * Math.log(Math.max(h0, frameH()) / h0) / Math.log(h1 / h0));
+  $('zoom').value = Math.min(1000, Math.max(0, v));
+  const gp = gapsPx();
+  $('zoomTxt').textContent = '缩放 ×' + z.toFixed(3) + '（输出/源）　框占源宽 ' +
+    (100 * CROP[2] / SW()).toFixed(1) + '%　每段 ' + PANEL + '×' + PANEL +
+    '　缝 ' + (gp.length ? gp.join('/') : '0') + ' px';
+  $('gap').value = (gp.length && gp.every(g => g === gp[0])) ? gp[0] : 0;
+  $('cx').value = CROP[0]; $('cy').value = CROP[1]; $('cw').value = CROP[2];
+  $('cols').value = COLS;
+  syncTL();
+}
+function syncTL() {
+  const d = DUR();
+  $('tl').max = d ? Math.round(d * 1000) : 1000;
+  $('tl').value = Math.round((+$('tsec').value || 0) * 1000);
+  $('tlTxt').textContent = (+$('tsec').value || 0).toFixed(2) + ' / ' + d.toFixed(2) + ' s' +
+    (INFO ? '　' + FPS().toFixed(2) + 'fps' : '');
+}
+function geomText() {
+  if (!FRAMES.length) return '源 ' + SW() + '×' + SH() + '　（还没有窗口）';
+  const [x, y, w, h] = CROP, cw = canvasSize(COLS)[0];
+  const gp = gapsPx();
+  const one = gp.length ? (gp.every(g => g === gp[0]) ? String(gp[0]) : gp.join('/')) : '0';
+  return '源 ' + SW() + '×' + SH() + '　' + COLS + ' 屏（每屏一个窗口）→ 输出 ' + cw + '×' + PANEL +
+    '<br>各屏窗口 ' + FRAMES.map((f, i) => 'P' + (i + 1) + '(' + f[0] + ',' + f[1] + ')').join(' ') +
+    '　边长 ' + frameH() + 'px　缝 ' + one + ' px' +
+    '<br>外框 = x=' + x + ' y=' + y + ' w=' + w + ' h=' + h +
+    '　缩放 ×' + zoomOf().toFixed(4) + '（输出/源）　每段 ' + PANEL + '×' + PANEL +
+    '<br>' + (isRegular() ? '当前无缝相连摆位（regular）→ 与旧版口径一致'
+                          : '当前各屏独立摆位（可留缝）→ 缝内不导出（丢弃）') +
+    '　框外丢弃' +
+    '<br>fps 25　H.264 Main/4.0 yuv420p bf=0 GOP=1s faststart　（滤镜链无 pad）';
+}
+
+/* ── 预览绘制 ────────────────────────────────────────────────────── */
+let DPR = window.devicePixelRatio || 1;
+function draw() {
+  const cv = $('cv'), box = $('canvasBox');
+  if (!INFO) { cv.width = cv.height = 10; cv.style.width = cv.style.height = '10px'; return; }
+  DPR = window.devicePixelRatio || 1;
+  const boxW = box.clientWidth || 560;
+  const maxH = VIEWW > 0 ? Infinity : Math.max(240, Math.round((window.innerHeight || 900) * 0.58));
+  K = VIEWW > 0 ? VIEWW / INFO.width : Math.min(boxW / INFO.width, maxH / INFO.height);
+  cv.style.margin = VIEWW > 0 ? '0' : '0 auto';
+  const vw = Math.max(2, Math.round(INFO.width * K)), vh = Math.max(2, Math.round(INFO.height * K));
+  cv.width = Math.round(vw * DPR); cv.height = Math.round(vh * DPR);
+  cv.style.width = vw + 'px'; cv.style.height = vh + 'px';
+  const ctx = cv.getContext('2d');
+  ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+  ctx.fillStyle = '#000'; ctx.fillRect(0, 0, vw, vh);
+  if (IMG) { ctx.imageSmoothingQuality = 'high'; ctx.drawImage(IMG, 0, 0, vw, vh); }
+  if (OVERLAY && FRAMES.length) {
+    // 框内 = 会导出；框外 + 缝内 = 丢弃（整体压暗；缝会被明确标出来）
+    ctx.save();
+    ctx.beginPath();
+    ctx.rect(0, 0, vw, vh);
+    FRAMES.forEach(f => ctx.rect(f[0] * K, f[1] * K, f[2] * K, f[3] * K));
+    ctx.fillStyle = 'rgba(0,0,0,' + (DIM / 100) + ')';   // 丢弃区压暗强度可调（顶栏「压暗」）
+    ctx.fill('evenodd');
+    ctx.restore();
+    ctx.font = '12px Consolas';
+    // 每屏一个绿框（可单独拖动；当前选中的那一屏：实线加粗 + ←当前）
+    FRAMES.forEach((f, i) => {
+      const rx = f[0] * K, ry = f[1] * K, rw = f[2] * K, rh = f[3] * K;
+      const on = (i === SEL);
+      ctx.lineWidth = on ? 2.5 : 1.5;
+      ctx.strokeStyle = on ? 'rgba(123,224,163,1)' : 'rgba(123,224,163,.7)';
+      ctx.setLineDash(on ? [] : [6, 4]);
+      ctx.strokeRect(rx + 1, ry + 1, Math.max(1, rw - 2), Math.max(1, rh - 2));
+      ctx.setLineDash([]);
+      const label = 'P' + (i + 1) + (on ? ' ←当前' : '') + '  ' + PANEL + '×' + PANEL;
+      const tw = label.length * 7 + 8;
+      ctx.fillStyle = 'rgba(0,0,0,.58)';
+      ctx.fillRect(rx + 4, ry + 4, tw, 16);
+      ctx.fillStyle = on ? 'rgba(123,224,163,1)' : 'rgba(236,236,240,.85)';
+      ctx.fillText(label, rx + 8, ry + 16);
+    });
+    // 缝（相邻两屏之间不显示的区域）
+    gapsPx().forEach((g, i) => {
+      if (g <= 0) return;
+      const x0 = (FRAMES[i][0] + FRAMES[i][3]) * K, x1 = FRAMES[i + 1][0] * K;
+      const y0 = Math.min(FRAMES[i][1], FRAMES[i + 1][1]) * K;
+      const y1 = Math.max(FRAMES[i][1] + FRAMES[i][3], FRAMES[i + 1][1] + FRAMES[i + 1][3]) * K;
+      ctx.strokeStyle = 'rgba(224,163,123,.95)';
+      ctx.lineWidth = 1; ctx.setLineDash([3, 3]);
+      ctx.beginPath();
+      ctx.moveTo(x0 + .5, y0); ctx.lineTo(x0 + .5, y1);
+      ctx.moveTo(x1 + .5, y0); ctx.lineTo(x1 + .5, y1);
+      ctx.stroke();
+      ctx.setLineDash([]);
+      const t = '缝 ' + g + 'px 丢弃';
+      ctx.fillStyle = 'rgba(0,0,0,.62)';
+      ctx.fillRect(x0 + 2, y0 + 2, t.length * 7 + 6, 15);
+      ctx.fillStyle = 'rgba(224,163,123,1)';
+      ctx.fillText(t, x0 + 5, y0 + 13);
+    });
+    if (Math.min(...FRAMES.map(f => f[1])) * K > 22) {
+      const rx = Math.min(...FRAMES.map(f => f[0])) * K;
+      ctx.fillStyle = 'rgba(0,0,0,.55)';
+      ctx.fillRect(Math.max(2, rx - 70), Math.max(2, Math.min(...FRAMES.map(f => f[1])) * K - 20), 64, 16);
+      ctx.fillStyle = 'rgba(236,236,240,.92)';
+      ctx.fillText('框外丢弃', Math.max(6, rx - 66), Math.max(14, Math.min(...FRAMES.map(f => f[1])) * K - 8));
+    }
+  }
+  $('geoBox').innerHTML = geomText();
+  renderFrames();
+  const m = $('covMsg');
+  if (tooSmall()) {
+    m.innerHTML = '<span class="bad">✗ 源视频 ' + SW() + '×' + SH() + ' 小于单屏 ' + PANEL + '×' + PANEL +
+      '，无法生成 1:1 清晰的 ' + PANEL + '×' + PANEL + ' 分段 —— 已禁止导出，请换更高分辨率素材</span>';
+  } else if (INFO) {
+    m.innerHTML = '<span class="ok">✓ ' + FRAMES.length + ' 个屏窗口都在视频内（结构上不可能有黑边）：' +
+      '每屏导出 = 它自己框内所见；框外' + (gapsPx().some(g => g > 0) ? ' + 缝内' : '') + '丢弃</span>';
+  }
+  $('btnExport').disabled = BUSY || !QUEUE.length || tooSmall();
+}
+
+/* ── 拖框 / 滚轮 ─────────────────────────────────────────────────── */
+(function () {
+  const cv = $('cv');
+  let drag = null;
+  const pos = e => { const r = cv.getBoundingClientRect(); return [(e.clientX - r.left) / K, (e.clientY - r.top) / K]; };
+  const hit = p => {                                    // 命中哪一屏（后画的优先）
+    for (let i = FRAMES.length - 1; i >= 0; i--) {
+      const f = FRAMES[i];
+      if (p[0] >= f[0] && p[0] <= f[0] + f[2] && p[1] >= f[1] && p[1] <= f[1] + f[3]) return i;
+    }
+    return -1;
+  };
+  cv.addEventListener('pointerdown', e => {
+    if (!INFO || !FRAMES.length) return;
+    cv.focus();
+    const i = hit(pos(e));
+    const all = DRAGALL || e.altKey || i < 0;           // 空白处 = 整组；Alt/勾选 = 整组
+    if (!all) SEL = i;
+    drag = { x: e.clientX, y: e.clientY, fs: FRAMES.map(f => f.slice()), i: all ? -1 : i };
+    commit();
+    cv.classList.add('grabbing'); cv.setPointerCapture(e.pointerId);
+  });
+  cv.addEventListener('pointermove', e => {
+    if (!drag) return;
+    const dx = (e.clientX - drag.x) / K, dy = (e.clientY - drag.y) / K;
+    FRAMES = drag.fs.map(f => f.slice());               // 从按下时的位置起算（绝对位移）
+    if (drag.i < 0) {
+      const r = framesToRect(FRAMES);
+      const ddx = Math.min(Math.max(dx, -r[0]), Math.max(0, SW() - (r[0] + r[2])));
+      const ddy = Math.min(Math.max(dy, -r[1]), Math.max(0, SH() - (r[1] + r[3])));
+      FRAMES = FRAMES.map(f => [eveni(f[0] + ddx), eveni(f[1] + ddy), f[2], f[3]]);
+    } else {
+      const f = FRAMES[drag.i];
+      FRAMES[drag.i] = [clampSide(eveni(f[0] + dx), SW(), f[2]),
+                        clampSide(eveni(f[1] + dy), SH(), f[3]), f[2], f[3]];
+    }
+    CROP = framesToRect(FRAMES); syncUI(); draw();
+  });
+  const up = () => { drag = null; cv.classList.remove('grabbing'); commit(); };
+  cv.addEventListener('pointerup', up); cv.addEventListener('pointercancel', up);
+  cv.addEventListener('wheel', e => {
+    if (!INFO || !FRAMES.length) return;
+    e.preventDefault();
+    const p = pos(e);                                   // 鼠标下的源坐标保持不动
+    const z0 = zoomOf(), f = (e.deltaY > 0 ? 1 / 1.08 : 1.08);
+    const z1 = Math.min(PANEL / hMin(), Math.max(PANEL / hMax(), z0 * f));
+    scaleFramesAbout(p[0], p[1], (PANEL / z1) / frameH());
+    commit();
+  }, { passive: false });
+})();
+$('cols').onchange = e => { COLS = +e.target.value; LS.set('cols', COLS); refitClips(); setCrop(maxCrop()); };
+$('zoom').oninput = e => {
+  if (!FRAMES.length) return;
+  const h0 = hMin(), h1 = hMax();
+  const s1 = Math.max(2, eveni(h0 * Math.pow(h1 / h0, e.target.value / 1000)));
+  const gc = centerOf(framesToRect(FRAMES));
+  scaleFramesAbout(gc[0], gc[1], s1 / frameH());
+  commit();
+};
+$('dragAll').onchange = e => { DRAGALL = e.target.checked; };
+$('gap').onchange = e => applyGap(e.target.value);
+$('showOverlay').onchange = e => { OVERLAY = e.target.checked; LS.set('ovl', OVERLAY); draw(); };
+$('dim').oninput = e => {
+  DIM = Math.max(0, Math.min(90, +e.target.value || 0));
+  $('dimTxt').textContent = DIM + '%';
+  LS.set('dim', DIM);
+  draw();
+};
+/* 快捷键：方向键微调 / +- 缩放 / M 铺满 / C 居中 / [ ] 逐帧 */
+document.addEventListener('keydown', e => {
+  if (/^(INPUT|SELECT|TEXTAREA)$/.test(e.target.tagName)) return;
+  if (!$('cv') || !INFO) return;
+  const s = e.shiftKey ? 20 : 2;      // 裁剪矩形必须偶数对齐（yuv420p），最小步长就是 2px
+  const all = e.altKey;               // Alt + 方向键 = 整组
+  const k = e.key;
+  if (k === 'ArrowLeft') { nudge(-s, 0, all); } else if (k === 'ArrowRight') { nudge(s, 0, all); }
+  else if (k === 'ArrowUp') { nudge(0, -s, all); } else if (k === 'ArrowDown') { nudge(0, s, all); }
+  else if (k === '+' || k === '=') { zoomBy(1.1); }
+  else if (k === '-' || k === '_') { zoomBy(1 / 1.1); }
+  else if (k === 'm' || k === 'M') { fitMax(); }
+  else if (k === 'c' || k === 'C') { centerCrop(); }
+  else if (k === '[') { stepFrame(-1); } else if (k === ']') { stepFrame(1); }
+  else return;
+  e.preventDefault();
+});
+
+/* ── 导入 / 抽帧 ─────────────────────────────────────────────────── */
+async function api(path, body, raw, name) {
+  const opt = raw ? { method: 'POST', body: raw, headers: { 'X-Filename': encodeURIComponent(name) } }
+    : (body ? { method: 'POST', body: JSON.stringify(body) } : {});
+  const r = await fetch(path, opt);
+  return await r.json();
+}
+function setProg(p) {                                   // p<0 隐藏
+  $('upBarWrap').style.display = p < 0 ? 'none' : 'block';
+  $('upBar').style.width = p < 0 ? '0' : Math.round(p * 100) + '%';
+}
+function uploadXHR(file) {                              // 带进度（大文件不慌）
+  return new Promise((res, rej) => {
+    const x = new XMLHttpRequest();
+    x.open('POST', '/api/upload');
+    x.setRequestHeader('X-Filename', encodeURIComponent(file.name));
+    x.upload.onprogress = e => { if (e.lengthComputable) setProg(e.loaded / e.total * 0.98); };
+    x.onload = () => { try { res(JSON.parse(x.responseText)); } catch (er) { rej(er); } };
+    x.onerror = () => rej(new Error('上传失败（网络错误）'));
+    x.send(file);
+  });
+}
+async function handleFile(f) {
+  if (!f) return;
+  log('上传 ' + f.name + '（' + fmtSize(f.size) + '）…');
+  setProg(0.01);
+  try {
+    const j = await uploadXHR(f);
+    setProg(f.size > 262144 ? 1 : -1);
+    if (!j.ok) { log('失败: ' + j.error); return; }
+    setTimeout(() => setProg(-1), 400);
+    log('导入成功: ' + j.file + '  ' + j.info.width + 'x' + j.info.height + '  ' +
+        j.info.duration.toFixed(2) + 's');
+    SRC = j.file; INFO = j.info;
+    $('tsec').value = 0;
+    syncCur();
+    CUR = addToQueue(j.file, j.info);
+    FRAMES = framesForClip(QUEUE[CUR]); CROP = framesToRect(FRAMES); SEL = 0;
+    await loadFrame(); syncUI(); renderFrames(); draw(); renderQueue(); loadList();
+  } catch (e) { setProg(-1); log('上传失败: ' + e.message); }
+}
+$('file').onchange = e => handleFile(e.target.files[0]);
+/* 拖到页面上即导入 */
+let dragDepth = 0;
+window.addEventListener('dragenter', e => { e.preventDefault(); dragDepth++; document.body.classList.add('dragging'); });
+window.addEventListener('dragover', e => e.preventDefault());
+window.addEventListener('dragleave', e => { if (--dragDepth <= 0) { dragDepth = 0; document.body.classList.remove('dragging'); } });
+window.addEventListener('drop', e => {
+  e.preventDefault(); dragDepth = 0; document.body.classList.remove('dragging');
+  const f = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
+  if (f) handleFile(f);
+});
+
+const FCACHE = new Map();                               // 抽帧缓存（拖动时间轴更顺）
+async function frameURL(t) {
+  const key = SRC + '|' + t.toFixed(3);
+  if (FCACHE.has(key)) return FCACHE.get(key);
+  const w = Math.min(2048, INFO.width);
+  const r = await fetch('/api/frame?file=' + encodeURIComponent(SRC) + '&w=' + w + '&t=' + t);
+  const b = await r.blob();
+  const url = URL.createObjectURL(b);
+  FCACHE.set(key, url);
+  if (FCACHE.size > 80) { const k0 = FCACHE.keys().next().value; URL.revokeObjectURL(FCACHE.get(k0)); FCACHE.delete(k0); }
+  return url;
+}
+async function loadFrame() {
+  if (!SRC) return;
+  try {
+    const t = +(($('tsec') && $('tsec').value) || 0);
+    const url = await frameURL(t);
+    await new Promise(res => { IMG = new Image(); IMG.onload = res; IMG.src = url; });
+    syncTL(); draw();
+  } catch (e) { log('抽帧失败: ' + e); }
+}
+function stepFrame(d) {
+  if (!INFO) return;
+  const t = Math.min(Math.max(0, (+$('tsec').value || 0) + d / FPS()), Math.max(0, DUR() - 1 / FPS()));
+  $('tsec').value = t.toFixed(3);
+  loadFrame();
+}
+let tlTimer = null;
+$('tl').oninput = e => {                                // 时间轴刷帧（防抖）
+  $('tsec').value = (e.target.value / 1000).toFixed(3);
+  syncTL();
+  clearTimeout(tlTimer);
+  tlTimer = setTimeout(loadFrame, 120);
+};
+$('tsec').onchange = () => { syncTL(); loadFrame(); };
+
+async function loadList() {
+  const j = await api('/api/list');
+  const box = $('srclist'); box.innerHTML = '';
+  const files = j.files || [];
+  if (!files.length) { box.innerHTML = '<span class="hint">还没有导入过视频</span>'; return; }
+  files.forEach(f => {
+    const name = f.name || f;
+    const info = f.info ? ' <i>' + f.info.width + '×' + f.info.height + ' · ' + f.info.duration.toFixed(1) + 's' +
+      (f.bytes ? ' · ' + fmtSize(f.bytes) : '') + '</i>' : '';
+    const el = document.createElement('span');
+    el.className = 'chip' + (name === SRC ? ' on' : '');
+    el.title = '点一下用这个视频（不用重新上传）';
+    el.innerHTML = '<span class="n">' + name + '</span>' + info + '<span class="x" title="从列表里删掉">×</span>';
+    el.querySelector('.n').onclick = () => openSource(name);
+    el.querySelector('.x').onclick = async ev => {
+      ev.stopPropagation();
+      if (!confirm('从导入目录删掉 ' + name + '？')) return;
+      const r = await api('/api/drop', { file: name });
+      if (!r.ok) return log('删除失败: ' + r.error);
+      if (name === SRC) { SRC = ''; INFO = null; IMG = null; CROP = [0, 0, 2, 2]; draw(); }
+      const qi = queueIndexOf(name);
+      if (qi >= 0) removeClip(qi);
+      loadList();
+    };
+    box.appendChild(el);
+  });
+}
+
+/* ============================================================================
+   v2：组的视频队列（每个队列项 = 一个 clip，顺序 = 轮播顺序）
+   · 每个 clip 各自摆框、各自时长（长短不限）；同一 clip 内 N 段等长（导出保证）
+   · clip 名 = 设备上的子目录名（与 playlist.json 的 file 前缀一致）；可改名（自动清洗+去重）
+   · 导出一次产出整组：c1/seg_1..N.mp4 … + playlist.json + wall.json
+============================================================================ */
+const esc = s => String(s == null ? '' : s)
+  .replace(/[&<>"]/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[ch]));
+const sanitizeClipName = (name, fallback) => {         // 与后端 split_wall.sanitize_clip_name 同口径
+  let n = String(name == null ? '' : name).trim().replace(/[^A-Za-z0-9_.-]/g, '_')
+    .replace(/^[._-]+|[._-]+$/g, '');
+  const fb = String(fallback || 'c1').replace(/[^A-Za-z0-9_.-]/g, '').replace(/^[._-]+|[._-]+$/g, '') || 'c1';
+  if (!n || !/^[A-Za-z0-9]/.test(n)) n = fb;
+  return n.slice(0, 32);
+};
+const sanitizeGroupName = (name, fallback) => {        // 与后端 split_wall.sanitize_group_name 同口径
+  let n = String(name == null ? '' : name).trim()
+    .replace(/[\x00-\x1f\x7f]/g, '').replace(/[\\/:*?"<>|]+/g, '-').replace(/\s+/g, '-')
+    .replace(/-{2,}/g, '-').replace(/^[-. ]+|[-. ]+$/g, '');
+  if (!n) {
+    n = String(fallback || '').replace(/[\\/:*?"<>|\s]+/g, '-').replace(/^-+|-+$/g, '') || 'zksw-wall';
+  }
+  return n.slice(0, 48);
+};
+function dedupeName(name, skipIdx) {
+  const used = new Set(QUEUE.filter((c, i) => i !== skipIdx).map(c => c.name));
+  let n = name, i = 2;
+  while (used.has(n)) { n = name + '_' + i; i++; }
+  return n;
+}
+function renumberAuto() { QUEUE.forEach((c, i) => { if (c.auto) c.name = dedupeName('c' + (i + 1), i); }); }
+const queueIndexOf = src => QUEUE.findIndex(c => c.src === src);
+
+function addToQueue(file, info) {                     // 已在队列 → 返回下标（不重复加）
+  let i = queueIndexOf(file);
+  if (i < 0) {
+    QUEUE.push({ id: UID++, name: '', src: file, info: info || null, auto: true,
+                 frames: info ? rectToFrames(maxCropWH(info, COLS), info.width, info.height, COLS)
+                              : null });
+    renumberAuto();
+    i = QUEUE.length - 1;
+    log('加入队列 ' + file + ' → ' + QUEUE[i].name +
+        (info ? '（' + info.width + '×' + info.height + ' · ' + info.duration.toFixed(2) + 's）' : ''));
+    if (!GROUPT) $('group').value = defaultGroupName();
+  } else if (info && !QUEUE[i].info) {
+    QUEUE[i].info = info;
+    QUEUE[i].frames = rectToFrames(maxCropWH(info, COLS), info.width, info.height, COLS);
+  }
+  return i;
+}
+function defaultGroupName() {
+  const s = ((QUEUE[0] && QUEUE[0].src) || '').replace(/\.[^.]*$/, '');
+  return sanitizeGroupName(s, 'zksw-wall');
+}
+function refitClips() {                               // 改分割数量：各 clip 保留边框中心与边长，重建 N 个窗口
+  QUEUE.forEach(c => {
+    if (!c.info || !c.frames) return;
+    const r = framesToRect(c.frames);
+    const h = Math.max(2, eveni(r[3])), cx = r[0] + r[2] / 2, cy = r[1] + r[3] / 2;
+    c.frames = rectToFrames(alignCropWH([cx - COLS * h / 2, cy - h / 2, COLS * h, h],
+                                       c.info.width, c.info.height),
+                            c.info.width, c.info.height, COLS);
+  });
+  if (CUR >= 0 && QUEUE[CUR] && QUEUE[CUR].frames) {
+    FRAMES = framesForClip(QUEUE[CUR]); CROP = framesToRect(FRAMES);
+  }
+}
+async function selectClip(i) {
+  if (i < 0 || i >= QUEUE.length) return;
+  syncCur();
+  CUR = i;
+  const c = QUEUE[i];
+  if (c.src !== SRC || !INFO) {
+    SRC = c.src;
+    INFO = c.info;
+    if (!INFO) {
+      const j = await api('/api/info?src=' + encodeURIComponent(c.src));
+      if (j.ok) { INFO = j.info; c.info = j.info; }
+    }
+    FCACHE.forEach(u => URL.revokeObjectURL(u)); FCACHE.clear();
+  }
+  FRAMES = framesForClip(c); CROP = framesToRect(FRAMES); SEL = 0;
+  await loadFrame();
+  syncUI(); renderFrames(); draw(); renderQueue();
+}
+function renameClip(i, v) {
+  const c = QUEUE[i];
+  if (!c) return;
+  const raw = String(v || '');
+  c.name = dedupeName(sanitizeClipName(raw, c.name || ('c' + (i + 1))), i);
+  c.auto = false;
+  renderQueue();
+  log('clip ' + (i + 1) + ' 改名为 ' + c.name + '（子目录名 / playlist file 前缀）' +
+      (c.name !== raw.trim() ? '　[已清洗] clip 名只允许字母/数字/_.-（首字符字母或数字），' +
+        '中文/空格/符号会被去掉或转下划线' : ''));
+}
+function moveClip(i, d) {
+  const j = i + d;
+  if (j < 0 || j >= QUEUE.length) return;
+  const t = QUEUE[i]; QUEUE[i] = QUEUE[j]; QUEUE[j] = t;
+  if (CUR === i) CUR = j; else if (CUR === j) CUR = i;
+  renumberAuto(); renderQueue();
+}
+function removeClip(i) {
+  if (i < 0 || i >= QUEUE.length) return;
+  const nm = QUEUE[i].name;
+  QUEUE.splice(i, 1);
+  if (!QUEUE.length) { CUR = -1; } else if (CUR === i) { CUR = Math.min(i, QUEUE.length - 1); }
+  else if (CUR > i) CUR -= 1;
+  renumberAuto();
+  if (QUEUE.length && CUR >= 0) {
+    SRC = QUEUE[CUR].src; INFO = QUEUE[CUR].info;
+    FRAMES = framesForClip(QUEUE[CUR]); CROP = framesToRect(FRAMES); syncUI(); loadFrame();
+  }
+  renderQueue(); draw();
+  log('从队列删除 ' + nm + '（还剩 ' + QUEUE.length + ' 个）');
+}
+function clearQueue() {
+  QUEUE = []; CUR = -1; SRC = ''; INFO = null; IMG = null;
+  FRAMES = []; CROP = [0, 0, 2, 2]; SEL = 0;
+  renderQueue(); draw();
+}
+function applyCropToAll() {
+  if (CUR < 0 || !FRAMES.length) return alert('先在队列里选一个 clip');
+  const base = FRAMES.map(f => f.slice());
+  let n = 0;
+  QUEUE.forEach(c => { if (c.info) { c.frames = rebaseFrames(base, c.info.width, c.info.height); n++; } });
+  syncCur(); renderQueue();
+  log('把当前窗口组（' + COLS + ' 屏，缝 ' + (gapsPx().join('/') || '0') + 'px）套用到 ' +
+      n + ' 个 clip（各自源内按比例摆位）');
+}
+function renderQueue() {
+  const box = $('queue');
+  if (!box) return;
+  box.innerHTML = '';
+  if (!QUEUE.length) {
+    $('qMsg').textContent = '队列为空：先在①里导入并点一下视频名（一个视频 = 一个 clip）';
+    $('btnExport').disabled = true;
+    return;
+  }
+  QUEUE.forEach((c, i) => {
+    const bad = c.info && (c.info.width < PANEL || c.info.height < PANEL);
+    const cf = (i === CUR ? FRAMES : (c.frames || []));
+    const cfTxt = cf.length ? ('x [' + cf.map(f => f[0]).join('/') + ']' +
+      (cf.length > 1 && cf.slice(1).some((f, k) => f[0] - (cf[k][0] + cf[k][3]) > 0)
+        ? ' 缝[' + cf.slice(1).map((f, k) => Math.max(0, f[0] - (cf[k][0] + cf[k][3]))).join('/') + ']'
+        : ' 缝 0')) : '-';
+    const d = document.createElement('div');
+    d.className = 'q' + (i === CUR ? ' on' : '') + (bad ? ' bad' : '');
+    d.innerHTML =
+      '<span class="qn">' + (i + 1) + '</span>' +
+      '<img src="/api/frame?file=' + encodeURIComponent(c.src) + '&w=64&t=0" title="首帧">' +
+      '<input class="qname" value="' + esc(c.name) + '" title="clip 名（= 设备上的子目录名；只允许字母/数字/_.-）">' +
+      '<span class="qsrc" title="' + esc(c.src) + '">' + esc(c.src) + '</span>' +
+      '<span class="qmeta">' + (c.info ? c.info.width + '×' + c.info.height + ' · ' + c.info.duration.toFixed(2) + 's' : '-') +
+        (i === CUR ? ' · <span class="badge">在摆框</span>' : '') + '</span>' +
+      '<span class="qmeta">' + cfTxt + '</span>' +
+      '<button class="ghost mini" data-op="up" title="上移">↑</button>' +
+      '<button class="ghost mini" data-op="down" title="下移">↓</button>' +
+      '<button class="ghost mini" data-op="sel" title="选中它摆框">摆框</button>' +
+      '<button class="ghost mini" data-op="del" title="删除">✕</button>';
+    d.onclick = e => { if (e.target.tagName !== 'INPUT') selectClip(i); };
+    d.querySelector('.qname').onchange = e => renameClip(i, e.target.value);
+    d.querySelectorAll('button[data-op]').forEach(b => b.onclick = ev => {
+      ev.stopPropagation();
+      const op = b.dataset.op;
+      if (op === 'up') moveClip(i, -1);
+      else if (op === 'down') moveClip(i, 1);
+      else if (op === 'del') removeClip(i);
+      else selectClip(i);
+    });
+    box.appendChild(d);
+  });
+  const tot = QUEUE.reduce((s, c) => s + (c.info ? c.info.duration * 1000 : 0), 0);
+  $('qMsg').innerHTML = '队列 <b>' + QUEUE.length + '</b> 个 clip（顺序 = 轮播顺序）　总时长 <b>' +
+    (tot / 1000).toFixed(2) + ' s</b>　每个 clip 切 ' + COLS + ' 段（' + PANEL + '×' + PANEL + '）';
+  $('btnExport').disabled = tooSmall() || BUSY || !QUEUE.length;
+}
+
+/* ── 导出（crop 原样发给后端）────────────────────────────────────── */
+async function doSplit() {
+  if (!QUEUE.length) return alert('先把视频加入队列（①里点一下视频名）');
+  syncCur();
+  const noInfo = QUEUE.find(c => !c.info);
+  if (noInfo) return alert('队列里还有读不到信息的视频：' + noInfo.src);
+  const bad = QUEUE.find(c => c.info.width < PANEL || c.info.height < PANEL);
+  if (bad) return alert(bad.src + ' 比单屏 ' + PANEL + '×' + PANEL + ' 还小，无法导出');
+  const req = FRAMES.map(f => f.slice());                    // 当前窗口组 → 原样发给后端
+  // 导出发的是 frames（每屏一个窗口，源像素）：当前 clip 用画面上这组，
+  // 其它 clip 用各自存下的；缝 = 相邻窗口之间那段（不导出）。后端只做偶数对齐 + 钳制，
+  // 无缝等分连着摆（regular）时后端自动等价回旧单框口径 → 与旧版逐像素一致。
+  const clips = QUEUE.map((c, i) => ({
+    file: c.src, name: c.name,
+    frames: (i === CUR ? req : (c.frames && c.frames.length ? c.frames : framesForClip(c))),
+    crop: (i === CUR ? CROP.slice() : null) }));
+  const gname = sanitizeGroupName($('group').value, defaultGroupName());
+  $('group').value = gname;
+  BUSY = true; draw();
+  const t0 = Date.now();
+  const tick = setInterval(() => {
+    $('splitMsg').innerHTML = '<span class="spin"></span> 切整个组（' + clips.length + ' 个 clip × ' +
+      COLS + ' 段）… ' + ((Date.now() - t0) / 1000).toFixed(0) + ' s';
+  }, 500);
+  $('splitMsg').innerHTML = '<span class="spin"></span> 切整个组（' + clips.length + ' 个 clip × ' + COLS + ' 段）…';
+  let j;
+  try { j = await api('/api/group_split', { clips: clips, cols: COLS, group_name: gname }); }
+  finally { clearInterval(tick); BUSY = false; draw(); }
+  if (!j.ok) {
+    $('splitMsg').innerHTML = '<span class="bad">未导出：' + esc(j.error) + '</span>';
+    return log('未导出: ' + j.error);
+  }
+  GROUP = j.group; LAST = j;
+  $('splitMsg').innerHTML = '<span class="ok">完成：' + GROUP + '（组名 ' + esc(j.group_name) +
+    '）　用时 ' + ((Date.now() - t0) / 1000).toFixed(1) + 's　' + j.n + ' 个 clip × ' + j.cols +
+    ' 段　总时长 ' + (j.total_ms / 1000).toFixed(2) + ' s</span>';
+  showClips(j);
+  log('导出整组 ' + GROUP + '：clip ' + j.n + ' 个（每个 ' + j.cols + ' 段' +
+      (j.per_screen ? '，每屏独立窗口' : '，无缝等分') + '）　总时长 ' + j.total_ms +
+      'ms　playlist.json + wall.json 已写出');
+  log('playlist.json: ' + JSON.stringify(j.playlist.clips.map(c => c.name + '=' + c.dur_ms + 'ms')));
+  loadGroups();
+}
+
+/* 分段卡片：**按 clip 分组**（clip 名 / 时长 / 段列表 / 每段缩略图与大小 / 下载） */
+function clipCard(c, res) {
+  const d = document.createElement('div');
+  d.className = 'clipcard';
+  const G = res.group || GROUP;                                  // 预览时用预览名，不动 GROUP
+  const segs = c.segments || [];
+  const dur = (c.dur_ms != null) ? c.dur_ms : (c.info ? c.info.duration * 1000 : 0);
+  const cropTxt = (c.frames && c.frames.length)
+    ? ('每屏 ' + c.frames.map(f => 'x' + f[0] + 'y' + f[1]).join(' / ') +
+       (c.gaps && c.gaps.some(g => g > 0) ? '　缝 ' + c.gaps.join('/') + 'px' : '　无缝'))
+    : ((c.crop && c.crop.length) ? c.crop.join(':') : '-');
+  d.innerHTML = '<div class="cliph"><b>' + esc(c.name || 'c1') + '</b>　' + (dur / 1000).toFixed(2) +
+    ' s　' + segs.length + ' 段　<span class="m">crop ' + cropTxt +
+    (c.scale ? '　缩放 ' + (+c.scale).toFixed(4) : '') +
+    (c.source ? '　← ' + esc(c.source) : '') + '</span></div>';
+  const row = document.createElement('div');
+  row.className = 'segrow';
+  segs.forEach(s => {
+    const f = s.file || ((c.name || 'c1') + '/seg_' + s.index + '.mp4');
+    const info = s.info || { width: PANEL, height: PANEL, duration: (s.dur_ms || dur) / 1000 };
+    const thumb = res.preview ? (c.source || '') : (G + '/' + f);
+    const el = document.createElement('div');
+    el.className = 'seg';
+    el.innerHTML = '<img src="/api/frame?file=' + encodeURIComponent(thumb) +
+      '&w=120&t=0" width="120" height="120">' +
+      '<div class="t">' + esc(String(f).split('/').pop()) + '</div>' +
+      info.width + '×' + info.height + ' / ' + (+info.duration).toFixed(2) + 's' +
+      (s.bytes ? ' / ' + fmtSize(s.bytes) : (s.exists === false ? ' <span class="bad">缺文件</span>' : '')) + '<br>' +
+      '<span class="hint">' + (s.src_crop ? '源 x=' + s.src_crop[0] + ' y=' + s.src_crop[1]
+        : ('第 ' + s.index + ' 段')) + '</span><br>' +
+      (res.preview ? '<span class="hint">导出后有下载</span>'
+        : '<a href="/api/download?group=' + encodeURIComponent(G) + '&file=' +
+          encodeURIComponent(f) + '">下载</a>');
+    row.appendChild(el);
+  });
+  d.appendChild(row);
+  return d;
+}
+function showClips(res) {
+  const box = $('segs');
+  box.innerHTML = '';
+  const G = res.group || GROUP;
+  const head = document.createElement('div');
+  head.className = 'row';
+  head.style.marginTop = '8px';
+  head.innerHTML = (res.preview ? '<span class="warn">预览（还没导出）</span>'
+      : '<button class="ghost mini" onclick="revealGroup()">打开输出目录</button>') +
+    '<span class="hint">' + esc(G) + (res.group_name ? '（组名 ' + esc(res.group_name) + '）' : '') +
+    '：' + res.n + ' 个 clip × ' + res.cols + ' 段' + (res.total_ms != null
+      ? '，总时长 ' + (res.total_ms / 1000).toFixed(2) + ' s' : '') +
+    '　每段 ' + PANEL + '×' + PANEL + '；cN/seg_i.mp4 + playlist.json + wall.json</span>';
+  box.appendChild(head);
+  const clips = res.clips || [];
+  clips.forEach(c => box.appendChild(clipCard(c, res)));
+  if (!clips.length) box.insertAdjacentHTML('beforeend', '<div class="hint">没有分段</div>');
+}
+function previewGroup() {                                  // 导出前先看组清单（客户端预演）
+  if (!QUEUE.length) return alert('先把视频加入队列');
+  syncCur();
+  const clips = QUEUE.map((c, i) => {
+    const ms = Math.round((c.info ? c.info.duration : 0) * 1000);
+    return { name: c.name, dur_ms: ms, source: c.src,
+             frames: (i === CUR ? FRAMES.map(f => f.slice()) : c.frames),
+             crop: (i === CUR ? CROP.slice() : null), scale: null,
+             segments: Array.from({ length: COLS }, (_, k) => ({
+               index: k + 1, file: c.name + '/seg_' + (k + 1) + '.mp4', dur_ms: ms })),
+           };
+  });
+  showClips({ preview: true, group: '(预览，未导出)',
+              group_name: sanitizeGroupName($('group').value, defaultGroupName()),
+              cols: COLS, n: clips.length,
+              total_ms: clips.reduce((s, c) => s + c.dur_ms, 0), clips: clips });
+  log('预览组清单：' + clips.length + ' 个 clip × ' + COLS + ' 段' +
+      '，总时长 ' + (clips.reduce((s, c) => s + c.dur_ms, 0) / 1000).toFixed(2) + ' s（未导出）');
+}
+function showSegs(m) {                                     // 旧 v1（根目录 seg_i.mp4）兼容展示
+  showClips({ group_name: m && m.group, cols: (m && m.segments || []).length,
+              n: 1, total_ms: null,
+              clips: [{ name: '', dur_ms: null, source: m && m.source,
+                        segments: (m && m.segments || []).map(s => Object.assign({}, s, {
+                          file: s.file || ('seg_' + s.index + '.mp4') })) }] });
+}
+async function revealGroup() {
+  if (!GROUP) return;
+  const j = await api('/api/reveal', { group: GROUP });
+  if (!j.ok) log('打开目录失败: ' + j.error);
+}
+async function loadGroups() {
+  const j = await api('/api/out');
+  GROUPS = j.groups || [];
+  const meta = {};
+  (j.info || []).forEach(d => { meta[d.name] = d; });
+  const box = $('groups'); box.innerHTML = '';
+  if (!GROUPS.length) { box.innerHTML = '<span class="hint">还没有导出过分段</span>'; return; }
+  GROUPS.slice().reverse().forEach(g => {
+    const m = meta[g] || {};
+    const el = document.createElement('span');
+    el.className = 'chip' + (g === GROUP ? ' on' : '');
+    el.title = '点一下 = 把它设为当前分发内容' +
+      (m.v2 ? '（v2 组：' + m.clips + ' 个 clip × ' + m.cols + ' 段，总时长 ' +
+              ((m.total_ms || 0) / 1000).toFixed(2) + ' s）' : '（v1 旧布局）');
+    el.innerHTML = '<span class="n">' + esc(g) + '</span><i>' +
+      (m.v2 ? ('v2 · ' + m.clips + 'clip×' + m.cols + '段' + (m.group_name ? ' · ' + esc(m.group_name) : ''))
+            : 'v1') + '</i>' + '<span class="x" title="删除这个分组（连同切好的文件一起删掉）">×</span>';
+    el.querySelector('.n').onclick = async () => {
+      GROUP = g;
+      const r = await api('/api/manifest?group=' + encodeURIComponent(g));
+      if (!r.ok) { log('读取 ' + g + ' 失败'); return; }
+      if (r.playlist) {
+        const pl = await api('/api/playlist?group=' + encodeURIComponent(g));
+        const clips = (pl.ok ? pl.playlist : r.playlist).clips || [];
+        const srcOf = {};
+        ((r.manifest && r.manifest.clips) || []).forEach(c => { srcOf[c.name] = c.source; });
+        const crop0 = r.manifest && r.manifest.crop;
+        showClips({ group_name: r.playlist.group, cols: r.playlist.cols, n: pl.playlist ? pl.playlist.n : clips.length,
+          total_ms: (pl.playlist ? pl.playlist.total_ms : r.playlist.total_ms),
+          clips: clips.map((c, i) => ({ name: c.name, dur_ms: c.dur_ms,
+            source: srcOf[c.name] || '', crop: (i === 0 ? crop0 : null),
+            segments: c.segments })) });
+        log('已选中分组 ' + g + '（v2：' + clips.length + ' 个 clip）');
+      } else {
+        showSegs(r.manifest);
+        log('已选中分组 ' + g + '（v1 旧布局）');
+      }
+      loadGroups();
+    };
+    el.querySelector('.x').onclick = async ev => {
+      ev.stopPropagation();
+      const pl = m.v2 ? ('（v2：' + m.clips + ' 个 clip × ' + m.cols + ' 段，总时长 ' +
+                         ((m.total_ms || 0) / 1000).toFixed(2) + ' s）') : '（v1 旧布局）';
+      if (!confirm('删掉分组 ' + g + pl + '？\n\n会连同这个目录里的分段文件（cN/seg_i.mp4 + ' +
+                   'playlist.json + wall.json）一起删除，不可撤销。')) return;
+      const r = await api('/api/drop_group', { group: g });
+      if (!r.ok) return log('删除分组失败: ' + r.error);
+      log('已删除分组 ' + g + '（' + r.files + ' 个文件 / ' + fmtSize(r.bytes || 0) + '）');
+      if (GROUP === g) { GROUP = ''; $('segs').innerHTML = ''; }
+      loadGroups();
+    };
+    box.appendChild(el);
+  });
+}
+
+/* ── 设备 / 分发 ─────────────────────────────────────────────────── */
+function saveDev() { LS.set('devs', DEV.map(d => ({ ip: d.ip, idx: d.idx, on: d.on !== false }))); }
+async function doScan() {
+  log('扫描中…'); const j = await api('/api/scan');
+  if (!j.ok) return log('扫描失败: ' + j.error);
+  j.devices.forEach(d => {
+    if (!DEV.find(x => x.ip === d.ip)) {
+      DEV.push({ ip: d.ip, idx: DEV.length + 1, model: d.model, panel: d.panel_id,
+                 has_wall: d.has_wall, on: true });
+    }
+  });
+  renderDev(); log('扫描完成：' + j.devices.length + ' 台');
+}
+function addManual() {
+  $('manual').value.split(/[,，\s]+/).forEach(s => {
+    const ip = s.trim();
+    if (ip && !DEV.find(x => x.ip === ip)) {
+      DEV.push({ ip: ip, idx: DEV.length + 1, model: '-', panel: '-', has_wall: true, on: true });
+    }
+  });
+  $('manual').value = ''; renderDev();
+}
+function setAllDev(on) { DEV.forEach(d => d.on = on); renderDev(); }
+function renderDev() {
+  const tb = document.querySelector('#devtab tbody'); tb.innerHTML = '';
+  DEV.forEach((d, i) => {
+    const tr = document.createElement('tr');
+    d.on = d.on !== false;
+    tr.innerHTML = '<td><input type="checkbox" ' + (d.on ? 'checked' : '') + ' data-i="' + i + '"></td>' +
+      '<td>' + d.ip + '</td>' +
+      '<td>' + (d.model || '-') + ' ' + (d.panel || '') + (d.has_wall === false ? ' <span class="bad">(无拼接页)</span>' : '') + '</td>' +
+      '<td><input type="number" min="1" value="' + d.idx + '" style="width:56px" data-idx="' + i + '"></td>' +
+      '<td id="st' + i + '">-</td>';
+    tb.appendChild(tr);
+  });
+  tb.querySelectorAll('input[data-idx]').forEach(el => el.onchange = e => {
+    DEV[+e.target.dataset.idx].idx = +e.target.value; saveDev(); });
+  tb.querySelectorAll('input[data-i]').forEach(el => el.onchange = e => {
+    DEV[+e.target.dataset.i].on = e.target.checked; saveDev(); countDev(); });
+  countDev();
+}
+function countDev() {
+  const n = DEV.filter(d => d.on !== false).length;
+  $('devCnt').textContent = DEV.length ? ('已选 ' + n + ' / ' + DEV.length + ' 台') : '未添加设备';
+}
+function chosen() {
+  return DEV.filter(d => d.on !== false).map(d => ({ ip: d.ip, idx: d.idx }));
+}
+async function doPush() {
+  if (!GROUP || String(GROUP).charAt(0) === '(')
+    return alert('先导出分段（或从⑦里选一个已导出的分组；刚才是预览，还没导出）');
+  const devices = chosen(); if (!devices.length) return alert('先选设备');
+  $('pushes').innerHTML = '<span class="spin"></span> 分发中（整组递归推送 + 每台重启应用，约 1~2 分钟）…';
+  const j = await api('/api/push', { group: GROUP, devices: devices,
+    group_name: $('group').value, clear_wall: !!($('clearWall') && $('clearWall').checked) });
+  $('pushes').innerHTML = (j.mode ? '<span class="hint">模式：' +
+      (j.mode === 'group' ? '整组递归（含 playlist.json）' : 'v1 单视频') + '</span><br>' : '') +
+    (j.results || []).map(r =>
+      r.ip + '：' + (r.ok ? '<span class="ok">OK</span>' : '<span class="bad">失败 ' + esc(r.error) + '</span>')).join('<br>');
+  log('分发完成' + (j.mode === 'group' ? '（整组）' : ''));
+}
+async function doStatus() {
+  const ips = chosen().map(d => d.ip);
+  if (!ips.length) return alert('先选设备');
+  const j = await api('/api/status', { devices: ips });
+  (j.devices || []).forEach(d => {
+    const i = DEV.findIndex(x => x.ip === d.ip);
+    if (i >= 0) $('st' + i).innerHTML = d.state +
+      '<br><span style="font-size:11px">' + (d.plays[0] || '') + '</span>';
+  });
+}
+
+/* ── 清空设备上的视频素材（拼接 / 屏保 / 相册 / 全部）────────────── */
+const SCOPE_NAME = { wall: '拼接素材', video: '屏保视频', album: '相册', all: '全部（拼接+屏保+相册）' };
+async function doClear(dry) {
+  const devices = chosen();
+  if (!devices.length) return alert('先选设备（⑤）');
+  const scope = $('clearScope').value;
+  if (!dry && !confirm('清空这 ' + devices.length + ' 台设备上的「' + (SCOPE_NAME[scope] || scope) +
+      '」？\n' + devices.map(d => d.ip).join('、') +
+      '\n\n不可撤销（清完要重新分发；设备上的视频会没掉）。')) return;
+  $('clearMsg').innerHTML = '<span class="spin"></span> ' + (dry ? '统计中' : '清空中') + '…';
+  const j = await api('/api/clear', { devices: devices.map(d => d.ip), scope: scope, dry_run: !!dry });
+  if (!j.ok) { $('clearMsg').innerHTML = '<span class="bad">失败：' + esc(j.error) + '</span>'; return; }
+  const mb = x => ((x || 0) / 1048576).toFixed(1) + ' MB';
+  $('clearMsg').innerHTML = (j.devices || []).map(r => {
+    if (!r.ok) return r.ip + '：<span class="bad">失败 ' + esc(r.error) + '</span>';
+    const b = r.before || {}, a = r.after || {};
+    return r.ip + (r.dry
+      ? '：将删 <b>' + (b.files || 0) + '</b> 个文件 / ' + mb(b.bytes) + '　' + (SCOPE_NAME[j.scope] || '')
+      : '：已清 <b>' + ((b.files || 0) - (a.files || 0)) + '</b> 个文件 / 释放 ' + mb((b.bytes || 0) - (a.bytes || 0)) +
+        ((a.files || 0) > 0 ? '（残留 ' + a.files + ' 个）' : '（已清空）'));
+  }).join('<br>');
+  log((dry ? '预览清空' : '清空') + ' 设备视频：' + (SCOPE_NAME[j.scope] || j.scope) + ' → ' +
+      (j.devices || []).map(r => r.ip + (r.ok ? ' OK' : ' 失败')).join('，'));
+}
+
+/* ── 自动化/回归接口（headless 截图、脚本化验收用）───────────────── */
+window.VW = {
+  version: 5,
+  ready: () => !!(INFO && IMG && IMG.naturalWidth),
+  info: () => (INFO ? { width: INFO.width, height: INFO.height } : null),
+  cols: () => COLS,
+  setCols: n => { COLS = +n; refitClips(); setCrop(maxCrop()); },
+  crop: () => CROP.slice(),
+  setCrop: (x, y, w, h) => setCrop([x, y, w, h]),
+  setCropArr: a => setCrop(a),
+  maxCrop: () => maxCrop(),
+  zoom: () => zoomOf(),
+  /* ── 每屏窗口（2026-09-28 v5）── */
+  frames: () => FRAMES.map(f => f.slice()),
+  setFrames: a => { setFrames(a); return FRAMES.map(f => f.slice()); },
+  sel: () => SEL,
+  setSel: i => { SEL = Math.min(Math.max(0, +i), FRAMES.length - 1); commit(); return SEL; },
+  moveFrame: (i, dx, dy) => { moveFrame(+i, +dx, +dy); commit(); return FRAMES.map(f => f.slice()); },
+  nudge: (dx, dy, all) => { nudge(+dx, +dy, !!all); return FRAMES.map(f => f.slice()); },
+  gap: () => gapsPx(),
+  setGap: px => { applyGap(px); return gapsPx(); },
+  alignY: () => { alignY(); return FRAMES.map(f => f.slice()); },
+  regular: () => isRegular(),
+  perScreen: () => FRAMES.length,
+  setSide: s => {                                     // 直接设每屏边长（以框组中心为锚点）
+    const gc = centerOf(framesToRect(FRAMES));
+    scaleFramesAbout(gc[0], gc[1], Math.max(2, eveni(+s)) / frameH());
+    commit(); return frameH();
+  },
+  setViewWidth: px => { VIEWW = +px || 0; $('canvasBox').style.width = px > 0 ? px + 'px' : ''; draw(); },
+  setTime: async t => { $('tsec').value = t; await loadFrame(); },
+  loadSrc: async name => await openSource(name),
+  overlay: () => OVERLAY,
+  setOverlay: on => { OVERLAY = !!on; $('showOverlay').checked = OVERLAY; draw(); },
+  setDim: v => {                                   // 蒙版压暗强度 %（0~90），截图比对用
+    DIM = Math.max(0, Math.min(90, +v || 0));
+    $('dim').value = DIM; $('dimTxt').textContent = DIM + '%'; LS.set('dim', DIM); draw();
+    return DIM;
+  },
+  canvasRect: () => { const r = $('cv').getBoundingClientRect(); return { left: r.left, top: r.top, width: r.width, height: r.height }; },
+  K: () => K,
+  src: () => SRC,
+  err: () => window.__err,
+  /* ── v2 组（队列）自动化接口（名字与旧接口互不影响）── */
+  queue: () => QUEUE.map((c, i) => ({ i: i, name: c.name, src: c.src, auto: !!c.auto,
+    dur: c.info ? c.info.duration : null,
+    frames: (i === CUR ? FRAMES.map(f => f.slice()) : (c.frames || null)),
+    crop: (i === CUR ? CROP.slice() : (c.frames ? framesToRect(c.frames) : null)),
+    cur: i === CUR })),
+  queueLen: () => QUEUE.length,
+  cur: () => CUR,
+  addClip: async name => { const j = await api('/api/info?src=' + encodeURIComponent(name));
+    if (!j.ok) return -1; const i = addToQueue(j.file, j.info); renderQueue();
+    if (CUR < 0) await selectClip(i); return i; },
+  addClips: async names => { for (const n of names) await window.VW.addClip(n);
+    if (CUR < 0 && QUEUE.length) await selectClip(0); return QUEUE.length; },
+  selectClip: async i => { await selectClip(+i); return CUR; },
+  renameClip: (i, n) => { renameClip(+i, n); return (QUEUE[+i] || {}).name; },
+  moveClip: (i, d) => { moveClip(+i, +d); return QUEUE.map(c => c.name); },
+  removeClip: i => { removeClip(+i); return QUEUE.length; },
+  clearQueue: () => { clearQueue(); return QUEUE.length; },
+  groupName: () => $('group').value,
+  setGroupName: v => { $('group').value = v; $('group').dispatchEvent(new Event('change')); return $('group').value; },
+  sanitizeGroupName: v => sanitizeGroupName(v, 'zksw-wall'),
+  sanitizeClipName: v => sanitizeClipName(v, 'c1'),
+  defaultGroupName: () => defaultGroupName(),
+  exportGroup: async () => { await doSplit(); return LAST; },
+  lastExport: () => LAST,
+  lastPlaylist: () => (LAST && LAST.playlist) || null,
+  previewGroup: () => { previewGroup(); return true; },
+  applyCropToAll: () => { applyCropToAll(); return QUEUE.map(c => c.frames); },
+  clearDevices: async (scope, dry) => {                // 清空设备视频（page 级自动化用）
+    const devices = chosen().map(d => d.ip);
+    const j = await api('/api/clear', { devices: devices, scope: scope || 'wall', dry_run: dry !== false });
+    return j;
+  },
+  group: () => GROUP,
+  groups: () => GROUPS.slice(),
+};
+
+/* ── URL 参数自动加载（?src=&cols=&crop=x,y,w,h&overlay=0&bare=1）── */
+async function openSource(name, opt) {
+  const o = opt || {};
+  const r = await fetch('/api/info?src=' + encodeURIComponent(name));
+  const j = await r.json();
+  if (!j.ok) { log('加载失败: ' + j.error); return false; }
+  syncCur();
+  SRC = j.file; INFO = j.info;
+  FCACHE.forEach(u => URL.revokeObjectURL(u)); FCACHE.clear();
+  log('加载 ' + SRC + '  ' + INFO.width + 'x' + INFO.height + '  ' + INFO.duration.toFixed(2) + 's');
+  if (o.enqueue === false) {                     // 只加载不排队（保持旧行为）
+    CUR = -1;
+    await loadFrame(); fitMax();
+  } else {                                       // 默认：加入队列（= 一个 clip）并选中
+    CUR = addToQueue(j.file, j.info);
+    FRAMES = framesForClip(QUEUE[CUR]); CROP = framesToRect(FRAMES); SEL = 0;
+    await loadFrame(); syncUI(); renderFrames(); draw();
+  }
+  renderQueue();
+  loadList();
+  return true;
+}
+(async function boot() {
+  if (Q.get('bare') === '1') document.body.classList.add('bare');
+  OVERLAY = Q.get('overlay') !== '0';
+  if (Q.has('overlay')) $('showOverlay').checked = OVERLAY; else {
+    OVERLAY = LS.get('ovl', true); $('showOverlay').checked = OVERLAY;
+  }
+  if (!Q.has('dim')) DIM = LS.get('dim', 50);      // 上次用过的压暗强度
+  $('dim').value = DIM; $('dimTxt').textContent = DIM + '%';
+  const g0 = LS.get('group', null);
+  $('group').value = g0 || 'zksw-wall';
+  GROUPT = !!g0;
+  $('group').onchange = () => {
+    const v = sanitizeGroupName($('group').value, defaultGroupName());
+    GROUPT = true; $('group').value = v; LS.set('group', v);
+  };
+  renderQueue();
+  COLS = LS.get('cols', 2);
+  const savedDev = LS.get('devs', []);
+  if (Array.isArray(savedDev)) { DEV = savedDev.map((d, i) => ({ ip: d.ip, idx: d.idx || i + 1, on: d.on !== false, model: '-', panel: '-' })); renderDev(); }
+  await loadList();
+  loadGroups();
+  if (Q.get('cols')) COLS = +Q.get('cols');
+  const posParam = (Q.get('pos') || Q.get('p'));
+  if (Q.get('src') && await openSource(Q.get('src'))) {
+    if (Q.get('frames')) {                            // ?frames=x:y:s:s;x:y:s:s（每屏一个窗口）
+      setFrames(Q.get('frames').split(/[;|]/).map(g => g.split(/[:,]/).map(Number)));
+    } else if (Q.get('crop')) setCrop(Q.get('crop').split(/[:,]/).map(Number));
+    else if (Q.get('zoom')) setCrop(cropFromZoom(+Q.get('zoom'), null));
+  } else { syncUI(); draw(); }
+  if (posParam) { const cx0 = +posParam.split(/[:,]/)[0], cy0 = +posParam.split(/[:,]/)[1]; setCrop([cx0 - CROP[2] / 2, cy0 - CROP[3] / 2, CROP[2], CROP[3]]); }
+  if (Q.get('t')) await window.VW.setTime(+Q.get('t'));
+  if (Q.get('vieww')) window.VW.setViewWidth(+Q.get('vieww'));
+  window.__ready = true;
+})();
+window.addEventListener('resize', () => draw());
+</script>
+</body>
+</html>
