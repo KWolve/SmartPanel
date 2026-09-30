@@ -19,6 +19,10 @@ moving artwork. **2–4 panels** can also be tiled into one **video wall** for s
 
 **Boots in 3 seconds. Commissioned by phone in 30 seconds — no unboxing, no laptop on site.**
 
+> 🤖 **This firmware was built by AI**: the UI layouts, the business logic and the on-device
+> verification were all produced by an **AI assistant + FlyThings MCP**. Secondary development is the
+> same "just ask" workflow — **no framework deep-dive, no IDE required** (see §7).
+
 > 🛒 **Buy the hardware (Taobao)**: <https://item.taobao.com/item.htm?id=650865599184&skuId=5500508256776>
 >
 > Model **SW48480040D1** ｜ SoC **Z20 / SigmaStar SSD201·SSD202D** ｜ License **MIT**
@@ -50,7 +54,7 @@ moving artwork. **2–4 panels** can also be tiled into one **video wall** for s
 | 4 | **Tile several into one wall** | 2–4 panels side by side become one large picture. Storefront backdrop walls, showroom loops, ad slots — with **no server required** (the master broadcasts the time base) |
 | 5 | **More than a switch** | When it's idle it's a **cloud photo frame** (scan to upload from your phone, auto-rotating) and an **electronic fish tank** (loop a clip — moving artwork on the wall); full screen-off window at night; separate working/screensaver brightness |
 | 6 | **Easy to install, easy to mass-produce** | Standard 86-box flush mount; **one-tap 180° flip** (screen + touch + video rotate together, so it works under a ceiling); factory-default file means **it can go live straight out of the box** |
-| 7 | **Built to be extended** | Full source, MIT-licensed, plus the official **FlyThings MCP** (your AI assistant edits UI / builds / packages / captures real device screens) — no waiting on a vendor for a UI tweak |
+| 7 | **AI-developed — low effort, short cycle** | This project itself was built by an **AI assistant + FlyThings MCP**: change UI / add features / build & package / capture and verify on the real device — **all inside a conversation**. **No embedded UI team to hire, no framework docs to digest first**, and the full source is MIT |
 
 ---
 
@@ -168,11 +172,33 @@ appears below → scan it with your phone to open the on-panel web page:
 
 ---
 
-## 7. Secondary development: you'll want FlyThings MCP
+## 7. Secondary development: let the AI do it (FlyThings MCP)
 
-Development on this project (UI changes / build / debug / packaging / real-device screen capture /
-knowledge-base search) is powered by **FlyThings MCP** — plug it into your AI client
-(Trae / Cursor / Claude Desktop / Kimi…) and **one sentence drives the whole toolchain**.
+**This is the project's biggest hidden selling point: low effort, short cycle** — the whole repository
+was built this way, and you work the same way.
+
+### One development round = 3 steps
+
+| Step | Who | What happens |
+|---|---|---|
+| ① **Describe** | you | "Turn the third card on the home page into a curtain icon, same size" |
+| ② **Do it** | AI | searches the built-in knowledge base → edits `ui/*.json` / logic → renders an HTML preview for you to confirm |
+| ③ **Verify** | AI | `fui pack` → `fun build -p Z20` → push to the device → **capture the real screen + pixel-compare** (±2 tolerance) → sends you the screenshot |
+
+### What you get (the AI does all of it)
+
+| You say | The AI can |
+|---|---|
+| "change this page for me" | edit the layout in a drag-and-drop editor → write changes back to json → package |
+| "how do I configure this control?" | **fully offline knowledge-base search** (local vectors + BM25, **no API key needed**), answers carry source and confidence |
+| "build it and push to the device" | `fun install` → `fun build` → auto-detect the device → push & run |
+| "what does it look like now?" | capture the real device screen (including video-layer frames) |
+| "is the change correct?" | pixel-diff regression (zero-token verification) |
+| "make me an upgrade package" | build `update.img` (TF card / ADB / OTA flashing routes) |
+
+### Onboarding takes one step
+
+Plug **FlyThings MCP** into your AI client (Trae / Cursor / Claude Desktop / Kimi…).
 Its **release build is maintained and published separately**; this repo only references it, never vendors it.
 
 | Purpose | Path |
